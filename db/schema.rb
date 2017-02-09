@@ -42,15 +42,15 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "state_id"
     t.string   "zip"
     t.text     "description"
-    t.datetime "created_at",                                                                                 :null => false
-    t.datetime "updated_at",                                                                                 :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "image_uid"
     t.string   "charity_type"
     t.string   "subdomain"
     t.string   "use_funds"
     t.string   "logo_uid"
     t.string   "photo_uid"
-    t.boolean  "active",                                                                   :default => true
+    t.boolean  "active",       :default => true
     t.integer  "order"
     t.float    "lat"
     t.float    "lon"
@@ -76,8 +76,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "experience_taggables", :force => true do |t|
     t.integer  "experience_tag_id"
@@ -105,8 +103,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "follow_up_notes", ["charity_id"], :name => "index_follow_up_notes_on_charity_id"
 
   create_table "follow_up_notes_users", :id => false, :force => true do |t|
     t.integer "follow_up_note_id"
@@ -226,8 +222,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "friend"
   end
 
-  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
-
   create_table "postcards", :force => true do |t|
     t.string   "city",                               :null => false
     t.string   "state",                              :null => false
@@ -249,8 +243,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -304,17 +296,12 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "time"
   end
 
-  add_index "reviews", ["venue_id"], :name => "index_reviews_on_venue_id"
-
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "social_links", :force => true do |t|
     t.integer  "venue_id"
@@ -355,9 +342,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "user_badges", ["badge_id"], :name => "index_user_badges_on_badge_id"
-  add_index "user_badges", ["user_id"], :name => "index_user_badges_on_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",         :null => false
     t.string   "encrypted_password",     :default => "",         :null => false
@@ -391,9 +375,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.text     "friends",                :default => "--- []\n", :null => false
     t.string   "facebook_uid"
   end
-
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "venue_taggables", :force => true do |t|
     t.integer  "venue_tag_id"
@@ -457,8 +438,6 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "social_media_email"
   end
 
-  add_index "venues", ["slug"], :name => "index_venues_on_slug", :unique => true
-
   create_table "vouchers", :force => true do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -468,7 +447,5 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "vouchers", ["offer_id"], :name => "index_vouchers_on_offer_id"
 
 end
