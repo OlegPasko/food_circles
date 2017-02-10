@@ -1,6 +1,6 @@
 class AddLatLonToCharities < ActiveRecord::Migration
   def change
-    add_column :charities, :lat, :float
-    add_column :charities, :lon, :float
+    add_column :charities, :latitude, :float
+    add_column :charities, :longitude, :float
   end
 end

@@ -26,11 +26,11 @@ class Venue < ActiveRecord::Base
   require 'open-uri'
   require 'json'
 
-  PLACES_KEY = "AIzaSyA3XZ8R5H4Q8xsnaMMJKIPYxiBadpAt_a4"
-  SRID = 4326
+  # PLACES_KEY = "AIzaSyA3XZ8R5H4Q8xsnaMMJKIPYxiBadpAt_a4"
+  # SRID = 4326
 
-  set_rgeo_factory_for_column(:latlon,
-                              RGeo::Geographic.spherical_factory(:srid => SRID))
+  # set_rgeo_factory_for_column(:latlon,
+  #                            RGeo::Geographic.spherical_factory(:srid => SRID))
 
   image_accessor :main_image
   image_accessor :outside_image
@@ -43,7 +43,7 @@ class Venue < ActiveRecord::Base
   validates :email, :on => :create, :allow_nil => true, :'validators/email' => true
 
 
-  before_save :update_latlon, :if => :dirty_latlon?
+  # before_save :update_latlon, :if => :dirty_latlon?
   after_save :notify_watching_users_about_new_vouchers, :if => :has_new_vouchers?
   after_create :ensure_always_open
 
@@ -52,36 +52,36 @@ class Venue < ActiveRecord::Base
   rails_admin do
     show do
       include_all_fields
-      field :lat
-      field :lon
+      field :latitude
+      field :longitude
     end
 
     edit do
       include_all_fields
-      field :lat
-      field :lon
+      field :latitude
+      field :longitude
     end
   end
 
-  def lat
-    @lat ||= if latlon.present?
-      latlon.lat
-    end
-  end
+  # def lat
+  #  @lat ||= if latlon.present?
+  #    latlon.lat
+  #  end
+  # end
 
-  def lat=(value)
-    @lat = value
-  end
+  # def lat=(value)
+  #  @lat = value
+  # end
 
-  def lon
-    @lon ||= if latlon.present?
-      latlon.lon
-    end
-  end
+  # def lon
+  #  @lon ||= if latlon.present?
+  #    latlon.lon
+  #  end
+  # end
 
-  def lon=(value)
-    @lon = value
-  end
+  # def lon=(value)
+  #  @lon = value
+  # end
 
   def num_vouchers
     if active
@@ -118,8 +118,10 @@ class Venue < ActiveRecord::Base
               :name => self.name,
               :address => self.address,
               :city => self.city,
-              :lat => self.latlon.y,
-              :lon => self.latlon.x,
+              :longitude => self.longitude,
+              :latitude => self.latitude,
+              # :lat => self.latlon.y,
+              # :lon => self.latlon.x,
               :description => self.description,
               :neighborhood => self.neighborhood,
               :phone => self.phone,
@@ -137,7 +139,7 @@ class Venue < ActiveRecord::Base
               :start => (self.available? ? 'Later Tonight' : self.open_at),
               :end => self.close_at,
               :vouchers_available => self.num_vouchers,
-              :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
+              # :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
               :social_links => self.social_links,
               :slug => self.slug,
               :device_id => self.device_id
@@ -194,11 +196,11 @@ class Venue < ActiveRecord::Base
     return to_read(o.end)
   end
 
-  def distance(lat, lon)
-    point_a = Venue.rgeo_factory_for_column(:latlon).point(lon, lat)
-    point_b = Venue.rgeo_factory_for_column(:latlon).point(latlon.x, latlon.y) # to workaroud the fact that the db has switched lon, lat
-    ((point_a.distance(point_b) / 1000) * 0.621371192).round(2).to_s + "mi"
-  end
+  # def distance(lat, lon)
+  #  point_a = Venue.rgeo_factory_for_column(:latlon).point(lon, lat)
+  #  point_b = Venue.rgeo_factory_for_column(:latlon).point(latlon.x, latlon.y) # to workaroud the fact that the db has switched lon, lat
+  #  ((point_a.distance(point_b) / 1000) * 0.621371192).round(2).to_s + "mi"
+  # end
 
   def full_address
     addr = "#{self.address}, #{self.city}"
@@ -226,15 +228,15 @@ class Venue < ActiveRecord::Base
       uniq
   end
 
-  def self.currently_available_with_location(lat, lon, time=Time.now)
-    t = ((time - time.beginning_of_week) / 60) + 300
-    sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
-
-    Venue.joins(:offers => :open_times).
-      where("#{sql_dist} < 50000 AND ? BETWEEN open_times.start AND open_times.end", t).
-      order("#{sql_dist}").
-      group("venues.id")
-  end
+  # def self.currently_available_with_location(lat, lon, time=Time.now)
+  #  t = ((time - time.beginning_of_week) / 60) + 300
+  #  sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
+  #
+  #  Venue.joins(:offers => :open_times).
+  #    where("#{sql_dist} < 50000 AND ? BETWEEN open_times.start AND open_times.end", t).
+  #    order("#{sql_dist}").
+  #    group("venues.id")
+  # end
 
   def self.not_available
     t = ((Time.now - Time.now.beginning_of_week) / 60) + 300
@@ -244,26 +246,26 @@ class Venue < ActiveRecord::Base
       uniq
   end
 
-  def self.not_available_with_location(lat, lon, time=Time.now)
-    t = ((time - time.beginning_of_week) / 60) + 300
-    e = ((time.end_of_day - time.beginning_of_week) / 60) + 300
-    sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
-    Venue.joins(:offers => :open_times).
-      where("#{sql_dist} < 50000 AND open_times.start BETWEEN :now AND :e", {now: t, e: e}).
-      order("#{sql_dist}").
-      group("venues.id")
-  end
+  # def self.not_available_with_location(lat, lon, time=Time.now)
+  #  t = ((time - time.beginning_of_week) / 60) + 300
+  #  e = ((time.end_of_day - time.beginning_of_week) / 60) + 300
+  #  sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
+  #  Venue.joins(:offers => :open_times).
+  #    where("#{sql_dist} < 50000 AND open_times.start BETWEEN :now AND :e", {now: t, e: e}).
+  #    order("#{sql_dist}").
+  #    group("venues.id")
+  # end
 
   # Returns all venues within the specified radius. Note radius is in meters
-  def self.within_radius_of_location(latitude, longitude, radius = 80467.2)
-    return Venue.scoped unless latitude.present? && longitude.present?
-    Venue.where(
-      "ST_Distance(venues.latlon, 'POINT(? ?)') <= ?",
-      longitude.to_f,
-      latitude.to_f,
-      radius
-    )
-  end
+  # def self.within_radius_of_location(latitude, longitude, radius = 80467.2)
+  #  return Venue.scoped unless latitude.present? && longitude.present?
+  #  Venue.where(
+  #    "ST_Distance(venues.latlon, 'POINT(? ?)') <= ?",
+  #    longitude.to_f,
+  #    latitude.to_f,
+  #    radius
+  #  )
+  # end
 
   def getReviews
     return if !self.reference
@@ -276,18 +278,18 @@ class Venue < ActiveRecord::Base
   end
 
   private
-  def dirty_latlon?
-    if latlon.present?
-      lat != latlon.lat || lon != latlon.lon
-    elsif self.new_record?
-      lat.present? && lon.present?
-    end
-  end
+  # def dirty_latlon?
+  #  if latlon.present?
+  #    lat != latlon.lat || lon != latlon.lon
+  #  elsif self.new_record?
+  #    lat.present? && lon.present?
+  #  end
+  # end
 
-  def update_latlon
-    new_latlon = Venue.rgeo_factory_for_column(:latlon).point(lon, lat)
-    self.latlon = new_latlon
-  end
+  # def update_latlon
+  #  new_latlon = Venue.rgeo_factory_for_column(:latlon).point(lon, lat)
+  #  self.latlon = new_latlon
+  # end
 
   def to_read(m)
     h, m = (m-300).divmod 60

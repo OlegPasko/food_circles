@@ -4,10 +4,10 @@ development:
   database: foodcircles
   host: localhost
   pool: 5
-  username: user
-  password: 
+  username: username
+  password: password
   su_name: postgres
-  su_password: 
+  su_password: password
   port: 5432
   template: template_postgis
 
@@ -17,10 +17,10 @@ test:
   database: foodcircles_test
   host: localhost
   pool: 5
-  username: user
-  password: 
+  username: username
+  password: password
   su_name: postgres
-  su_password: 
+  su_password: password
   port: 5432
   template: template_postgis
 
@@ -30,9 +30,9 @@ production:
   database: foodcircles_production
   host: localhost
   pool: 5
-  username: user
-  password: 
+  username: username
+  password: password
   su_name: postgres
-  su_password: 
+  su_password: password
   port: 5432
   template: template_postgis

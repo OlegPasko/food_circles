@@ -42,18 +42,18 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "state_id"
     t.string   "zip"
     t.text     "description"
-    t.datetime "created_at",                                                                                 :null => false
-    t.datetime "updated_at",                                                                                 :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "image_uid"
     t.string   "charity_type"
     t.string   "subdomain"
     t.string   "use_funds"
     t.string   "logo_uid"
     t.string   "photo_uid"
-    t.boolean  "active",                                                                   :default => true
+    t.boolean  "active",       :default => true
     t.integer  "order"
-    t.float    "lat"
-    t.float    "lon"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "charity_photos", :force => true do |t|
@@ -419,31 +419,32 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "neighborhood"
     t.string   "web"
     t.integer  "price"
-    t.datetime "created_at",                                                                                                             :null => false
-    t.datetime "updated_at",                                                                                                             :null => false
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.string   "main_image_uid"
     t.string   "phone"
     t.string   "restaurant_tile_image_uid"
     t.integer  "time_zone_id"
     t.float    "rating"
     t.string   "reference"
-    t.boolean  "active",                                                                                :default => true
-    t.spatial  "latlon",                    :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-    t.string   "voucher",                                                                               :default => "5"
-    t.decimal  "multiplier",                                                                            :default => 1.5
-    t.string   "feemessage",                                                                            :default => "Enter fee mesage."
-    t.decimal  "feecharge",                                                                             :default => 0.0
-    t.boolean  "apply_able",                                                                            :default => false
-    t.string   "email",                                                                                 :default => "venue@example.com"
+    t.boolean  "active",                    :default => true
+    t.string   "voucher",                   :default => "5"
+    t.decimal  "multiplier",                :default => 1.5
+    t.string   "feemessage",                :default => "Enter fee mesage."
+    t.decimal  "feecharge",                 :default => 0.0
+    t.boolean  "apply_able",                :default => false
+    t.string   "email",                     :default => "venue@example.com"
     t.string   "slug"
-    t.integer  "vouchers_available",                                                                    :default => 0
-    t.integer  "vouchers_total",                                                                        :default => 0
+    t.integer  "vouchers_available",        :default => 0
+    t.integer  "vouchers_total",            :default => 0
     t.string   "outside_image_uid"
     t.string   "timeline_image_uid"
     t.string   "google_maps_url"
     t.string   "times"
     t.string   "device_id"
-    t.boolean  "visible",                                                                               :default => true
+    t.boolean  "visible",                   :default => true
     t.string   "first_name"
     t.string   "last_name"
     t.text     "cc_num"
