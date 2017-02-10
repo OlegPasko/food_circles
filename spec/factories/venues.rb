@@ -14,7 +14,7 @@ FactoryGirl.define do
     price 1
     vouchers_available 10
     vouchers_total 10
-    latlon RGeo::Cartesian.factory.point(0,0)
+    #latlon RGeo::Cartesian.factory.point(0,0)
   end
 
 end
