@@ -21,3 +21,4 @@ veggies, two snacks and a drink for every $1 spent.
 Today, FoodCircles helps diners in Grand Rapids, Michigan thrive.  We help them find good food, save money, and help children in need.  You pay-what-you-want for drinks, desserts, and
 appetizers, we give 100% to get food to children who need it.  $1 given,
 1 child fed.  Thank you for joining us.
+.
