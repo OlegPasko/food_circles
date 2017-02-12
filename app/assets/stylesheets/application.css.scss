@@ -1,3 +1,19 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
 @font-face {
   font-family: 'NeutrafaceSlab';
   src: url('neutrafaceslabtext-light.eot');
@@ -73,8 +89,9 @@
 }
 
 html {
-	margin: 0;
+  margin: 0;
 }
+
 body {
   font-size: 18px;
   line-height: 1.44;
@@ -92,9 +109,15 @@ body {
 
 // Unifies text selection color
 // Does not fix IE
-::-moz-selection { color: gold;  background: #a34a4b; }
-::selection      { color: gold;  background: #a34a4b; }
+::-moz-selection {
+  color: gold;
+  background: #a34a4b;
+}
 
+::selection {
+  color: gold;
+  background: #a34a4b;
+}
 
 a {
   color: #a34a4b;
@@ -484,6 +507,7 @@ textarea.field.small {
   top: -2px;
   left: -5px;
 }
+
 .light-shadow[class^="btn-"], .light-shadow[class*=" btn-"] {
   box-shadow: 0 2px 3px #d3c9b9;
 }
@@ -1172,11 +1196,11 @@ body.active-popup {
 }
 
 .floatleft {
-	float: left;
+  float: left;
 }
 
 .floatrigth {
-	float: right;
+  float: right;
 }
 
 /*=== Navigation ===*/
@@ -1718,8 +1742,30 @@ body.active-popup {
 
 /*=== Banner - Paging ===*/
 
-.banner .paging { position: absolute; top: 50%; left: 50%; z-index: 3; width: 300px; height: 33px; margin: -17px 0 0 -150px; text-align: center; font-size: 0; line-height: 0; }
-.banner .paging a { display: inline-block; vertical-align: top; color: transparent; width: 32px; height: 2px; background: url(image_path('inactive-indicator.png')) no-repeat center center; margin: 18px 3px; *display: inline; *zoom: 1; }
+.banner .paging {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 300px;
+  height: 33px;
+  margin: -17px 0 0 -150px;
+  text-align: center;
+  font-size: 0;
+  line-height: 0;
+}
+
+.banner .paging a {
+  display: inline-block;
+  vertical-align: top;
+  color: transparent;
+  width: 32px;
+  height: 2px;
+  background: url(image_path('inactive-indicator.png')) no-repeat center center;
+  margin: 18px 3px;
+  *display: inline;
+  *zoom: 1;
+}
 
 .banner .paging a:hover,
 .banner .paging a.selected {
@@ -1744,32 +1790,32 @@ body.active-popup {
 }
 
 .hero-title-header {
-	line-height: 2.5em;
+  line-height: 2.5em;
 }
 
 .hero-title-upper {
-	font-family: 'NeutrafaceSlab';
-	font-size: 32px;
-	display: block;
-	text-transform: uppercase;
-	font-weight: 500;
-	letter-spacing: 1px;
-	text-align: center;
+  font-family: 'NeutrafaceSlab';
+  font-size: 32px;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
   line-height: 36px;
 }
 
 .hero-title-tagline {
-	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	font-size: 27px;
-	font-weight: 300;
-	letter-spacing: 1.5px;
-	display: block;
-	margin-top: 16px;
-	text-align: center;
+  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-size: 27px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-top: 16px;
+  text-align: center;
 }
 
 .hero-title-tagline-money {
-	font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 /*=== Donation Progress ===*/
@@ -1823,31 +1869,31 @@ body.active-popup {
 }
 
 .goal-indication {
-	width: 150px;
-	height: 52px;
-	position: absolute;
-	bottom: -1px;
-	color: #fff;
-	background-image: url(image_path('sliding-back.png'));
-	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	z-index: 99;
+  width: 150px;
+  height: 52px;
+  position: absolute;
+  bottom: -1px;
+  color: #fff;
+  background-image: url(image_path('sliding-back.png'));
+  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  z-index: 99;
 }
 
 .sofar {
-	position: absolute;
-	top: 5px;
-	left: 10px;
-	font-size: 12px;
-	font-weight: bold;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .weeklygoal {
-	position: absolute;
-	top: 20px;
-	left: 35px;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: right;
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
 }
 
 /*=== Main ===*/
@@ -2501,7 +2547,7 @@ body.active-popup {
 }
 
 .products .tile.sold-out .shadow {
-	background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .products .tile.sold-out .notify-text {
@@ -2815,7 +2861,7 @@ body.active-popup {
 }
 
 #socialsharebuttons .fb-like {
-	margin-left: -27px;
+  margin-left: -27px;
 }
 
 //
@@ -2823,15 +2869,16 @@ body.active-popup {
 //
 
 #footershadow {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	background-image: url(image_path('footer-shadow.png'));
-	background-repeat: repeat-x;
-	width: 100%;
-	height: 200px;
-	z-index: -90;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: url(image_path('footer-shadow.png'));
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 200px;
+  z-index: -90;
 }
+
 #scroll-fold {
   width: 1280px;
   height: 201px;
@@ -2857,6 +2904,7 @@ body.active-popup {
   height: 200px;
   display: table;
 }
+
 #scroll-fold .fold-description {
   width: 200px;
   display: table-cell;
@@ -5551,7 +5599,7 @@ body.active-popup {
 }
 
 .head-btns .disabled {
-  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.4),-1px 0 #611c1c;
+  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.4), -1px 0 #611c1c;
   text-decoration: none;
   background-color: #701a1a;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#701a1a), to(#874444));
@@ -5562,7 +5610,7 @@ body.active-popup {
 }
 
 .head-btns .disabled:hover {
-  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.4),-1px 0 #611c1c;
+  box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.4), -1px 0 #611c1c;
   text-decoration: none;
   background-color: #701a1a;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#701a1a), to(#874444));
@@ -5685,10 +5733,10 @@ textarea.organizers-field {
   }
 }
 
-#twitter-email{
+#twitter-email {
   min-height: 500px;
 
-  h2{
+  h2 {
     color: #4e3e34;
     font-size: 30px;
     margin-bottom: 10px;
@@ -5699,7 +5747,7 @@ textarea.organizers-field {
     line-height: 24px;
   }
 
-  h5{
+  h5 {
     color: #8a857f;
     font-size: 14px;
     text-align: center;
@@ -5711,7 +5759,7 @@ textarea.organizers-field {
     vertical-align: baseline;
   }
 
-  .box{
+  .box {
     width: 240px;
     background: #fff;
     border-radius: 8px;
@@ -5726,7 +5774,7 @@ textarea.organizers-field {
     background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0.03)), color-stop(1, rgba(0, 0, 0, 0.03)));
     box-shadow: 0 2px 3px #d3c9b9;
 
-    .button{
+    .button {
       background-color: #b56e6f;
       background-image: -webkit-gradient(linear, left top, left bottom, from(#b56e6f), to(#a34b4c));
       background-image: -webkit-linear-gradient(top, #b56e6f, #a34b4c);
@@ -5753,11 +5801,11 @@ textarea.organizers-field {
       vertical-align: middle;
     }
 
-    .button:hover{
+    .button:hover {
       cursor: pointer;
     }
 
-    .email{
+    .email {
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       border-radius: 5px;
@@ -5779,15 +5827,21 @@ textarea.organizers-field {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 100%; }
+  width: 100%;
+}
+
 #twitter-email .box .email {
   margin-bottom: 22px;
   background: white url(/assets/email_field_icon.png) 14px 50% no-repeat;
   padding-left: 60px;
   font-size: 20px;
-  color: #111; }
+  color: #111;
+}
+
 #twitter-email .box .email.placeholder {
-  color: #999; }
+  color: #999;
+}
+
 .clear50space {
   height: 50px;
   width: 1px;
@@ -5885,7 +5939,7 @@ textarea.organizers-field {
   /* IE10+ */
   background: linear-gradient(to bottom, #d9d9d9 0%, whitesmoke 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d9d9d9', endColorstr='#f5f5f5',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d9d9d9', endColorstr='#f5f5f5', GradientType=0);
   /* IE6-9 */
 }
 
@@ -5958,7 +6012,7 @@ textarea.organizers-field {
   /* IE10+ */
   background: linear-gradient(to bottom, #736d66 0%, #a09c97 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#736d66', endColorstr='#a09c97',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#736d66', endColorstr='#a09c97', GradientType=0);
   /* IE6-9 */
 }
 
@@ -5984,7 +6038,7 @@ textarea.organizers-field {
   /* IE10+ */
   background: linear-gradient(to bottom, #913b3c 0%, #b5595a 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#913b3c', endColorstr='#b5595a',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#913b3c', endColorstr='#b5595a', GradientType=0);
   /* IE6-9 */
 }
 
@@ -6006,7 +6060,7 @@ textarea.organizers-field {
   /* IE10+ */
   background: linear-gradient(to bottom, #c88602 0%, #daae04 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c88602', endColorstr='#daae04',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c88602', endColorstr='#daae04', GradientType=0);
   /* IE6-9 */
   .cost small {
     position: relative;
@@ -6053,6 +6107,7 @@ textarea.organizers-field {
   display: block;
   clear: both;
 }
+
 #buttonlegend {
   width: 180px;
   float: left;
@@ -6089,10 +6144,10 @@ textarea.organizers-field {
   background-image: -moz-linear-gradient(#b56e6f 0%, #a34b4c 100%);
   background-image: -o-linear-gradient(#b56e6f 0%, #a34b4c 100%);
   background-image: linear-gradient(#b56e6f 0%, #a34b4c 100%);
-  -webkit-transition: background-position 350ms,background-color 0 350ms;
-  -moz-transition: background-position 350ms,background-color 0 350ms;
-  -o-transition: background-position 350ms,background-color 0 350ms;
-  transition: background-position 350ms,background-color 0 350ms;
+  -webkit-transition: background-position 350ms, background-color 0 350ms;
+  -moz-transition: background-position 350ms, background-color 0 350ms;
+  -o-transition: background-position 350ms, background-color 0 350ms;
+  transition: background-position 350ms, background-color 0 350ms;
   &:last-child {
     margin-right: 0;
   }
@@ -6135,12 +6190,12 @@ textarea.organizers-field {
   }
 }
 
-.signup-tooltip{
+.signup-tooltip {
   display: inline;
   position: relative;
 }
 
-.signup-tooltip:hover:after{
+.signup-tooltip:hover:after {
   bottom: -210px;
   padding: 5px 15px;
   position: absolute;
@@ -6150,21 +6205,21 @@ textarea.organizers-field {
 }
 
 .first-tooltip:hover:after {
-  content:url(image_path('first-tooltip.png'));
+  content: url(image_path('first-tooltip.png'));
   left: -20px;
 }
 
 .second-tooltip:hover:after {
-  content:url(image_path('second-tooltip.png'));
+  content: url(image_path('second-tooltip.png'));
   left: -50px;
 }
 
 .third-tooltip:hover:after {
-  content:url(image_path('third-tooltip.png'));
+  content: url(image_path('third-tooltip.png'));
   left: -50px;
 }
 
 .fourth-tooltip:hover:after {
-  content:url(image_path('fourth-tooltip.png'));
+  content: url(image_path('fourth-tooltip.png'));
   left: 0px;
 }

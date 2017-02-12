@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   def create
     enqueue_mix_panel_event "Submits Students Get Involved Form"
 
-   	if(params[:students_email])
+    if (params[:students_email])
       if valid_email?(params[:students_email])
         signup
       else

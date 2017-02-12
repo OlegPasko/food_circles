@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::SessionsController do
   describe "POST 'sign_in'" do
-    let(:user){ FactoryGirl.create :user }
+    let(:user) { FactoryGirl.create :user }
 
     context "no params" do
       before(:each) do
@@ -30,15 +30,15 @@ describe Api::SessionsController do
       end
 
       it "creates a new user" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "pepe@perez.com", :uid => "123456"
-        }.to change{User.count}.by(1)
+        }.to change { User.count }.by(1)
       end
 
       it "creates a new external uid" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "pepe@perez.com", :uid => "123456"
-        }.to change{ExternalUID.count}.by(1)
+        }.to change { ExternalUID.count }.by(1)
       end
 
       it "the external uid belongs to the created user" do
@@ -64,15 +64,15 @@ describe Api::SessionsController do
       end
 
       it "does not create the new user" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "carlos@perez.com", :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "does not create an external uid" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "carlos@perez.com", :uid => "123456"
-        }.to_not change{ExternalUID.count}
+        }.to_not change { ExternalUID.count }
       end
     end
 
@@ -89,15 +89,15 @@ describe Api::SessionsController do
 
       it "does not create a new user" do
         user
-        expect{
+        expect {
           post 'sign_in', :user_email => user.email, :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "creates a new external uid" do
-        expect{
+        expect {
           post 'sign_in', :user_email => user.email, :uid => "123456"
-        }.to change{ExternalUID.count}.by(1)
+        }.to change { ExternalUID.count }.by(1)
       end
 
       it "the external uid belongs to the user" do
@@ -132,15 +132,15 @@ describe Api::SessionsController do
 
       it "does not create the new user" do
         user
-        expect{
+        expect {
           post 'sign_in', :user_email => user.email, :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "does not create an external uid" do
-        expect{
+        expect {
           post 'sign_in', :user_email => user.email, :uid => "123456"
-        }.to_not change{ExternalUID.count}
+        }.to_not change { ExternalUID.count }
       end
     end
 
@@ -161,15 +161,15 @@ describe Api::SessionsController do
       end
 
       it "does not create the new user" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "pepe@perez.com", :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "does not create an external uid" do
-        expect{
+        expect {
           post 'sign_in', :user_email => "pepe@perez.com", :uid => "123456"
-        }.to_not change{ExternalUID.count}
+        }.to_not change { ExternalUID.count }
       end
     end
 
@@ -190,15 +190,15 @@ describe Api::SessionsController do
 
       it "does not create a new user" do
         user
-        expect{
+        expect {
           post 'sign_in', :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "does not create a new external uid" do
-        expect{
+        expect {
           post 'sign_in', :uid => "123456"
-        }.to_not change{ExternalUID.count}.by(1)
+        }.to_not change { ExternalUID.count }.by(1)
       end
     end
 
@@ -215,15 +215,15 @@ describe Api::SessionsController do
 
       it "does not create a new user" do
         user
-        expect{
+        expect {
           post 'sign_in', :uid => "123456"
-        }.to_not change{User.count}
+        }.to_not change { User.count }
       end
 
       it "does not create a new external uid" do
-        expect{
+        expect {
           post 'sign_in', :uid => "123456"
-        }.to_not change{ExternalUID.count}.by(1)
+        }.to_not change { ExternalUID.count }.by(1)
       end
     end
   end

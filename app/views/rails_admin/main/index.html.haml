@@ -99,7 +99,7 @@
         = t("admin.misc.refresh")
       - if export_action
         %span{:style => 'float:right'}= link_to wording_for(:link, export_action), export_path(params.except('set').except('page')), :class => 'btn btn-info'
-      -#---------------------------------------------------------------------------- Header Ends---------------------
+  -#---------------------------------------------------------------------------- Header Ends---------------------
 
 
   = form_tag bulk_action_path(:model_name => @abstract_model.to_param), :method => :post, :id => "bulk_form", :class => "form" do
@@ -112,7 +112,7 @@
         %li
           -#= link_to @venue_names[index][:name],{:controller => '/monthly_invoice', :action => "monthly_invoice"}
           %a{:href => "/monthly_invoice/monthly_invoice?vid=#{ @venue_names[index][:id]} &months_before= #{@months_before}" } #{@venue_names[index][:name]}
-        -#%br
+    -#%br
 
     - else
 

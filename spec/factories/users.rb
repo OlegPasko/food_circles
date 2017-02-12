@@ -1,5 +1,3 @@
-
-
 FactoryGirl.define do
   factory :user do
     email "terminator@foodcircles.net"

@@ -1,14 +1,14 @@
 class Api::CharitiesController < ApplicationController
   def show
     begin
-      @charities = Charity.active.all() 
+      @charities = Charity.active.all()
       return_arr = []
       @charities.each do |c|
         return_arr << {
-          :id => c.id,
-          :name => c.name,
-          :description => c.description,
-          :use_funds => c.use_funds
+            :id => c.id,
+            :name => c.name,
+            :description => c.description,
+            :use_funds => c.use_funds
         }
       end
 

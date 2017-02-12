@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
   before_filter :email_server
   before_filter :prepare_for_mobile
   before_filter :detect_email_omniauth
@@ -26,22 +26,22 @@ class ApplicationController < ActionController::Base
 
   def email_server
     unless request.env['HTTP_USER_AGENT'].nil?
-      user_agent =  request.env['HTTP_USER_AGENT'].downcase
+      user_agent = request.env['HTTP_USER_AGENT'].downcase
       request.user_agent =~ /Mobile|webOS/
 
-      if(params['app'].present?)
+      if (params['app'].present?)
 
-        if(user_agent.include?"android")
+        if (user_agent.include? "android")
 
-          redirect_to  "https://play.google.com/store/apps/details?id=co.foodcircles"
+          redirect_to "https://play.google.com/store/apps/details?id=co.foodcircles"
 
-        elsif (user_agent.include?"iphone")
+        elsif (user_agent.include? "iphone")
           redirect_to "http://itunes.apple.com/us/app/foodcircles/id526107767"
         elsif !((request.user_agent =~ /Mobile/).nil?)
           redirect_to root_path
         else
 
-          redirect_to  "http://www.foodcircles.net/app"
+          redirect_to "http://www.foodcircles.net/app"
 
         end
       else
@@ -54,20 +54,20 @@ class ApplicationController < ActionController::Base
   end
 
   def genCoupon
-    s = [('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten
-    (0..4).map{s[rand(s.length)]}.join.downcase
+    s = [('A'..'Z'), ('0'..'9')].map { |i| i.to_a }.flatten
+    (0..4).map { s[rand(s.length)] }.join.downcase
   end
 
-  def makeCall(v,r,minutes)
+  def makeCall(v, r, minutes)
     return if r.called
 
     r.called = true
     r.save
 
     data = {
-      :from => CALLER_ID,
-      :to => v.phone,
-      :url => BASE_URL + "/notification?r=#{r.id}&m=#{minutes}"
+        :from => CALLER_ID,
+        :to => v.phone,
+        :url => BASE_URL + "/notification?r=#{r.id}&m=#{minutes}"
     }
 
     begin
@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
   end
 
   def download
-    user_agent =  request.env['HTTP_USER_AGENT'].downcase
+    user_agent = request.env['HTTP_USER_AGENT'].downcase
     if user_agent.index('android')
       redirect_to "https://play.google.com/store/apps/details?id=co.foodcircles"
       return
@@ -136,6 +136,7 @@ class ApplicationController < ActionController::Base
       request.user_agent =~ /Mobile|webOS/
     end
   end
+
   helper_method :mobile_device?
 
   def android_device?

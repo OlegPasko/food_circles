@@ -1,7 +1,7 @@
 <% venue_name = reservation.offer.venue.name if reservation.offer && reservation.offer.venue %>
 <% venue_name ||= "Past FC Restaurant" %>
 
-<div class="block <%= (total_payments + reservation_counter )% 2 == 0 ? 'left' : 'right' %>">
+<div class="block <%= (total_payments + reservation_counter)% 2 == 0 ? 'left' : 'right' %>">
   <div class="cnt">
     <div class="head">
       <h5><%= venue_name %></h5>
@@ -11,7 +11,7 @@
     <div class="body expired">
       <span> Expired </span>
       <% if reservation.offer && reservation.offer.venue && reservation.offer.venue.timeline_image %>
-        <%= image_tag reservation.offer.venue.timeline_image.thumb("205x155").url %>
+          <%= image_tag reservation.offer.venue.timeline_image.thumb("205x155").url %>
       <% end %>
     </div>
 
@@ -27,10 +27,10 @@
       <span class="divider"></span>
     </div><!-- /.foot -->
   </div><!-- /.cnt -->
-  <%- if (total_payments + reservation_counter ) % 2 == 0 %>
-    <i class="arrow-right"><i class="arrow-right"></i></i>
+  <%- if (total_payments + reservation_counter) % 2 == 0 %>
+      <i class="arrow-right"><i class="arrow-right"></i></i>
   <%- else %>
-    <i class="arrow-left"><i class="arrow-left"></i></i>
+      <i class="arrow-left"><i class="arrow-left"></i></i>
   <%- end %>
   <i class="circle"></i>
 </div><!-- /.block left -->

@@ -5,7 +5,7 @@ Foodcircles::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -34,7 +34,7 @@ Foodcircles::Application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags
-  config.log_tags = [ :subdomain, :uuid ]
+  config.log_tags = [:subdomain, :uuid]
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
@@ -56,8 +56,8 @@ Foodcircles::Application.configure do
   Dir.chdir "#{Rails.root}/app/assets/javascripts"
   a = Dir.glob("*.{js,coffee,erb}")
   Dir.chdir "#{Rails.root}/app/assets/stylesheets"
-  b = Dir.glob("*.{css,erb,scss}").map{|f| f.gsub(".scss","")}
-  config.assets.precompile +=  a.concat(b)
+  b = Dir.glob("*.{css,erb,scss}").map { |f| f.gsub(".scss", "") }
+  config.assets.precompile += a.concat(b)
   Dir.chdir Rails.root
 
   # Disable delivery errors, bad email addresses will be ignored
@@ -73,17 +73,17 @@ Foodcircles::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'joinfoodcircles.org' }
+  config.action_mailer.default_url_options = {:host => 'joinfoodcircles.org'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.asset_host = "http://joinfoodcircles.org"
 
   config.action_mailer.smtp_settings = {
-      :address              => "smtp.mandrillapp.com",
-      :port                 => 587,
-      :domain               => 'foodcircles.net',
-      :user_name            => 'jk@joinfoodcircles.org',
-      :password             => 'uQjfYEZZxNUpGq0oeoVjmw',
-      :authentication       => 'plain',
+      :address => "smtp.mandrillapp.com",
+      :port => 587,
+      :domain => 'foodcircles.net',
+      :user_name => 'jk@joinfoodcircles.org',
+      :password => 'uQjfYEZZxNUpGq0oeoVjmw',
+      :authentication => 'plain',
       :enable_starttls_auto => true
   }
   # Log the query plan for queries taking more than this (works

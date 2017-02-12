@@ -7,12 +7,12 @@ class SocialLink < ActiveRecord::Base
 
   def source
     case url
-    when /www\.yelp\.(.+)/
-      "yelp"
-    when /www\.twitter\.(.+)/
-      "twitter"
-    else
-      "facebook"
-    end 
+      when /www\.yelp\.(.+)/
+        "yelp"
+      when /www\.twitter\.(.+)/
+        "twitter"
+      else
+        "facebook"
+    end
   end
 end

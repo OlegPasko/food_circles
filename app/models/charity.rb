@@ -39,13 +39,13 @@ class Charity < ActiveRecord::Base
   end
 
   def as_json(options={})
-    { :id => self.id,
-      :name => self.name,
-      :address => self.address,
-      :city => self.city,
-      :description => self.description,
-      :state => self.state.name,
-      :image => self.image.present? ? self.image.url : ''
+    {:id => self.id,
+     :name => self.name,
+     :address => self.address,
+     :city => self.city,
+     :description => self.description,
+     :state => self.state.name,
+     :image => self.image.present? ? self.image.url : ''
     }
   end
 

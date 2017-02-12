@@ -1,13 +1,13 @@
-function change_view(vid,date){
+function change_view(vid, date) {
 
     $("#loading").show();
 
     $.ajax({
         type: 'GET',
-        url: '/monthly_invoice?vid='+vid+'&date='+date+'&input_note='+input_note,
-        success: function(data) {
+        url: '/monthly_invoice?vid=' + vid + '&date=' + date + '&input_note=' + input_note,
+        success: function (data) {
 
-            if(data == "") {
+            if (data == "") {
 
 
                 $("#new_layout").html("Nothing Found.");
@@ -21,15 +21,15 @@ function change_view(vid,date){
     $("#loading").hide();
 
 }
-function change_request(vid,months_before,fee_message,fee_cost,input_note){
+function change_request(vid, months_before, fee_message, fee_cost, input_note) {
 
     $("#loading").show();
     $.ajax({
         type: 'GET',
-        url: '/monthly_invoice?vid='+vid+'&months_before='+months_before+'&fee_message='+fee_message+'&fee_cost='+fee_cost+'&input_note='+input_note,
-        success: function(data) {
+        url: '/monthly_invoice?vid=' + vid + '&months_before=' + months_before + '&fee_message=' + fee_message + '&fee_cost=' + fee_cost + '&input_note=' + input_note,
+        success: function (data) {
 
-            if(data == "") {
+            if (data == "") {
 
 
                 $("#new_layout").html("Nothing Found.");

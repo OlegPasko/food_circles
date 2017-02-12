@@ -12,7 +12,7 @@ describe Payment do
   end
 
   it "expiring soon" do
-    Timecop.freeze(DateTime.new(2013,12,1,0,0,1)) do
+    Timecop.freeze(DateTime.new(2013, 12, 1, 0, 0, 1)) do
       payment1 = FactoryGirl.create(:payment, :created_at => 25.days.ago)
       payment2 = FactoryGirl.create(:payment, :created_at => 21.days.ago)
       payment3 = FactoryGirl.create(:payment, :created_at => 23.days.ago + 1.hour)
@@ -24,7 +24,7 @@ describe Payment do
 
   it "expiring at" do
     Timecop.freeze do
-      payment1 =  FactoryGirl.create(:payment)
+      payment1 = FactoryGirl.create(:payment)
       payment1.expiring_at.should eq 30.days.from_now
     end
   end

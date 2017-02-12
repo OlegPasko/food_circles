@@ -6,5 +6,5 @@ class SocialbutterfliesController < ApplicationController
   def create
     enqueue_mix_panel_event "Submits Social Butterflies Get Involved Form"
     UserMailer.social_butterfly(params[:facebook]).deliver
-  end 
+  end
 end

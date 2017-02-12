@@ -1,10 +1,11 @@
-  h1 {
+h1 {
   color: #4e3e34;
 }
 
 h2 {
   font-size: 24px;
-  color: #4e3e34;text-align: center;
+  color: #4e3e34;
+  text-align: center;
   font-family: "NeutrafaceSlab", "Neutraface Slab", serif;
   font-weight: 700;
   letter-spacing: 1px;
@@ -14,18 +15,18 @@ h2 {
 .placard {
   width: 100%;
   background-image: linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
-background-image: -o-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
-background-image: -moz-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
-background-image: -webkit-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
-background-image: -ms-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
+  background-image: -o-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
+  background-image: -moz-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
+  background-image: -webkit-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
+  background-image: -ms-linear-gradient(left top, #FFFFFF 11%, #F7F7F7 56%);
 
-background-image: -webkit-gradient(
-  linear,
-  left top,
-  right bottom,
-  color-stop(0.11, #FFFFFF),
-  color-stop(0.56, #F7F7F7)
-);
+  background-image: -webkit-gradient(
+                  linear,
+                  left top,
+                  right bottom,
+                  color-stop(0.11, #FFFFFF),
+                  color-stop(0.56, #F7F7F7)
+  );
   -moz-border-radius: 15px;
   border-radius: 15px;
   margin-top: 40px;
@@ -61,7 +62,7 @@ background-image: -webkit-gradient(
 }
 
 .placard p {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
   color: #4e3e34;
 }
 
@@ -81,13 +82,13 @@ background-image: -webkit-gradient(
   width: 150px;
 }
 
-.stringleft{
+.stringleft {
   position: absolute;
   top: -80px;
   left: 100px;
 }
 
-.stringright{
+.stringright {
   position: absolute;
   top: -80px;
   right: 100px;
@@ -106,7 +107,7 @@ background-image: -webkit-gradient(
 .steps p {
   width: 90%;
   margin: 15px auto;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
 }
 
 .steps h3 {
@@ -157,7 +158,6 @@ background-image: -webkit-gradient(
   font-weight: 700;
 }
 
-
 #restaurant-invite {
   margin-top: 30px;
 }
@@ -180,7 +180,7 @@ background-image: -webkit-gradient(
 #nominate p {
   font-size: 16px;
   font-weight: 200;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
   font-style: italic;
   padding-bottom: 0;
 }
@@ -188,13 +188,14 @@ background-image: -webkit-gradient(
 #nominate label {
   font-size: 16px;
   font-weight: 400;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
   color: #423f37;
 }
 
 #nominate input, #nominate textarea {
   margin-bottom: 5px;
 }
+
 label {
   margin: 10px;
 }
@@ -202,7 +203,6 @@ label {
 #nominate-submit-button {
   text-align: center;
 }
-
 
 .responses {
   text-align: left;

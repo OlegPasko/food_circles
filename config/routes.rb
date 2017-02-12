@@ -1,4 +1,5 @@
-Foodcircles::Application.routes.draw do
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/sessions/omniauth_email' => "omniauth_ask_for_email#index", :as => 'omniauth_email'
   put '/sessions/omniauth_email' => "omniauth_ask_for_email#submit", :as => 'omniauth_email_submit'
 
@@ -11,7 +12,7 @@ Foodcircles::Application.routes.draw do
   get 'payment/active' => 'payment#active'
   get 'payment/expired' => 'payment#expired'
   get 'payment/inbound_mark_used' => 'payment#inbound_mark_used'
-  get 'payment/send_text' => 'payment#send_text' , :as => "payment_send_text"
+  get 'payment/send_text' => 'payment#send_text', :as => "payment_send_text"
 
 
   get 'signup' => 'signup#index', as: 'signup'
@@ -20,22 +21,22 @@ Foodcircles::Application.routes.draw do
 
   resource :inbox, :controller => 'inbox', :only => [:show, :create]
 
-  match '/auth/:provider/callback', :to => 'sessions#create', as: 'callback'
+  post '/auth/:provider/callback', :to => 'sessions#create', as: 'callback'
 
   get "socialbutterflies/index"
 
   # match '/offers' => 'offers#index', :as => :offers
   resources :offers
   resources :categories
-  match '/timeline' => 'timeline#index', :as => :timeline
+  get '/timeline' => 'timeline#index', :as => :timeline
   #match '/payment' => 'payment#index', :as => :payment
-  match '/payment/stripe' => 'payment#stripe', :as => :stripe
+  post '/payment/stripe' => 'payment#stripe', :as => :stripe
 
   get "user_signup/create"
 
   resources :stripe_payments, :only => [:new, :create]
 
-  match '/monthly_invoice' => 'monthly_invoice#monthly_invoice', :as => :invoice
+  post '/monthly_invoice' => 'monthly_invoice#monthly_invoice', :as => :invoice
 
   resources :chat, :only => [:index, :show] do
     collection do
@@ -61,8 +62,8 @@ Foodcircles::Application.routes.draw do
 
   resources :payment_notifications
 
-  match '/achievements' => 'achievements#index', :as => :achievements
-  match '/achievements/best_donors' => 'achievements#best_donors', :as => :achievements_best_donors
+  get '/achievements' => 'achievements#index', :as => :achievements
+  get '/achievements/best_donors' => 'achievements#best_donors', :as => :achievements_best_donors
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
@@ -94,15 +95,15 @@ Foodcircles::Application.routes.draw do
   end
   resources :postcards, :only => [:create]
 
-  match '/app' => 'app#index'
-  match '/getVenue' => 'app#getVenue'
-  match '/getVenues' => 'app#getVenues'
-  match '/getCharities' => 'app#getCharities'
-  match '/confirm' => 'app#confirm'
-  match '/submit' => 'app#submit'
-  match '/newinfo' => 'app#newinfo', :as => :user_info
-  match '/create_voucher' => 'app#create_voucher'
-  match '/voucher' => 'app#voucher'
+  get '/app' => 'app#index'
+  get '/getVenue' => 'app#getVenue'
+  get '/getVenues' => 'app#getVenues'
+  get '/getCharities' => 'app#getCharities'
+  post '/confirm' => 'app#confirm'
+  post '/submit' => 'app#submit'
+  get '/newinfo' => 'app#newinfo', :as => :user_info
+  post '/create_voucher' => 'app#create_voucher'
+  get '/voucher' => 'app#voucher'
 
   # API
 
@@ -131,11 +132,11 @@ Foodcircles::Application.routes.draw do
     end
   end
 
-  match '/mobi/reservation-login' => 'mobile#login'
-  match '/mobi/reservation' => 'mobile#signup'
-  match '/mobi/reservation_confirm' => 'mobile#callahead'
-  match '/mobi/num_users' => 'mobile#num_users'
-  match '/notification' => 'application#notification'
+  get '/mobi/reservation-login' => 'mobile#login'
+  get '/mobi/reservation' => 'mobile#signup'
+  get '/mobi/reservation_confirm' => 'mobile#callahead'
+  get '/mobi/num_users' => 'mobile#num_users'
+  get '/notification' => 'application#notification'
 
   # HighVoltage
   get '/faq/:id' => 'faq#show', :as => 'faq'
@@ -143,27 +144,27 @@ Foodcircles::Application.routes.draw do
   get '/about_we' => 'faq#show', :as => 'about_we', :id => 'about_we'
 
   #Popups
-  match '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
-  match '/postcard_popup' => 'popups#postcard', :as => :postcard_popup
-  match '/notify_signup' => 'popups#notify_signup'
-  match '/app_popup' => 'popups#app_popup'
-  match '/:id' => 'home#index', :as => :venue_popup
-  match '/deal_popup_not_logged/:id' => 'popups#deal_popup_not_logged'
-  match '/reciept/:id' => 'popups#reciept'
+  get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
+  get '/postcard_popup' => 'popups#postcard', :as => :postcard_popup
+  post '/notify_signup' => 'popups#notify_signup'
+  get '/app_popup' => 'popups#app_popup'
+  get '/:id' => 'home#index', :as => :venue_popup
+  get '/deal_popup_not_logged/:id' => 'popups#deal_popup_not_logged'
+  get '/reciept/:id' => 'popups#reciept'
 
 
-  match '/download' => 'application#download', :as => :download
+  get '/download' => 'application#download', :as => :download
 
-  match '/sms' => 'receive_texts#index', :via => :post
+  get '/sms' => 'receive_texts#index', :via => :post
 
-  match '/receive_text/used_code' => 'receive_text#used_code'
-  match '/receive_text/used_last' => 'receive_text#used_last'
+  get '/receive_text/used_code' => 'receive_text#used_code'
+  get '/receive_text/used_last' => 'receive_text#used_last'
 
-  match '/editor/:id' => 'editor#show'
+  get '/editor/:id' => 'editor#show'
 
-  match '/race' => 'race#index'
-  match '/cater' => 'home#cater', :as => :notgr
-  match '/thanks' => 'home#thanks', :as => :notgr
+  get '/race' => 'race#index'
+  get '/cater' => 'home#cater', :as => :notgr
+  get '/thanks' => 'home#thanks', :as => :notgr
 
   root :to => 'home#index'
 end

@@ -1,5 +1,5 @@
 Devise::RegistrationsController.class_eval do
-  after_filter :after_signup, :only=>:create
+  after_filter :after_signup, :only => :create
 
   def after_signup
     if current_user

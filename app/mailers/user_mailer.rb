@@ -25,9 +25,9 @@
 
   def signupsuccess(user)
     mail(
-      :to => user.email,
-      :subject => "Your hunger is powerful",
-      :reply_to => 'hey@joinfoodcircles.org'
+        :to => user.email,
+        :subject => "Your hunger is powerful",
+        :reply_to => 'hey@joinfoodcircles.org'
     )
   end
 
@@ -43,9 +43,9 @@
     end
 
     mail(
-      :to => email,
-      :subject => "Your Voucher for #{r.offer.venue.name}",
-      :reply_to => 'hey@joinfoodcircles.org'
+        :to => email,
+        :subject => "Your Voucher for #{r.offer.venue.name}",
+        :reply_to => 'hey@joinfoodcircles.org'
     )
   end
 
@@ -161,11 +161,11 @@
     @category = category
     @title = title
     mail(
-      :to => 'gs@joinfoodcircles.org',
-      :from => 'hey@joinfoodcircles.org',
-      :cc => 'gs@joinfoodcircles.org',
-      :reply_to => 'gs@joinfoodcircles.org',
-      :subject => 'Have a little something for you. Need address.'
+        :to => 'gs@joinfoodcircles.org',
+        :from => 'hey@joinfoodcircles.org',
+        :cc => 'gs@joinfoodcircles.org',
+        :reply_to => 'gs@joinfoodcircles.org',
+        :subject => 'Have a little something for you. Need address.'
     )
   end
 

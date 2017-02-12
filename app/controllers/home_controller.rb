@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    if request.subdomain and not ['', 'www','staging', 'testing'].include?(request.subdomain)
+    if request.subdomain and not ['', 'www', 'staging', 'testing'].include?(request.subdomain)
       @sub_charity = Charity.active.find_by_subdomain(request.subdomain)
       flash.now[:notice] = "100% of your purchase will be directed to #{@sub_charity.name}."
     end
@@ -12,10 +12,10 @@ class HomeController < ApplicationController
     @news = News.website
 
     @watched_venues = if current_user
-      current_user.watched_venues
-    else
-      []
-    end
+                        current_user.watched_venues
+                      else
+                        []
+                      end
 
     if id = params[:id]
       venue = Venue.where(slug: id).first || Venue.joins(:offers).where(offers: {id: id}).first
@@ -23,9 +23,9 @@ class HomeController < ApplicationController
         custom_body_classes << "sold-out"
         flash.now[:notice] = "#{venue.name} is sold out this week. Get first dibs when they're back by subscribing below."
       end
-      set_meta_tags  :og => { :image => venue.main_image.thumb("670x313").url  } if venue
+      set_meta_tags :og => {:image => venue.main_image.thumb("670x313").url} if venue
     else
-      set_meta_tags  :og => { :image => "http://1-ps.googleusercontent.com/h/www.joinfoodcircles.org/media/xBAhbB1sHOgZmSSIqMjAxMy8wOC8xOS8xNF8zMV8wNl82NzBfcF9jbF9tYWluLnBuZwY6BkVUWwg6BnA6CnRodW1iSSIMNjcweDMxMwY7BlQ.pagespeed.ic.1af83aWD8u.jpg" }
+      set_meta_tags :og => {:image => "http://1-ps.googleusercontent.com/h/www.joinfoodcircles.org/media/xBAhbB1sHOgZmSSIqMjAxMy8wOC8xOS8xNF8zMV8wNl82NzBfcF9jbF9tYWluLnBuZwY6BkVUWwg6BnA6CnRodW1iSSIMNjcweDMxMwY7BlQ.pagespeed.ic.1af83aWD8u.jpg"}
     end
 
     Venue.all.collect do |venue|

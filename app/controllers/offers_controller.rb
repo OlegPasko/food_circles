@@ -4,7 +4,7 @@ class OffersController < ApplicationController
 
     get_progress
 
-    if ['json','jsonp'].include?(params[:format])
+    if ['json', 'jsonp'].include?(params[:format])
       render :json => @offer, :callback => params[:callback]
     end
   end

@@ -10,11 +10,11 @@ class Payment < ActiveRecord::Base
   before_save :add_code
   before_save :default_charity
 
-  scope :total_week_payments, where("created_at >= ?", Date.today.beginning_of_week(:saturday))
+  scope :total_week_payments, lambda { where("created_at >= ?", Date.today.beginning_of_week(:saturday)) }
 
-  scope :active_payments, where("state is null OR state = 'Active'")
+  scope :active_payments, lambda { where("state is null OR state = 'Active'") }
 
-  scope :valid_payments, where("offer.venue is not null")
+  scope :valid_payments, lambda { where("offer.venue is not null") }
 
   scope :expiring_soon, lambda { where("created_at > ? and created_at < ?", expiring_soon_date, expiring_soon_date + 24.hours) }
 

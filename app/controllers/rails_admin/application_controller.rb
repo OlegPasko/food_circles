@@ -46,10 +46,10 @@ module RailsAdmin
       venue_ids = Array.new
       #@reserve_venues have all data remember it.
       @reserve_venues = Reservation.where("created_at >= :start_date AND created_at <= :end_date",
-                  {:start_date => start_date, :end_date => end_date})
+                                          {:start_date => start_date, :end_date => end_date})
       #tkxel_dev: Fetch venues_ids for total reservations in last month
       @reserve_venues.each_with_index do |venue, index|
-            venue_ids[index] = venue.venue_id.to_i
+        venue_ids[index] = venue.venue_id.to_i
       end
 
       correct_venue_id_format = ""

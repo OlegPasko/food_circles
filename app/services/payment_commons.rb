@@ -4,9 +4,9 @@ module PaymentCommons
     return unless current_user.twitter_token && current_user.twitter_secret
     begin
       require 'twitter'
-      client = Twitter::Client.new(:oauth_token => current_user.twitter_token, :oauth_token_secret =>current_user.twitter_secret)
-    
-      user_ids = client.friends.map {|u| u.id}
+      client = Twitter::Client.new(:oauth_token => current_user.twitter_token, :oauth_token_secret => current_user.twitter_secret)
+
+      user_ids = client.friends.map { |u| u.id }
       logger.debug "UIDS: #{user_ids}"
       user_ids.each do |uid|
         u = User.find_by_twitter_uid(uid.to_s)
@@ -42,6 +42,6 @@ module PaymentCommons
   end
 
   def load_weekly_total
-    @weekly_total = current_user.payments.where("created_at > ?", Time.now - 1.week).collect{ |p| p.amount }.sum
+    @weekly_total = current_user.payments.where("created_at > ?", Time.now - 1.week).collect { |p| p.amount }.sum
   end
 end

@@ -1,71 +1,99 @@
 <% content_for(:title, "FoodCircles – For Students | Help People Eat Powerfully") %>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s);
+  js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=148554958654775";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="about" style="padding-bottom:340px">
-    <div class="container">
-        <h2>Help People Eat Powerfully</h2>
-        <div id="students-intro">
-            <p>FoodCircles helps you leverage dining to feed children in need. You can grab a dish at a local restaurant for just $1 or more, and see 100% of that be used to give impoverished children a chance.
-            <br><br>We're often asked when "Buy One, Feed One" will exist in to such-and-such areas. <strong>You are the answer to that question.</strong> With only a small team behind the operation, we rely on you to be the solution to ending hunger in your community. <br><br>And so we've put together a 5-step guide to getting your start.  Check 'em out and request an application if you and your friends think you've got what it takes.</p>
-        </div>
-
-        <div id="students">
-
-            <div id="students-photos">
-                <%= image_tag "students/students-1.jpg" %>
-                <%= image_tag "students/students-2.jpg" %>
-                <%= image_tag "students/students-3.jpg" %>
-                <%= image_tag "students/students-4.jpg" %>
-                <%= image_tag "students/students-5.jpg" %>
-                <%= image_tag "students/students-6.jpg" %>
-                <%= image_tag "students/students-7.jpg" %>
-                <%= image_tag "students/students-8.jpg" %>
-                <%= image_tag "students/students-9.jpg" %>
-                <%= image_tag "students/students-10.jpg" %>
-            </div>
-
-            <div id="students-steps">
-                <%= image_tag "students/students-step1.png" %>
-                <p>So it turns out, we can’t do a lot of things ourselves.  We need teams.  Far and away, this’ll be the most important decision you make, Commander.  Think of 2-4 individuals you know who are disciplined, wise, and passionate and start a student organization with them, dedicated to helping people eat powerfully.  Sweet spot for teams are 3-5, including you.</p>
-                <%= image_tag "students/students-step2.png" %>
-                <p>When we do good for others, it’s rewarding to feel connected to them. That’s why it’s important to find a local nonprofit that your community trusts and can get behind.  You’ll want to seek and partner with a hunger-fighting organization in your area that can provide at least one nutritious meal to a child in need for every $1 received.</p>
-                <%= image_tag "students/students-step3.png" %>
-                <p>When restaurants advertise on our site and app, they get to meet new customers while doing good, two things they love.  We think the best way to build your initial restaurant list is by getting introduced by the nonprofit you partner with to the restaurant owners they know, but there’s always the tried-and-true method of just walking in and asking for a meeting (that’s how we did it)! </p>
-                <%= image_tag "students/students-step4.png" %>
-                <p>This is where good starts to happen. Fan the flames though awareness events like Dollar Lunch Day, coffeeshop &amp; hotel partnerships, <strong>Social Butterfly</strong> mixers, and more!  We’ll even buy you and 5 other students lunch so you can hear about their experience with the app and what they want to see next.</p>
-                <%= image_tag "students/students-step5.png" %>
-                <p>Keep our brains on fire with new restaurant options, field reports from the nonprofit, and useful or interesting stories from local foodies.  We’ll also have special events for new nonprofits that want to join and local companies want to repurpose their dining too. After all, who doesn’t eat out?</p>
-            </div>
-        </div>
+  <div class="container">
+    <h2>Help People Eat Powerfully</h2>
+    <div id="students-intro">
+      <p>FoodCircles helps you leverage dining to feed children in need. You can grab a dish at a local restaurant for
+        just $1 or more, and see 100% of that be used to give impoverished children a chance.
+        <br><br>We're often asked when "Buy One, Feed One" will exist in to such-and-such areas.
+        <strong>You are the answer to that question.</strong> With only a small team behind the operation, we rely on
+        you to be the solution to ending hunger in your community. <br><br>And so we've put together a 5-step guide to
+        getting your start. Check 'em out and request an application if you and your friends think you've got what it
+        takes.</p>
     </div>
 
+    <div id="students">
 
-        <div id="crowd">
-            <%= form_tag "#", :id => 'students-form', method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
-                <h2>There's a PDF with more details &amp; an online app.<br />Sign up to get both.</h2>
-                 <%= text_field_tag :students_email, nil, :placeholder => "you@email.com", :id => "students-input" %><br />
-                <%= submit_tag "Send me the deets.", class: "btn-standart", style: "width: 320px; height: 54px;" %>
-                <p><em>open to high schoolers, college students, and those with a high school or college spirit.</em>
-                </p>
-                
-                <div id="socialsharebuttons">
-                <br><br>
-                <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-                
-                <div class="clear"><br></div>
-                
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                </div>
-                
-            <% end %>
+      <div id="students-photos">
+        <%= image_tag "students/students-1.jpg" %>
+        <%= image_tag "students/students-2.jpg" %>
+        <%= image_tag "students/students-3.jpg" %>
+        <%= image_tag "students/students-4.jpg" %>
+        <%= image_tag "students/students-5.jpg" %>
+        <%= image_tag "students/students-6.jpg" %>
+        <%= image_tag "students/students-7.jpg" %>
+        <%= image_tag "students/students-8.jpg" %>
+        <%= image_tag "students/students-9.jpg" %>
+        <%= image_tag "students/students-10.jpg" %>
+      </div>
+
+      <div id="students-steps">
+        <%= image_tag "students/students-step1.png" %>
+        <p>So it turns out, we can’t do a lot of things ourselves. We need teams. Far and away, this’ll be the most
+          important decision you make, Commander. Think of 2-4 individuals you know who are disciplined, wise, and
+          passionate and start a student organization with them, dedicated to helping people eat powerfully. Sweet spot
+          for teams are 3-5, including you.</p>
+        <%= image_tag "students/students-step2.png" %>
+        <p>When we do good for others, it’s rewarding to feel connected to them. That’s why it’s important to find a
+          local nonprofit that your community trusts and can get behind. You’ll want to seek and partner with a
+          hunger-fighting organization in your area that can provide at least one nutritious meal to a child in need for
+          every $1 received.</p>
+        <%= image_tag "students/students-step3.png" %>
+        <p>When restaurants advertise on our site and app, they get to meet new customers while doing good, two things
+          they love. We think the best way to build your initial restaurant list is by getting introduced by the
+          nonprofit you partner with to the restaurant owners they know, but there’s always the tried-and-true method of
+          just walking in and asking for a meeting (that’s how we did it)! </p>
+        <%= image_tag "students/students-step4.png" %>
+        <p>This is where good starts to happen. Fan the flames though awareness events like Dollar Lunch Day,
+          coffeeshop &amp; hotel partnerships, <strong>Social Butterfly</strong> mixers, and more! We’ll even buy you
+          and 5 other students lunch so you can hear about their experience with the app and what they want to see next.
+        </p>
+        <%= image_tag "students/students-step5.png" %>
+        <p>Keep our brains on fire with new restaurant options, field reports from the nonprofit, and useful or
+          interesting stories from local foodies. We’ll also have special events for new nonprofits that want to join
+          and local companies want to repurpose their dining too. After all, who doesn’t eat out?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="crowd">
+    <%= form_tag "#", :id => 'students-form', method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
+        <h2>There's a PDF with more details &amp; an online app.<br/>Sign up to get both.</h2>
+        <%= text_field_tag :students_email, nil, :placeholder => "you@email.com", :id => "students-input" %><br/>
+        <%= submit_tag "Send me the deets.", class: "btn-standart", style: "width: 320px; height: 54px;" %>
+        <p><em>open to high schoolers, college students, and those with a high school or college spirit.</em>
+        </p>
+
+        <div id="socialsharebuttons">
+          <br><br>
+          <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+          <div class="clear"><br></div>
+
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
+          <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, 'script', 'twitter-wjs');</script>
         </div>
+
+    <% end %>
+  </div>
 </div>

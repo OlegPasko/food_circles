@@ -1,7 +1,7 @@
 %ul.nav.pull-right
   - actions(:root).each do |action|
     %li= link_to wording_for(:menu, action), { :action => action.action_name, :controller => 'rails_admin/main' }, :class => 'pjax'
-  
+
   %li= link_to 'Achievements', '/achievements'
 
   - if main_app_root_path = (main_app.root_path rescue false)

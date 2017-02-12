@@ -1,89 +1,89 @@
 #banner {
-	width: 100%;
-	height: 50px;
-	text-align: center;
-	position: relative;
-	top: 180px;
-	  /* fallback */
-	  background-color: #4969ac;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  position: relative;
+  top: 180px;
+  /* fallback */
+  background-color: #4969ac;
 
-	  /* Safari 4-5, Chrome 1-9 */
-	  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4969ac), to(#344b7b));
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4969ac), to(#344b7b));
 
-	  /* Safari 5.1, Chrome 10+ */
-	  background: -webkit-linear-gradient(top, #4969ac, #344b7b);
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #4969ac, #344b7b);
 
-	  /* Firefox 3.6+ */
-	  background: -moz-linear-gradient(top, #4969ac, #344b7b);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #4969ac, #344b7b);
 
-	  /* IE 10 */
-	  background: -ms-linear-gradient(top, #4969ac, #344b7b);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #4969ac, #344b7b);
 
-	  /* Opera 11.10+ */
-	  background: -o-linear-gradient(top, #4969ac, #344b7b);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #4969ac, #344b7b);
 }
 
 #banner h1 {
-	font-size: 25px;
-	color: white;
-	text-shadow: 2px 2px #515c7b;
-	position: relative;
-	top: 6px;
-	font-family: "NeutrafaceSlab", sans-serif;
+  font-size: 25px;
+  color: white;
+  text-shadow: 2px 2px #515c7b;
+  position: relative;
+  top: 6px;
+  font-family: "NeutrafaceSlab", sans-serif;
 }
 
 #butterfly-title {
-	text-align: center;
-	margin-bottom: 100px;
+  text-align: center;
+  margin-bottom: 100px;
 }
 
 .butterfly-steps {
-	width: 50%;
+  width: 50%;
 }
 
 .butterfly-steps {
-	text-align: center;
+  text-align: center;
 }
 
 .butterfly-steps h1 {
-	font-family: 'NeutrafaceSlab', serif;
-	font-size: 24px;
-	color: #8a857f;
-	font-weight: 700;
+  font-family: 'NeutrafaceSlab', serif;
+  font-size: 24px;
+  color: #8a857f;
+  font-weight: 700;
 }
 
 .butterfly-steps p {
-	font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
-	font-size: 16px;
-	color: #8a857f;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
+  font-size: 16px;
+  color: #8a857f;
 }
 
 .butterfly-steps img {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 #butterfly-step1 {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 #butterfly-step2 {
-	position: relative;
-	left: 500px;
-	width: 425px;
+  position: relative;
+  left: 500px;
+  width: 425px;
 }
 
 #butterfly-step3 {
 }
 
 #butterfly-submit {
-	position: relative;
-	top: 125px;
-	text-align: center;
-	display: block;
-	margin: 10px auto;
-	height: 220px;
-	width: 330px;
-	padding-bottom: 50px;
+  position: relative;
+  top: 125px;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  height: 220px;
+  width: 330px;
+  padding-bottom: 50px;
 
   .btn-standart {
     text-decoration: none;
@@ -91,7 +91,7 @@
     padding-bottom: 13px;
     padding-left: 24px;
     padding-right: 24px;
-	font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif ;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
     font-weight: 400;
     font-size: 20pt;
     color: #ffffff;
@@ -101,7 +101,7 @@
     -border-radius: 8px;
     height: 66px;
     width: 330px;
-    text-shadow: 0px 1px 1px rgb(112,26,26);
+    text-shadow: 0px 1px 1px rgb(112, 26, 26);
   }
 
   form {
@@ -116,7 +116,7 @@
 }
 
 #butterfly-submit input {
-	width: 310px;
+  width: 310px;
   margin-top: 10px;
   font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
   font-size: 16px;
@@ -124,108 +124,108 @@
 }
 
 #butterfly-questions {
-	display: block;
-	text-align: center;
-	margin: 120px 0 100px 0;
+  display: block;
+  text-align: center;
+  margin: 120px 0 100px 0;
 }
 
 #butterfly-faq {
-	position: relative;
-	top: 5px;
+  position: relative;
+  top: 5px;
 }
 
 #butterfly-texting {
-	margin-top: 100px;
+  margin-top: 100px;
 }
 
 #butterfly-path1 {
-	position: absolute;
-	left: 200px;
+  position: absolute;
+  left: 200px;
 }
 
 #butterfly-path2 {
-	position: absolute;	
-	top: 754px;
-	left: 225px;
+  position: absolute;
+  top: 754px;
+  left: 225px;
 }
 
 #butterfly-path3 {
-	position: absolute;
-	left: 300px;
+  position: absolute;
+  left: 300px;
 }
 
 #butterfly-apply {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 #butterfly-questions h3 {
-	margin-bottom: 20px;
-	font-size: 20px;
-    font-family: "NeutrafaceSlab", sans-serif;
-    color: #7e7e7e;
-    font-style: italic;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: "NeutrafaceSlab", sans-serif;
+  color: #7e7e7e;
+  font-style: italic;
 }
 
 #butterfly-form .submit-image {
-	margin: 10px 0 10px 0;
-	color: white;
-	font-size: 24px;
-	font-weight: 500;
-	padding: 14px 0;
-	width: 350px;
-	border-radius: 8px;
-	background-color: #b46c6d;
-	/* Safari 4-5, Chrome 1-9 */
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b46c6d), to(#a44b4c));
+  margin: 10px 0 10px 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 14px 0;
+  width: 350px;
+  border-radius: 8px;
+  background-color: #b46c6d;
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b46c6d), to(#a44b4c));
 
-	/* Safari 5.1, Chrome 10+ */
-	background: -webkit-linear-gradient(top, #b46c6d, #a44b4c);
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #b46c6d, #a44b4c);
 
-	/* Firefox 3.6+ */
-	background: -moz-linear-gradient(top, #b46c6d, #a44b4c);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #b46c6d, #a44b4c);
 
-	/* IE 10 */
-	background: -ms-linear-gradient(top, #b46c6d, #a44b4c);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #b46c6d, #a44b4c);
 
-	/* Opera 11.10+ */
-	background: -o-linear-gradient(top, #b46c6d, #a44b4c);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #b46c6d, #a44b4c);
 
-	border: none;
+  border: none;
 }
 
 #butterfly-form .submit-image:hover {
-	background-color: #6c1b1b;
-	/* Safari 4-5, Chrome 1-9 */
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6c1b1b), to(#894242));
+  background-color: #6c1b1b;
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6c1b1b), to(#894242));
 
-	/* Safari 5.1, Chrome 10+ */
-	background: -webkit-linear-gradient(top, #6c1b1b, #894242);
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #6c1b1b, #894242);
 
-	/* Firefox 3.6+ */
-	background: -moz-linear-gradient(top, #6c1b1b, #894242);
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #6c1b1b, #894242);
 
-	/* IE 10 */
-	background: -ms-linear-gradient(top, #6c1b1b, #894242);
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #6c1b1b, #894242);
 
-	/* Opera 11.10+ */
-	background: -o-linear-gradient(top, #6c1b1b, #894242);
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #6c1b1b, #894242);
 
 }
 
 #butterfly-facebook {
-	color: #3b5998;
+  color: #3b5998;
 }
 
 #butterfly-match {
-	color: #d19a03;
+  color: #d19a03;
 }
 
 #butterfly-friends {
-	color: #a34a4b;
+  color: #a34a4b;
 }
 
 #superscript {
-	vertical-align: super;
+  vertical-align: super;
 }
 
 .container {

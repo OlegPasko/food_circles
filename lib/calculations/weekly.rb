@@ -40,7 +40,7 @@ module Calculations
     end
 
     def offers_count
-      venues.sum{|v| v.vouchers_total.to_i}
+      venues.sum { |v| v.vouchers_total.to_i }
     end
 
     def progress

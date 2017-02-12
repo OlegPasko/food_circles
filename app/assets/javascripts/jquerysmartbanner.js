@@ -7,15 +7,15 @@
         this.options = $.extend({}, $.smartbanner.defaults, options)
 
         var standalone = navigator.standalone // Check if it's already a standalone web app or running within a webui view of an app (not mobile safari)
-          , UA = navigator.userAgent
-          
+            , UA = navigator.userAgent
+
         // Detect banner type (iOS or Android)
         if (this.options.force) {
             this.type = this.options.force
         } else if (UA.match(/iPad|iPhone|iPod/i) != null) {
             if (UA.match(/Safari/i) != null &&
-               (UA.match(/CriOS/i) != null ||
-               window.Number(navigator.userAgent.substr(navigator.userAgent.indexOf('OS ') + 3, 3).replace('_', '.')) < 6)) this.type = 'ios' // Check webview and native smart banner support (iOS 6+)
+                (UA.match(/CriOS/i) != null ||
+                window.Number(navigator.userAgent.substr(navigator.userAgent.indexOf('OS ') + 3, 3).replace('_', '.')) < 6)) this.type = 'ios' // Check webview and native smart banner support (iOS 6+)
         } else if (UA.match(/Android/i) != null) {
             this.type = 'android'
         } else if (UA.match(/Windows NT 6.2/i) != null && UA.match(/Touch/i) !== null) {
@@ -56,15 +56,15 @@
     SmartBanner.prototype = {
 
         constructor: SmartBanner
-    
-      , create: function() {
-            var iconURL
-              , link=(this.options.url ? this.options.url : (this.type == 'windows' ? 'ms-windows-store:PDP?PFN=' + this.pfn : (this.type == 'android' ? 'market://details?id=' : 'https://itunes.apple.com/' + this.options.appStoreLanguage + '/app/id')) + this.appId)
-              , inStore=this.options.price ? this.options.price + ' - ' + (this.type == 'android' ? this.options.inGooglePlay : this.type == 'ios' ? this.options.inAppStore : this.options.inWindowsStore) : ''
-              , gloss=this.options.iconGloss === null ? (this.type=='ios') : this.options.iconGloss
 
-            $('body').append('<div id="smartbanner" class="'+this.type+'"><div class="sb-container"><a href="#" class="sb-close">&times;</a><span class="sb-icon"></span><div class="sb-info"><strong>'+this.title+'</strong><span>'+this.author+'</span><span>'+inStore+'</span></div><a href="'+link+'" class="sb-button"><span>'+this.options.button+'</span></a></div></div>')
-            
+        , create: function () {
+            var iconURL
+                , link = (this.options.url ? this.options.url : (this.type == 'windows' ? 'ms-windows-store:PDP?PFN=' + this.pfn : (this.type == 'android' ? 'market://details?id=' : 'https://itunes.apple.com/' + this.options.appStoreLanguage + '/app/id')) + this.appId)
+                , inStore = this.options.price ? this.options.price + ' - ' + (this.type == 'android' ? this.options.inGooglePlay : this.type == 'ios' ? this.options.inAppStore : this.options.inWindowsStore) : ''
+                , gloss = this.options.iconGloss === null ? (this.type == 'ios') : this.options.iconGloss
+
+            $('body').append('<div id="smartbanner" class="' + this.type + '"><div class="sb-container"><a href="#" class="sb-close">&times;</a><span class="sb-icon"></span><div class="sb-info"><strong>' + this.title + '</strong><span>' + this.author + '</span><span>' + inStore + '</span></div><a href="' + link + '" class="sb-button"><span>' + this.options.button + '</span></a></div></div>')
+
             if (this.options.icon) {
                 iconURL = this.options.icon
             } else if ($('link[rel="apple-touch-icon-precomposed"]').length > 0) {
@@ -73,15 +73,15 @@
             } else if ($('link[rel="apple-touch-icon"]').length > 0) {
                 iconURL = $('link[rel="apple-touch-icon"]').attr('href')
             } else if ($('meta[name="msApplication-TileImage"]').length > 0) {
-              iconURL = $('meta[name="msApplication-TileImage"]').attr('content')
+                iconURL = $('meta[name="msApplication-TileImage"]').attr('content')
             } else if ($('meta[name="msapplication-TileImage"]').length > 0) { /* redundant because ms docs show two case usages */
-              iconURL = $('meta[name="msapplication-TileImage"]').attr('content')
+                iconURL = $('meta[name="msapplication-TileImage"]').attr('content')
             }
-            
+
             if (iconURL) {
-                $('#smartbanner .sb-icon').css('background-image','url('+iconURL+')')
+                $('#smartbanner .sb-icon').css('background-image', 'url(' + iconURL + ')')
                 if (gloss) $('#smartbanner .sb-icon').addClass('gloss')
-            } else{
+            } else {
                 $('#smartbanner').addClass('no-icon')
             }
 
@@ -92,79 +92,79 @@
                     .css('top', parseFloat($('#smartbanner').css('top')) * this.scale)
                     .css('height', parseFloat($('#smartbanner').css('height')) * this.scale)
                 $('#smartbanner .sb-container')
-                    .css('-webkit-transform', 'scale('+this.scale+')')
-                    .css('-msie-transform', 'scale('+this.scale+')')
-                    .css('-moz-transform', 'scale('+this.scale+')')
+                    .css('-webkit-transform', 'scale(' + this.scale + ')')
+                    .css('-msie-transform', 'scale(' + this.scale + ')')
+                    .css('-moz-transform', 'scale(' + this.scale + ')')
                     .css('width', $(window).width() / this.scale)
             }
         }
-        
-      , listen: function () {
-            $('#smartbanner .sb-close').on('click',$.proxy(this.close, this))
-            $('#smartbanner .sb-button').on('click',$.proxy(this.install, this))
+
+        , listen: function () {
+            $('#smartbanner .sb-close').on('click', $.proxy(this.close, this))
+            $('#smartbanner .sb-button').on('click', $.proxy(this.install, this))
         }
-        
-      , show: function(callback) {
-            $('#smartbanner').stop().animate({top:0},this.options.speedIn).addClass('shown')
-            $('html').animate({marginTop:this.origHtmlMargin+(this.bannerHeight*this.scale)},this.options.speedIn,'swing',callback)
+
+        , show: function (callback) {
+            $('#smartbanner').stop().animate({top: 0}, this.options.speedIn).addClass('shown')
+            $('html').animate({marginTop: this.origHtmlMargin + (this.bannerHeight * this.scale)}, this.options.speedIn, 'swing', callback)
         }
-        
-      , hide: function(callback) {
-            $('#smartbanner').stop().animate({top:-1*this.bannerHeight*this.scale},this.options.speedOut).removeClass('shown')
-            $('html').animate({marginTop:this.origHtmlMargin},this.options.speedOut,'swing',callback)
+
+        , hide: function (callback) {
+            $('#smartbanner').stop().animate({top: -1 * this.bannerHeight * this.scale}, this.options.speedOut).removeClass('shown')
+            $('html').animate({marginTop: this.origHtmlMargin}, this.options.speedOut, 'swing', callback)
         }
-      
-      , close: function(e) {
+
+        , close: function (e) {
             e.preventDefault()
             this.hide()
-            this.setCookie('sb-closed','true',this.options.daysHidden)
+            this.setCookie('sb-closed', 'true', this.options.daysHidden)
         }
-       
-      , install: function(e) {
+
+        , install: function (e) {
             this.hide()
-            this.setCookie('sb-installed','true',this.options.daysReminder)
+            this.setCookie('sb-installed', 'true', this.options.daysReminder)
         }
-       
-      , setCookie: function(name, value, exdays) {
+
+        , setCookie: function (name, value, exdays) {
             var exdate = new Date()
-            exdate.setDate(exdate.getDate()+exdays)
-            value=escape(value)+((exdays==null)?'':'; expires='+exdate.toUTCString())
-            document.cookie=name+'='+value+'; path=/;'
+            exdate.setDate(exdate.getDate() + exdays)
+            value = escape(value) + ((exdays == null) ? '' : '; expires=' + exdate.toUTCString())
+            document.cookie = name + '=' + value + '; path=/;'
         }
-        
-      , getCookie: function(name) {
-            var i,x,y,ARRcookies = document.cookie.split(";")
-            for(i=0;i<ARRcookies.length;i++) {
-                x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="))
-                y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1)
-                x = x.replace(/^\s+|\s+$/g,"")
-                if (x==name) {
+
+        , getCookie: function (name) {
+            var i, x, y, ARRcookies = document.cookie.split(";")
+            for (i = 0; i < ARRcookies.length; i++) {
+                x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="))
+                y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1)
+                x = x.replace(/^\s+|\s+$/g, "")
+                if (x == name) {
                     return unescape(y)
                 }
             }
             return null
         }
-      
-      // Demo only
-      , switchType: function() {
-          var that = this
 
-          this.hide(function () {
-              that.type = that.type == 'android' ? 'ios' : 'android'
-              var meta = $(that.type == 'android' ? 'meta[name="google-play-app"]' : 'meta[name="apple-itunes-app"]').attr('content')
-              that.appId = /app-id=([^\s,]+)/.exec(meta)[1]
+        // Demo only
+        , switchType: function () {
+            var that = this
 
-              $('#smartbanner').detach()
-              that.create()
-              that.show()
-          })
-      }
+            this.hide(function () {
+                that.type = that.type == 'android' ? 'ios' : 'android'
+                var meta = $(that.type == 'android' ? 'meta[name="google-play-app"]' : 'meta[name="apple-itunes-app"]').attr('content')
+                that.appId = /app-id=([^\s,]+)/.exec(meta)[1]
+
+                $('#smartbanner').detach()
+                that.create()
+                that.show()
+            })
+        }
     }
 
     $.smartbanner = function (option) {
         var $window = $(window)
-        , data = $window.data('typeahead')
-        , options = typeof option == 'object' && option
+            , data = $window.data('typeahead')
+            , options = typeof option == 'object' && option
         if (!data) $window.data('typeahead', (data = new SmartBanner(options)))
         if (typeof option == 'string') data[option]()
     }

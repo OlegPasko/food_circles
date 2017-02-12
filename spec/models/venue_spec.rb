@@ -13,11 +13,11 @@ describe Venue do
   end
 
   describe "#watching users" do
-    let(:user){ FactoryGirl.create :user }
-    let(:venue){ FactoryGirl.create :venue }
+    let(:user) { FactoryGirl.create :user }
+    let(:venue) { FactoryGirl.create :venue }
 
     it "should add watching users" do
-      expect{venue.watching_users << user}.to change{NotificationRequest.count}.by(1)
+      expect { venue.watching_users << user }.to change { NotificationRequest.count }.by(1)
       venue.reload
 
       expect(venue.watching_users).to include user

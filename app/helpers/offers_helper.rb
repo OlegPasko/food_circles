@@ -1,6 +1,6 @@
 module OffersHelper
   def min_deals(group)
-    
+
     str = "(add $"
     if group == 4
       str << "1"

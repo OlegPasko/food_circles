@@ -7,7 +7,7 @@ namespace :mailers do
 
     best_donors.each do |bd|
       unless UserBadge.find_by_user_id(bd.id)
-        @ubadge = UserBadge.new() 
+        @ubadge = UserBadge.new()
         @ubadge.user = bd
         @ubadge.badge = badge
         @ubadge.sent_email = false

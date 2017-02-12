@@ -79,7 +79,7 @@ module ApplicationHelper
       next unless [:error, :info, :success, :warning].include?(type)
 
       Array(message).each do |msg|
-        text = content_tag :div, :class => "stack-bar-top main" , :id => "alerts_container" do
+        text = content_tag :div, :class => "stack-bar-top main", :id => "alerts_container" do
           content_tag :div, :class => "alert alert-#{type}" do
             content_tag(:button, "x", :class => "close", "data-dismiss" => "alert") +
                 msg.html_safe
