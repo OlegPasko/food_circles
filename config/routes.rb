@@ -1,62 +1,7 @@
-Foodcircles::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
-  get '/sessions/omniauth_email' => "omniauth_ask_for_email#index", :as => 'omniauth_email'
-  put '/sessions/omniauth_email' => "omniauth_ask_for_email#submit", :as => 'omniauth_email_submit'
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/sessions/omniauth_email' => 'omniauth_ask_for_email#index', :as => 'omniauth_email'
+  put '/sessions/omniauth_email' => 'omniauth_ask_for_email#submit', :as => 'omniauth_email_submit'
 
   get 'reservation/used_email' => 'reservation#used_email'
   get 'reservation/used' => 'reservation#used'
@@ -67,44 +12,43 @@ Foodcircles::Application.routes.draw do
   get 'payment/active' => 'payment#active'
   get 'payment/expired' => 'payment#expired'
   get 'payment/inbound_mark_used' => 'payment#inbound_mark_used'
-  get 'payment/send_text' => 'payment#send_text' , :as => "payment_send_text"
-
+  get 'payment/send_text' => 'payment#send_text', :as => 'payment_send_text'
 
   get 'signup' => 'signup#index', as: 'signup'
   post 'signup' => 'signup#create'
   resource :signup, controller: 'signup', only: [:index, :create]
 
-  resource :inbox, :controller => 'inbox', :only => [:show, :create]
+  resource :inbox, controller: 'inbox', only: [:show, :create]
 
-  get '/auth/:provider/callback', :to => 'sessions#create', as: 'callback'
+  get '/auth/:provider/callback', to: 'sessions#create', as: 'callback'
 
-  get "socialbutterflies/index"
+  get 'socialbutterflies/index'
 
   # match '/offers' => 'offers#index', :as => :offers
   resources :offers
   resources :categories
   get '/timeline' => 'timeline#index', :as => :timeline
-  #match '/payment' => 'payment#index', :as => :payment
+  # match '/payment' => 'payment#index', :as => :payment
   post '/payment/stripe' => 'payment#stripe', :as => :stripe
 
-  get "user_signup/create"
+  get 'user_signup/create'
 
-  resources :stripe_payments, :only => [:new, :create]
+  resources :stripe_payments, only: [:new, :create]
 
   get '/monthly_invoice' => 'monthly_invoice#monthly_invoice', :as => :invoice
 
-  resources :chat, :only => [:index, :show] do
+  resources :chat, only: [:index, :show] do
     collection do
       get 'venues'
     end
   end
 
-  resources :remind_list, :only => [:create]
-  resources :venues, :only => [:show] do
+  resources :remind_list, only: [:create]
+  resources :venues, only: [:show] do
     member do
-      post "subscribe"
-      post "unsubscribe"
-      get "subscribed"
+      post 'subscribe'
+      post 'unsubscribe'
+      get 'subscribed'
     end
   end
 
@@ -113,7 +57,7 @@ Foodcircles::Application.routes.draw do
     post '/registrations/twitter_signup' => 'users/omniauth_callbacks#twitter_signup', :as => 'twitter_signup'
   end
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :payment_notifications
 
@@ -130,25 +74,25 @@ Foodcircles::Application.routes.draw do
   resources :organizers
   resources :nominate
 
-  scope "mobi" do
+  scope 'mobi' do
     resources :payments
   end
 
-  resource :settings, :only => [:show, :update] do
+  resource :settings, only: [:show, :update] do
     member do
-      delete "credit_card"
-      put "update_password"
-      delete "facebook_connection"
-      delete "twitter_connection"
+      delete 'credit_card'
+      put 'update_password'
+      delete 'facebook_connection'
+      delete 'twitter_connection'
     end
   end
 
-  resource :newsletter, :only => [] do
+  resource :newsletter, only: [] do
     member do
-      post "subscribe"
+      post 'subscribe'
     end
   end
-  resources :postcards, :only => [:create]
+  resources :postcards, only: [:create]
 
   get '/app' => 'app#index'
   get '/getVenue' => 'app#getVenue'
@@ -163,7 +107,7 @@ Foodcircles::Application.routes.draw do
   # API
 
   namespace :api do
-    get "/weekly_meals" => "weekly_meals#show", as: "weekly_meals"
+    get '/weekly_meals' => 'weekly_meals#show', as: 'weekly_meals'
 
     post '/sessions/sign_in' => 'sessions#sign_in'
     post '/sessions/sign_up' => 'sessions#sign_up'
@@ -172,15 +116,15 @@ Foodcircles::Application.routes.draw do
 
     get '/news' => 'news#show'
 
-    get '/venues/:lat/:lon' => 'venues#show', :constraints => {:lat => /[^\/]*/, :lon => /[^\/]*/}
-    get '/homeless/:device_id' => "venues#homeless"
+    get '/venues/:lat/:lon' => 'venues#show', :constraints => { lat: /[^\/]*/, lon: /[^\/]*/ }
+    get '/homeless/:device_id' => 'venues#homeless'
     get '/charities' => 'charities#show'
 
     get '/timeline' => 'timeline#show'
     post '/timeline/voucher/:id' => 'timeline#use_voucher'
     put '/timeline/verify_payment' => 'timeline#verify_payment_and_show_voucher'
 
-    resource :payments, :only => [:create]
+    resource :payments, only: [:create]
 
     scope 'general' do
       get '/users' => 'general#get_mailchimp_users'
@@ -194,11 +138,11 @@ Foodcircles::Application.routes.draw do
   get '/notification' => 'application#notification'
 
   # HighVoltage
-  get '/faq/:id' => 'faq#show'#, :as => 'faq'
-  get '/faq' => 'faq#show'#, :as => 'faq', :id => 'faq'
-  get '/about_we' => 'faq#show'#, :as => 'about_we', :id => 'about_we'
+  get '/faq/:id' => 'faq#show' # , :as => 'faq'
+  get '/faq' => 'faq#show' # , :as => 'faq', :id => 'faq'
+  get '/about_we' => 'faq#show' # , :as => 'about_we', :id => 'about_we'
 
-  #Popups
+  # Popups
   get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
   get '/postcard_popup' => 'popups#postcard', :as => :postcard_popup
   post '/notify_signup' => 'popups#notify_signup'
@@ -206,7 +150,6 @@ Foodcircles::Application.routes.draw do
   get '/:id' => 'home#index', :as => :venue_popup
   get '/deal_popup_not_logged/:id' => 'popups#deal_popup_not_logged'
   get '/reciept/:id' => 'popups#reciept'
-
 
   get '/download' => 'application#download', :as => :download
 
@@ -218,8 +161,8 @@ Foodcircles::Application.routes.draw do
   get '/editor/:id' => 'editor#show'
 
   get '/race' => 'race#index'
-  get '/cater' => 'home#cater'#, :as => :notgr
-  get '/thanks' => 'home#thanks'#, :as => :notgr
+  get '/cater' => 'home#cater' # , :as => :notgr
+  get '/thanks' => 'home#thanks' # , :as => :notgr
 
-  root :to => 'home#index'
+  root to: 'home#index'
 end

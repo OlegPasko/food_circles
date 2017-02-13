@@ -88,16 +88,16 @@ RailsAdmin.config do |config|
   # config.model Charity do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :web, :string 
-  #     configure :region_id, :integer 
-  #     configure :address, :string 
-  #     configure :city, :string 
-  #     configure :state_id, :integer 
-  #     configure :zip, :string 
-  #     configure :description, :text 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :web, :string
+  #     configure :region_id, :integer
+  #     configure :address, :string
+  #     configure :city, :string
+  #     configure :state_id, :integer
+  #     configure :zip, :string
+  #     configure :description, :text
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -109,12 +109,12 @@ RailsAdmin.config do |config|
   # config.model Contact do
   #   # Found associations:
   #     configure :contact_type, :belongs_to_association   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :content, :string 
-  #     configure :contact_type_id, :integer         # Hidden 
-  #     configure :contactable_id, :integer 
-  #     configure :contactable_type, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :content, :string
+  #     configure :contact_type_id, :integer         # Hidden
+  #     configure :contactable_id, :integer
+  #     configure :contactable_type, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -126,9 +126,9 @@ RailsAdmin.config do |config|
   # config.model ContactType do
   #   # Found associations:
   #     configure :contacts, :has_many_association   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -140,12 +140,12 @@ RailsAdmin.config do |config|
   # config.model Offer do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :venue_id, :integer 
-  #     configure :name, :string 
-  #     configure :details, :text 
-  #     configure :min_diners, :integer 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :venue_id, :integer
+  #     configure :name, :string
+  #     configure :details, :text
+  #     configure :min_diners, :integer
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -157,9 +157,9 @@ RailsAdmin.config do |config|
   # config.model OfferTag do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -171,10 +171,10 @@ RailsAdmin.config do |config|
   # config.model OfferTaggable do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :offer_tag_id, :integer 
-  #     configure :offer_id, :integer 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :offer_tag_id, :integer
+  #     configure :offer_id, :integer
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -186,16 +186,16 @@ RailsAdmin.config do |config|
   # config.model OpenTime do
   #   # Found associations:
   #     configure :openable, :polymorphic_association         # Hidden   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :openable_id, :integer         # Hidden 
-  #     configure :openable_type, :string         # Hidden 
-  #     configure :start_day, :integer 
-  #     configure :start_time, :time 
-  #     configure :end_day, :integer 
-  #     configure :end_time, :time 
-  #     configure :start_date, :date 
-  #     configure :end_date, :date 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :openable_id, :integer         # Hidden
+  #     configure :openable_type, :string         # Hidden
+  #     configure :start_day, :integer
+  #     configure :start_time, :time
+  #     configure :end_day, :integer
+  #     configure :end_time, :time
+  #     configure :start_date, :date
+  #     configure :end_date, :date
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -206,23 +206,23 @@ RailsAdmin.config do |config|
   # end
   # config.model Reservation do
   #   # Found associations:
-  #     configure :user, :belongs_to_association 
-  #     configure :venue, :belongs_to_association 
-  #     configure :offer, :belongs_to_association 
+  #     configure :user, :belongs_to_association
+  #     configure :venue, :belongs_to_association
+  #     configure :offer, :belongs_to_association
   #     configure :charity, :belongs_to_association   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :venue_id, :integer         # Hidden 
-  #     configure :offer_id, :integer         # Hidden 
-  #     configure :charity_id, :integer         # Hidden 
-  #     configure :num_diners, :integer 
-  #     configure :occasion, :string 
-  #     configure :confirmed, :boolean 
-  #     configure :time_confirmed, :datetime 
-  #     configure :coupon, :string 
-  #     configure :name, :string 
-  #     configure :phone, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :user_id, :integer         # Hidden
+  #     configure :venue_id, :integer         # Hidden
+  #     configure :offer_id, :integer         # Hidden
+  #     configure :charity_id, :integer         # Hidden
+  #     configure :num_diners, :integer
+  #     configure :occasion, :string
+  #     configure :confirmed, :boolean
+  #     configure :time_confirmed, :datetime
+  #     configure :coupon, :string
+  #     configure :name, :string
+  #     configure :phone, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -234,9 +234,9 @@ RailsAdmin.config do |config|
   # config.model State do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end
@@ -248,19 +248,19 @@ RailsAdmin.config do |config|
   # config.model User do
   #   # Found associations:
   #   # Found columns:
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
+  #     configure :id, :integer
+  #     configure :email, :string
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :string         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :string
+  #     configure :last_sign_in_ip, :string
+  #     configure :created_at, :datetime
   #     configure :updated_at, :datetime   #   # Sections:
   #   list do; end
   #   export do; end

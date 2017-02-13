@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-
-    <title><%= content_for?(:title) ? content_for(:title) : 'FoodCircles – Try a Local Dish for $1 or More. 100% of Purchases Fund Meals for Malnourished Children.' %></title>
+	<title><%= content_for?(:title) ? content_for(:title) : 'FoodCircles – Try a Local Dish for $1 or More. 100% of Purchases Fund Meals for Malnourished Children.' %></title>
     <meta name="p:domain_verify" content="569802fdc2acbfc3742a1204724a08f2"/>
-
-
-    <%
+	<%
       if @meta_tags.nil?
       set_meta_tags :og => {
             :title    => 'FoodCircles — Buy One, Feed One.',
@@ -35,7 +32,10 @@
     <%= javascript_include_tag  'home', "#{controller_name}" if Foodcircles::Application.assets.find_asset("#{controller_name}.js") %>
     <link rel="icon" type="image/png" href="/favicon.png">
     <%= csrf_meta_tags %>
-    <%= tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %>
     <%# render 'layouts/google-analytics' %>
     <%# render 'layouts/mix-panel' %>
   </head>

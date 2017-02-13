@@ -1,23 +1,24 @@
-## Welcome to the FoodCircles app
+# README
 
-#### BOFO
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Buy One, Feed One. 
+Things you may want to cover:
 
-#### Can we leverage our dining intentions to feed the hungry?
+* Ruby version
 
-FoodCircles curates great, local restaurants and lets you buy a dish for $1 or more. 100% of your purchase gives 1 (or more) children the food they need to survive.
+* System dependencies
 
-#### Together, we can provide food to those in need.
+* Configuration
 
-The food we provide to children are always nutrient-filled,
-life-sustaining meals, organic when possible.  If you choose Grand
-Rapids as your area of impact, we work with an agency called Kids Food
-Basket to provide a turkey/ham sandwich (or pb&j), a fruit, a serving of
-veggies, two snacks and a drink for every $1 spent.
+* Database creation
 
-#### Where we are now.
+* Database initialization
 
-Today, FoodCircles helps diners in Grand Rapids, Michigan thrive.  We help them find good food, save money, and help children in need.  You pay-what-you-want for drinks, desserts, and
-appetizers, we give 100% to get food to children who need it.  $1 given,
-1 child fed.  Thank you for joining us.
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
