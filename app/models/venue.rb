@@ -6,20 +6,20 @@ class Venue < ApplicationRecord
   belongs_to :state
   belongs_to :time_zone
   belongs_to :user
-  has_many :offers, :dependent => :destroy
+  has_many :offers, dependent: :destroy
 
   # DEPRECATED, SOON TO BE DELETED
-  has_many :open_times, :as => :openable, :dependent => :destroy
+  has_many :open_times, as: :openable, dependent: :destroy
 
 
-  has_many :venue_taggables, :dependent => :destroy
-  has_many :venue_tags, :through => :venue_taggables
+  has_many :venue_taggables, dependent: :destroy
+  has_many :venue_tags, through: :venue_taggables
   has_many :reviews
   has_many :notification_requests
-  has_many :watching_users, :through => :notification_requests, :source => :user
+  has_many :watching_users, through: :notification_requests, source: :user
   has_many :social_links
   has_many :experience_taggables
-  has_many :experience_tags, :through => :experience_taggables
+  has_many :experience_tags, through: :experience_taggables
 
   friendly_id :name, use: :slugged
 
@@ -39,12 +39,12 @@ class Venue < ApplicationRecord
 
 
   validates_presence_of :name
-  validates :email, :on => :update, :'validators/email' => true
-  validates :email, :on => :create, :allow_nil => true, :'validators/email' => true
+  validates :email, on: :update, email: true
+  validates :email, on: :create, allow_nil: true, email: true
 
 
   # before_save :update_latlon, :if => :dirty_latlon?
-  after_save :notify_watching_users_about_new_vouchers, :if => :has_new_vouchers?
+  after_save :notify_watching_users_about_new_vouchers, if: :has_new_vouchers?
   after_create :ensure_always_open
 
   # scope :visible, where(visible: true)
@@ -114,35 +114,35 @@ class Venue < ApplicationRecord
 
   def as_json(options={})
     data = {
-              :id => self.id,
-              :name => self.name,
-              :address => self.address,
-              :city => self.city,
-              :longitude => self.longitude,
-              :latitude => self.latitude,
+              id: self.id,
+              name: self.name,
+              address: self.address,
+              city: self.city,
+              longitude: self.longitude,
+              latitude: self.latitude,
               # :lat => self.latlon.y,
               # :lon => self.latlon.x,
-              :description => self.description,
-              :neighborhood => self.neighborhood,
-              :phone => self.phone,
-              :state => self.state.nil? ? "" : self.state.name,
-              :web => self.web,
-              :zip => self.zip,
-              :rating => self.rating,
-              :tags => self.venue_tags,
-              :open_times => self.times || "Not Available",
-              :reviews => self.reviews.first(3),
-              :main_image => (self.main_image ? self.main_image.url : ''),
-              :timeline_image => (self.timeline_image ? self.timeline_image.url : ''),
-              :outside_image => (self.outside_image ? self.outside_image.url : ''),
-              :restaurant_tile_image => (self.restaurant_tile_image ? self.restaurant_tile_image.url : ''),
-              :start => (self.available? ? 'Later Tonight' : self.open_at),
-              :end => self.close_at,
-              :vouchers_available => self.num_vouchers,
+              description: self.description,
+              neighborhood: self.neighborhood,
+              phone: self.phone,
+              state: self.state.nil? ? "" : self.state.name,
+              web: self.web,
+              zip: self.zip,
+              rating: self.rating,
+              tags: self.venue_tags,
+              open_times: self.times || "Not Available",
+              reviews: self.reviews.first(3),
+              main_image: (self.main_image ? self.main_image.url : ''),
+              timeline_image: (self.timeline_image ? self.timeline_image.url : ''),
+              outside_image: (self.outside_image ? self.outside_image.url : ''),
+              restaurant_tile_image: (self.restaurant_tile_image ? self.restaurant_tile_image.url : ''),
+              start: (self.available? ? 'Later Tonight' : self.open_at),
+              end: self.close_at,
+              vouchers_available: self.num_vouchers,
               # :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
-              :social_links => self.social_links,
-              :slug => self.slug,
-              :device_id => self.device_id
+              social_links: self.social_links,
+              slug: self.slug,
+              device_id: self.device_id
           }
     data[:offers] = if options[:all]
       self.offers
@@ -156,7 +156,7 @@ class Venue < ApplicationRecord
   end
 
   def self.active
-    where(:active => true)
+    where(active: true)
   end
 
   def open_at(t = Time.now)
@@ -241,7 +241,7 @@ class Venue < ApplicationRecord
   def self.not_available
     t = ((Time.now - Time.now.beginning_of_week) / 60) + 300
     day_end = ((Time.now.end_of_day - Time.now.beginning_of_week) / 60) + 300
-    Venue.joins(:offers => :open_times).
+    Venue.joins(offers: :open_times).
       where("open_times.start BETWEEN :now AND :day_end", {now: t, day_end: day_end}).
       uniq
   end

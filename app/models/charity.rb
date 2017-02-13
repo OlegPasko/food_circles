@@ -35,17 +35,17 @@ class Charity < ApplicationRecord
   end
 
   def self.active
-    where(:active => true)
+    where(active: true)
   end
 
   def as_json(options={})
-    { :id => self.id,
-      :name => self.name,
-      :address => self.address,
-      :city => self.city,
-      :description => self.description,
-      :state => self.state.name,
-      :image => self.image.present? ? self.image.url : ''
+    {  id: self.id,
+       name: self.name,
+       address: self.address,
+       city: self.city,
+       description: self.description,
+       state: self.state.name,
+       image: self.image.present? ? self.image.url : ''
     }
   end
 
@@ -60,21 +60,18 @@ class Charity < ApplicationRecord
     amt_mult = uf.match('%amt:([0-9\.]+)%')
     uf[amt_mult[0]] = (amt.to_f*amt_mult[1].to_f).to_s unless amt_mult.nil?
 
-    if uf.include? '%s%'
-      if amt > 1
-        uf['%s%'] = 's'
-      else
-        uf['%s%'] = ''
+    uf_array = ['%s%', '%ren%']
+
+    uf_array.each do |t|
+      if uf.include? t
+        if amt > 1
+          uf[t] = t[1...-1]
+        else
+          uf[t] = ''
+        end
       end
     end
 
-    if uf.include? '%ren%'
-      if amt > 1
-        uf['%ren%'] = 'ren'
-      else
-        uf['%ren%'] = ''
-      end
-    end
     return uf
   end
 

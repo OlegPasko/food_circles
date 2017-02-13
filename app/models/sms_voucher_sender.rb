@@ -12,9 +12,9 @@ class SmsVoucherSender
 
   def send
     @twilio_client.account.sms.messages.create(
-        :from => "+1#{TWILIO_PHONE_NUMBER}",
-        :to => @phone,
-        :body => "FoodCircles offer\nCode: #{@payment.code}\nItem:#{@payment.offer.name}\nAmount donated: $#{@payment.amount}\nVenue: #{@payment.offer.venue.name}"
+        from: "+1#{TWILIO_PHONE_NUMBER}",
+        to: @phone,
+        body: "FoodCircles offer\nCode: #{@payment.code}\nItem:#{@payment.offer.name}\nAmount donated: $#{@payment.amount}\nVenue: #{@payment.offer.venue.name}"
     )
   end
 

@@ -8,19 +8,19 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessor :email, :password, :password_confirmation, :remember_me, :name, :phone, :admin, :twitter_uid, :facebook_uid, :provider
-  attr_accessor :stripe_customer_token, :twitter_secret, :twitter_token, :has_twitter, :facebook_secret, :facebook_token, :has_facebook
-  attr_accessor :city, :zip, :gender, :birthday
+  # attr_accessor :email, :password, :password_confirmation, :remember_me, :name, :phone, :admin, :twitter_uid, :facebook_uid, :provider
+  # attr_accessor :stripe_customer_token, :twitter_secret, :twitter_token, :has_twitter, :facebook_secret, :facebook_token, :has_facebook
+  # attr_accessor :city, :zip, :gender, :birthday
 
-  validates :email, :on => :update, :'validators/email' => true
-  validates :email, :on => :create, :allow_nil => true, :'validators/email' => true
+  validates :email, on: :update, email: true
+  validates :email, on: :create, allow_nil: true, email: true
   has_many :reservations
   has_many :venues
   has_many :payments
   has_many :user_badges
   has_many :notification_requests
-  has_many :watched_venues, :through => :notification_requests, :source => :venue
-  has_many :external_uids, :class_name => "ExternalUID", :dependent => :destroy
+  has_many :watched_venues, through: :notification_requests, source: :venue
+  has_many :external_uids, class_name: "ExternalUID", dependent: :destroy
 
   has_and_belongs_to_many :follow_up_notes
 
@@ -61,7 +61,7 @@ class User < ApplicationRecord
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create(name:auth.info.name,
                          provider:auth.provider,
@@ -75,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create(name:auth.info.name,
                          provider:auth.provider,
