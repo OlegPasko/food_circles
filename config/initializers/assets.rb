@@ -1,0 +1,6 @@
+Rails.application.config.assets.precompile += %w( jquerysmartbanner.css )
+Rails.application.config.assets.precompile += %w( home.css )
+Rails.application.config.assets.precompile += %w( colorbox.css )
+Rails.application.config.assets.precompile += %w( fonts.css )
+Rails.application.config.assets.precompile += %w( jquerysmartbanner.js )
+Rails.application.config.assets.precompile += %w( home.js )

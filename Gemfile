@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'whenever', :require => false
@@ -64,6 +64,7 @@ end
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'spring'
 end
 
 group :test do

@@ -7,9 +7,13 @@ class HomeController < ApplicationController
 
     enqueue_mix_panel_event "Visits Home Page"
 
-    @venues = Venue.visible.with_display_offers.page(params[:page]).per_page(9)
+    #@venues = Venue.visible.with_display_offers.page(params[:page]).per_page(9)
+    @venues = Venue.page(params[:page]).per_page(9)
+
     @cities = {}
-    @news = News.website
+    # @news = News.website
+    @news = News.all
+
 
     @watched_venues = if current_user
       current_user.watched_venues
