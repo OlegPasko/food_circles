@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.1'
 gem 'jquery-rails'
 gem 'pg'
+gem 'puma'
 gem 'whenever', :require => false
 # gem 'activerecord-postgis-adapter'
 # gem 'rgeo'
 gem 'geocoder'
 gem 'haml-rails'
-gem 'devise', '~> 3.5.0'
+gem 'devise', '~> 4.0.0'
 gem 'high_voltage'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', "~> 0.9.15"
@@ -41,13 +42,14 @@ gem 'rack-mini-profiler', group: [:development, :test]
 gem 'twitter'
 
 gem 'meta-tags', :require => 'meta_tags'
-gem "draper"
-gem 'protected_attributes'
+#gem "draper"
+# gem 'protected_attributes'
+gem 'activemodel-serializers-xml'
 # Gems used only for assets and not required
 # in production environments by default.
 # group :assets do
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
+  gem 'sass-rails', '~> 5.0'
+  gem 'coffee-rails', '~> 4.2'
   gem 'compass-rails'
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'

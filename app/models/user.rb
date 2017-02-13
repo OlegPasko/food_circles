@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Validators
 
   # Include default devise modules. Others available are:
@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :phone, :admin, :twitter_uid, :facebook_uid, :provider
-  attr_accessible :stripe_customer_token, :twitter_secret, :twitter_token, :has_twitter, :facebook_secret, :facebook_token, :has_facebook
-  attr_accessible :city, :zip, :gender, :birthday
+  attr_accessor :email, :password, :password_confirmation, :remember_me, :name, :phone, :admin, :twitter_uid, :facebook_uid, :provider
+  attr_accessor :stripe_customer_token, :twitter_secret, :twitter_token, :has_twitter, :facebook_secret, :facebook_token, :has_facebook
+  attr_accessor :city, :zip, :gender, :birthday
 
   validates :email, :on => :update, :'validators/email' => true
   validates :email, :on => :create, :allow_nil => true, :'validators/email' => true

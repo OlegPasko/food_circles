@@ -1,3 +1,3 @@
-class Badge < ActiveRecord::Base
-  attr_accessible :category, :code, :title
+class Badge < ApplicationRecord
+  attr_accessor :category, :code, :title
 end

@@ -1,4 +1,4 @@
-class RemindList < ActiveRecord::Base
+class RemindList < ApplicationRecord
   include Validators
 
   validates :email, :on => :update, :'validators/email' => true

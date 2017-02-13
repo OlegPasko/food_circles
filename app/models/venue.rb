@@ -1,4 +1,4 @@
-class Venue < ActiveRecord::Base
+class Venue < ApplicationRecord
   extend FriendlyId
   include Validators
   include AlwaysOpen

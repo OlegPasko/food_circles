@@ -1,5 +1,5 @@
-class Restaurant < ActiveRecord::Base
-	attr_accessible :name, :email
+class Restaurant < ApplicationRecord
+	attr_accessor :name, :email
 
 	def new
 		@restaurant = Restaurant.new

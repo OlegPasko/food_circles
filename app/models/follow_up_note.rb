@@ -1,9 +1,9 @@
-class FollowUpNote < ActiveRecord::Base
+class FollowUpNote < ApplicationRecord
   belongs_to :charity
 
   has_and_belongs_to_many :users
 
-  attr_accessible :note, :charity_id
+  attr_accessor :note, :charity_id
 
   validates :note, presence: true
 

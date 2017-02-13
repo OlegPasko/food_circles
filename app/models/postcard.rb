@@ -1,4 +1,4 @@
-class Postcard < ActiveRecord::Base
+class Postcard < ApplicationRecord
   after_create :notify_support
 
   def notify_support

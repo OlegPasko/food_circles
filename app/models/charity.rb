@@ -1,4 +1,4 @@
-class Charity < ActiveRecord::Base
+class Charity < ApplicationRecord
   image_accessor :image
   image_accessor :logo
   image_accessor :photo

@@ -1,4 +1,4 @@
-class NotificationRequest < ActiveRecord::Base
+class NotificationRequest < ApplicationRecord
   belongs_to :user
   belongs_to :venue
 

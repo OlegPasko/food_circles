@@ -1,4 +1,4 @@
-class CharityPhoto < ActiveRecord::Base
+class CharityPhoto < ApplicationRecord
   image_accessor :photo
 
   validates :photo, presence: true

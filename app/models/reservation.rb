@@ -1,4 +1,4 @@
-class Reservation < ActiveRecord::Base
+class Reservation < ApplicationRecord
   belongs_to :charity
   belongs_to :offer
   belongs_to :user

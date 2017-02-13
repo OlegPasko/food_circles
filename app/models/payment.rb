@@ -1,4 +1,4 @@
-class Payment < ActiveRecord::Base
+class Payment < ApplicationRecord
   EXPIRATION_DAYS = 30
   EXPIRING_SOON_DAYS = 7
   FOLLOW_UP_DAYS = 4

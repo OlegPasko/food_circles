@@ -1,2 +1,2 @@
-class Invoice < ActiveRecord::Base
+class Invoice < ApplicationRecord
 end

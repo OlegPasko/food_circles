@@ -1,4 +1,4 @@
-class News < ActiveRecord::Base
+class News < ApplicationRecord
   image_accessor :mobile_image
   image_accessor :website_image
 

@@ -1,8 +1,8 @@
-class Offer < ActiveRecord::Base
+class Offer < ApplicationRecord
   include AlwaysOpen
 
   belongs_to :venue
-  
+
 
   # DEPRECATED, SOON TO BE DELETED
   has_many :open_times, :as => :openable, :dependent => :destroy
@@ -11,7 +11,7 @@ class Offer < ActiveRecord::Base
   has_and_belongs_to_many :category
   has_many :payments
 
-  attr_accessible :image, :name, :venue_id, :category_ids, :price, :original_price, :total, :available, :min_diners, :details
+  attr_accessor :image, :name, :venue_id, :category_ids, :price, :original_price, :total, :available, :min_diners, :details
   attr_accessor :image
 
   has_attached_file :image, styles: {

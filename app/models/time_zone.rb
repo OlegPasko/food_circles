@@ -1,3 +1,3 @@
-class TimeZone < ActiveRecord::Base
+class TimeZone < ApplicationRecord
   has_many :venues
 end

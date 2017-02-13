@@ -1,5 +1,5 @@
-class UserBadge < ActiveRecord::Base
+class UserBadge < ApplicationRecord
   belongs_to :user
   belongs_to :badge
-  attr_accessible :sent_email
+  attr_accessor :sent_email
 end

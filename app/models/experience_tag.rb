@@ -1,4 +1,4 @@
-class ExperienceTag < ActiveRecord::Base
+class ExperienceTag < ApplicationRecord
   # attr_accessible :title, :body
   has_many :experience_taggables
   has_many :venues, :through => :experience_taggables

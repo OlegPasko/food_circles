@@ -1,4 +1,4 @@
-class SocialLink < ActiveRecord::Base
+class SocialLink < ApplicationRecord
   belongs_to :venue
 
   def as_json(options = {})
@@ -13,6 +13,6 @@ class SocialLink < ActiveRecord::Base
       "twitter"
     else
       "facebook"
-    end 
+    end
   end
 end

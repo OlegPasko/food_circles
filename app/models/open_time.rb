@@ -1,4 +1,4 @@
-class OpenTime < ActiveRecord::Base
+class OpenTime < ApplicationRecord
   # DEPRECATED, SOON TO BE DELETED
 
   belongs_to :openable, :polymorphic => true

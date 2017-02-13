@@ -1,4 +1,4 @@
-class VenueTag < ActiveRecord::Base
+class VenueTag < ApplicationRecord
   has_many :venue_taggables
   has_many :venues, :through => :venue_taggables
 

@@ -1,4 +1,4 @@
-class LongTasks < ActiveRecord::Base
+class LongTasks < ApplicationRecord
   def self.handle_email(r)
     UserMailer.delay.voucher(current_user, r)
   end
