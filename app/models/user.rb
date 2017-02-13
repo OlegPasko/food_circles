@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable, #:token_authenticatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   # Setup accessible (or protected) attributes for your model
@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :follow_up_notes
 
   before_save :format
-  
+
   before_save :ensure_authentication_token
-  
+
   serialize :friends
   attr_accessor :do_password_validation
   def do_password_validation
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
                          email:auth.info.email,
                          uid:auth.uid,
                          password:Devise.friendly_token[0,20]
-                         
+
                         )
     end
     user

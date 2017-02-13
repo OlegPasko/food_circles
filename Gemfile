@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '4.1.0'
+gem 'rails', '4.2.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'whenever', :require => false
@@ -7,7 +7,7 @@ gem 'whenever', :require => false
 # gem 'rgeo'
 gem 'geocoder'
 gem 'haml-rails'
-gem 'devise', '3.0.0'
+gem 'devise', '~> 3.5.0'
 gem 'high_voltage'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', "~> 0.9.15"
@@ -65,6 +65,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do

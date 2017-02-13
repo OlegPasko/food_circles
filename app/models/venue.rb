@@ -47,7 +47,7 @@ class Venue < ActiveRecord::Base
   after_save :notify_watching_users_about_new_vouchers, :if => :has_new_vouchers?
   after_create :ensure_always_open
 
-  scope :visible, where(visible: true)
+  # scope :visible, where(visible: true)
 
   rails_admin do
     show do

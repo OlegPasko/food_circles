@@ -4,8 +4,8 @@ class News < ActiveRecord::Base
 
   #default_scope order('news.order ASC')
 
-  scope :website, where("website_image_uid IS NOT NULL")
-  scope :mobile, where("mobile_image_uid IS NOT NULL")
+  # scope :website, where("website_image_uid IS NOT NULL")
+  # scope :mobile, where("mobile_image_uid IS NOT NULL")
 
 
   def as_json(options = {})
