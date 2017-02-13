@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -9,31 +8,34 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151007055936) do
+ActiveRecord::Schema.define(version: 20151007055936) do
 
-  create_table "badges", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "badges", force: :cascade do |t|
     t.string   "code"
     t.string   "category"
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "categories", :force => true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "deal_type"
   end
 
-  create_table "categories_offers", :id => false, :force => true do |t|
+  create_table "categories_offers", id: false, force: :cascade do |t|
     t.integer "category_id"
     t.integer "offer_id"
   end
 
-  create_table "charities", :force => true do |t|
+  create_table "charities", force: :cascade do |t|
     t.string   "name"
     t.string   "web"
     t.integer  "region_id"
@@ -42,30 +44,30 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "state_id"
     t.string   "zip"
     t.text     "description"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_uid"
     t.string   "charity_type"
     t.string   "subdomain"
     t.string   "use_funds"
     t.string   "logo_uid"
     t.string   "photo_uid"
-    t.boolean  "active",       :default => true
+    t.boolean  "active",       default: true
     t.integer  "order"
     t.float    "latitude"
     t.float    "longitude"
   end
 
-  create_table "charity_photos", :force => true do |t|
+  create_table "charity_photos", force: :cascade do |t|
     t.integer  "charity_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "photo_uid"
   end
 
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0
+    t.integer  "attempts",   default: 0
     t.text     "handler"
     t.text     "last_error"
     t.datetime "run_at"
@@ -73,47 +75,45 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "experience_taggables", :force => true do |t|
+  create_table "experience_taggables", force: :cascade do |t|
     t.integer  "experience_tag_id"
     t.integer  "venue_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
-  create_table "experience_tags", :force => true do |t|
+  create_table "experience_tags", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "external_uids", :force => true do |t|
+  create_table "external_uids", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "follow_up_notes", :force => true do |t|
+  create_table "follow_up_notes", force: :cascade do |t|
     t.integer  "charity_id"
     t.text     "note"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["charity_id"], name: "index_follow_up_notes_on_charity_id", using: :btree
   end
 
-  add_index "follow_up_notes", ["charity_id"], :name => "index_follow_up_notes_on_charity_id"
-
-  create_table "follow_up_notes_users", :id => false, :force => true do |t|
+  create_table "follow_up_notes_users", id: false, force: :cascade do |t|
     t.integer "follow_up_note_id"
     t.integer "user_id"
   end
 
-  create_table "invoices", :force => true do |t|
+  create_table "invoices", force: :cascade do |t|
     t.string   "group_name"
     t.integer  "group_size"
     t.string   "code"
@@ -121,45 +121,45 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "perk"
     t.decimal  "amount"
     t.string   "venue"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "long_tasks", :force => true do |t|
+  create_table "long_tasks", force: :cascade do |t|
   end
 
-  create_table "news", :force => true do |t|
+  create_table "news", force: :cascade do |t|
     t.string   "title"
     t.string   "mobile_image_uid"
     t.string   "website_image_uid"
     t.string   "mobile_url"
     t.string   "website_url"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "order"
   end
 
-  create_table "notification_requests", :force => true do |t|
+  create_table "notification_requests", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "notifications", :force => true do |t|
+  create_table "notifications", force: :cascade do |t|
     t.text     "content"
     t.string   "ticker"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "offers", :force => true do |t|
+  create_table "offers", force: :cascade do |t|
     t.integer  "venue_id"
     t.string   "name"
     t.text     "details"
     t.integer  "min_diners"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "available"
     t.integer  "total"
     t.float    "price"
@@ -167,18 +167,18 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "times"
   end
 
-  create_table "open_times", :force => true do |t|
+  create_table "open_times", force: :cascade do |t|
     t.integer  "openable_id"
     t.string   "openable_type"
     t.integer  "start"
     t.integer  "end"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "payment_notifications", :force => true do |t|
+  create_table "payment_notifications", force: :cascade do |t|
     t.string   "status"
     t.string   "address_city"
     t.string   "address_name"
@@ -200,16 +200,16 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "user_id"
     t.text     "parameters"
     t.datetime "payment_date"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "payments", :force => true do |t|
+  create_table "payments", force: :cascade do |t|
     t.integer  "user_id"
     t.float    "amount"
     t.string   "stripe_charge_token"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "offer_id"
     t.string   "code"
     t.integer  "num_diners"
@@ -224,50 +224,48 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "paypal_charge_token"
     t.integer  "charity_id"
     t.string   "friend"
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
-  add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
-
-  create_table "postcards", :force => true do |t|
-    t.string   "city",                               :null => false
-    t.string   "state",                              :null => false
-    t.string   "user_name",                          :null => false
-    t.string   "restaurant_name",                    :null => false
-    t.text     "message",                            :null => false
-    t.boolean  "sent",            :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+  create_table "postcards", force: :cascade do |t|
+    t.string   "city",                            null: false
+    t.string   "state",                           null: false
+    t.string   "user_name",                       null: false
+    t.string   "restaurant_name",                 null: false
+    t.text     "message",                         null: false
+    t.boolean  "sent",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "rails_admin_histories", :force => true do |t|
+  create_table "rails_admin_histories", force: :cascade do |t|
     t.text     "message"
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.integer  "month",      limit: 2
+    t.bigint   "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
-
-  create_table "regions", :force => true do |t|
+  create_table "regions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "remind_lists", :force => true do |t|
+  create_table "remind_lists", force: :cascade do |t|
     t.string   "phone"
     t.string   "email"
     t.string   "blah"
     t.datetime "last_reminded"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "reservations", :force => true do |t|
+  create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "venue_id"
     t.integer  "offer_id"
@@ -279,101 +277,98 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "coupon"
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.boolean  "called",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "called",         default: false
     t.string   "state"
     t.float    "amount"
     t.string   "code"
   end
 
-  create_table "restaurants", :force => true do |t|
+  create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "reviews", :force => true do |t|
+  create_table "reviews", force: :cascade do |t|
     t.string   "author_name"
     t.text     "content"
     t.integer  "rating"
     t.integer  "venue_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "time"
+    t.index ["venue_id"], name: "index_reviews_on_venue_id", using: :btree
   end
 
-  add_index "reviews", ["venue_id"], :name => "index_reviews_on_venue_id"
-
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
     t.text     "data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
-  create_table "social_links", :force => true do |t|
+  create_table "social_links", force: :cascade do |t|
     t.integer  "venue_id"
     t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "socialbutterflies", :force => true do |t|
+  create_table "socialbutterflies", force: :cascade do |t|
     t.string   "facebook"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "states", :force => true do |t|
+  create_table "states", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "statuses", :force => true do |t|
+  create_table "statuses", force: :cascade do |t|
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "time_zones", :force => true do |t|
+  create_table "time_zones", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "user_badges", :force => true do |t|
+  create_table "user_badges", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "badge_id"
     t.boolean  "sent_email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id", using: :btree
+    t.index ["user_id"], name: "index_user_badges_on_user_id", using: :btree
   end
 
-  add_index "user_badges", ["badge_id"], :name => "index_user_badges_on_badge_id"
-  add_index "user_badges", ["user_id"], :name => "index_user_badges_on_user_id"
-
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",         :null => false
-    t.string   "encrypted_password",     :default => "",         :null => false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "",         null: false
+    t.string   "encrypted_password",     default: "",         null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
     t.string   "phone"
-    t.boolean  "admin",                  :default => false
+    t.boolean  "admin",                  default: false
     t.string   "provider"
     t.string   "twitter_uid"
     t.string   "city"
@@ -386,29 +381,28 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "twitter_token"
     t.string   "facebook_secret"
     t.string   "facebook_token"
-    t.boolean  "has_twitter",            :default => false,      :null => false
-    t.boolean  "has_facebook",           :default => false,      :null => false
-    t.text     "friends",                :default => "--- []\n", :null => false
+    t.boolean  "has_twitter",            default: false,      null: false
+    t.boolean  "has_facebook",           default: false,      null: false
+    t.text     "friends",                default: "--- []\n", null: false
     t.string   "facebook_uid"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "venue_taggables", :force => true do |t|
+  create_table "venue_taggables", force: :cascade do |t|
     t.integer  "venue_tag_id"
     t.integer  "venue_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "venue_tags", :force => true do |t|
+  create_table "venue_tags", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "venues", :force => true do |t|
+  create_table "venues", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
     t.text     "description"
@@ -421,30 +415,30 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.integer  "price"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "main_image_uid"
     t.string   "phone"
     t.string   "restaurant_tile_image_uid"
     t.integer  "time_zone_id"
     t.float    "rating"
     t.string   "reference"
-    t.boolean  "active",                    :default => true
-    t.string   "voucher",                   :default => "5"
-    t.decimal  "multiplier",                :default => 1.5
-    t.string   "feemessage",                :default => "Enter fee mesage."
-    t.decimal  "feecharge",                 :default => 0.0
-    t.boolean  "apply_able",                :default => false
-    t.string   "email",                     :default => "venue@example.com"
+    t.boolean  "active",                    default: true
+    t.string   "voucher",                   default: "5"
+    t.decimal  "multiplier",                default: "1.5"
+    t.string   "feemessage",                default: "Enter fee mesage."
+    t.decimal  "feecharge",                 default: "0.0"
+    t.boolean  "apply_able",                default: false
+    t.string   "email",                     default: "venue@example.com"
     t.string   "slug"
-    t.integer  "vouchers_available",        :default => 0
-    t.integer  "vouchers_total",            :default => 0
+    t.integer  "vouchers_available",        default: 0
+    t.integer  "vouchers_total",            default: 0
     t.string   "outside_image_uid"
     t.string   "timeline_image_uid"
     t.string   "google_maps_url"
     t.string   "times"
     t.string   "device_id"
-    t.boolean  "visible",                   :default => true
+    t.boolean  "visible",                   default: true
     t.string   "first_name"
     t.string   "last_name"
     t.text     "cc_num"
@@ -456,20 +450,18 @@ ActiveRecord::Schema.define(:version => 20151007055936) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "social_media_email"
+    t.index ["slug"], name: "index_venues_on_slug", unique: true, using: :btree
   end
 
-  add_index "venues", ["slug"], :name => "index_venues_on_slug", :unique => true
-
-  create_table "vouchers", :force => true do |t|
+  create_table "vouchers", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "total"
     t.integer  "available"
     t.integer  "offer_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["offer_id"], name: "index_vouchers_on_offer_id", using: :btree
   end
-
-  add_index "vouchers", ["offer_id"], :name => "index_vouchers_on_offer_id"
 
 end

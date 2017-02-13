@@ -12,8 +12,10 @@ class User < ApplicationRecord
   # attr_accessor :stripe_customer_token, :twitter_secret, :twitter_token, :has_twitter, :facebook_secret, :facebook_token, :has_facebook
   # attr_accessor :city, :zip, :gender, :birthday
 
-  validates :email, on: :update, email: true
-  validates :email, on: :create, allow_nil: true, email: true
+  # validates :email, on: :update, email: true
+  # validates :email, on: :create, allow_nil: true, email: true
+  validates :email, on: :update, 'validators/email': true
+  validates :email, on: :create, allow_nil: true, 'validators/email': true
   has_many :reservations
   has_many :venues
   has_many :payments
