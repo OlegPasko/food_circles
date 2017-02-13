@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.8'
+gem 'rails', '4.0.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'whenever', :require => false
@@ -7,11 +7,11 @@ gem 'whenever', :require => false
 # gem 'rgeo'
 gem 'geocoder'
 gem 'haml-rails'
-gem 'devise'
+gem 'devise', '3.0.0'
 gem 'high_voltage'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', "~> 0.9.15"
-gem "rails_admin", "~> 0.0.5"
+gem "rails_admin"
 gem 'twilio-ruby'
 gem 'fastercsv'
 gem 'delayed_job_active_record', :git => 'https://github.com/collectiveidea/delayed_job_active_record.git'
@@ -26,6 +26,7 @@ gem 'aws-sdk'
 gem 'rb-readline', '~> 0.4.2'
 gem 'mandrill-rails'
 gem 'figaro'
+gem 'activerecord-session_store'
 
 gem 'gibbon'
 
@@ -41,17 +42,17 @@ gem 'twitter'
 
 gem 'meta-tags', :require => 'meta_tags'
 gem "draper"
-
+gem 'protected_attributes'
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'coffee-rails'
+# group :assets do
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
   gem 'compass-rails'
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'asset_sync'
-end
+# end
 
 group :development, :test do
   gem 'rspec-rails'

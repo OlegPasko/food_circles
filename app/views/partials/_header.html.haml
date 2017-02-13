@@ -28,7 +28,7 @@
             Sign Up
             %i{class: "arrow-down"}
         / = link_to('Logout', main_app.destroy_user_session_path, :method => :delete) if current_user
-        
+
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html:{class:"sign-form", id: "sign-up-form"}) do |f|
           %i.arrow-up
             %i.arrow-up
@@ -82,7 +82,7 @@
           = link_to "About We", "/about_we"
         %li
           %a{href: "#"}
-            Get Involved ▾             
+            Get Involved ▾
           %ul
             %li
               = link_to "For Restaurants", main_app.restaurants_path
@@ -125,12 +125,12 @@
       .container
         .current-goal
           .current
-            %strong= weekly_progress[:current_progress]
+            <!-- %strong= weekly_progress[:current_progress] -->
             %small aided
           .progress
             %span.goal this week's goal
-            %span.total= "#{weekly_progress[:adjusted_total]} people aided"
-            %em.bar{style: "width: #{[percent, 100].min}%"}
+            %span.total= '#{weekly_progress[:adjusted_total]} people aided'
+            %em.bar{style: 'width: #{[percent, 100].min}%'}
         %p.getapp
           Arm yourself for the streets.
           %a.popup-link{href: app_popup_path} Get the App

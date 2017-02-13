@@ -47,6 +47,8 @@ Devise.setup do |config|
   # given strategies, for example, `config.params_authenticatable = [:database]` will
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
+  # config.secret_key = 'd29d719f48a705fa484aad5c70cc62d38ec47c304c46af5aaf3d915d8461527c1dceff17e005b5c60e69262a334c52d8e9d4bb478cc283d39da52bb3a74d3779'
+  # config.secret_key = 'b765cce271205812dff8a3a207b27c147957f9b9e16d80e62e6dac005cac5d8e50b17ccd77ee810b0412b685d1475c05565d7f8db732dac3051ce889826834b1'
 
   # Tell if authentication through HTTP Basic Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
@@ -172,7 +174,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  config.token_authentication_key = :auth_token
+  # config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

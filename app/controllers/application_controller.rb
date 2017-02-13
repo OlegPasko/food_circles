@@ -199,11 +199,11 @@ class ApplicationController < ActionController::Base
   end
 
   def weekly_progress
-    @_weekly_progress ||= Calculations::Weekly.weekly_progress
+    #@_weekly_progress ||= Calculations::Weekly.weekly_progress
   end
 
   def percent
-    @_percent ||= Calculations::Weekly.percent
+    #@_percent ||= Calculations::Weekly.percent
   end
 
   def detect_email_omniauth
