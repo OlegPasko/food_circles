@@ -5,7 +5,7 @@ class Offer < ApplicationRecord
 
 
   # DEPRECATED, SOON TO BE DELETED
-  has_many :open_times, :as => :openable, :dependent => :destroy
+  has_many :open_times, as: :openable, dependent: :destroy
 
 
   has_and_belongs_to_many :category
@@ -24,13 +24,13 @@ class Offer < ApplicationRecord
 
 
   def as_json(options={})
-    { :id => self.id,
-      :title => self.name,
-      :details => self.details,
-      :minimum_diners => self.min_diners,
-      :times => self.times || "Not Available",
-      :original_price => self.original_price,
-      :price => self.price
+    { id: self.id,
+      title: self.name,
+      details: self.details,
+      minimum_diners: self.min_diners,
+      times: self.times || "Not Available",
+      original_price: self.original_price,
+      price: self.price
     }
   end
 

@@ -3,8 +3,8 @@ class VenueTag < ApplicationRecord
   has_many :venues, :through => :venue_taggables
 
   def as_json(options={})
-    { :id => self.id,
-      :name => self.name
+    { id: self.id,
+      name: self.name
     }
   end
 end

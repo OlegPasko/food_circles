@@ -1,13 +1,13 @@
 class OpenTime < ApplicationRecord
   # DEPRECATED, SOON TO BE DELETED
 
-  belongs_to :openable, :polymorphic => true
+  belongs_to :openable, polymorphic: true
 
   validates_presence_of :start,:end
 
   def as_json(options={})
-    { :start => self.start,
-      :end => self.end
+    { start: self.start,
+      end: self.end
     }
   end
 end
