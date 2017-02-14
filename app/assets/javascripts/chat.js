@@ -1,4 +1,4 @@
-//= require ../../../vendor/assets/javascripts/gmaps.js
+
 
 var socket, map, rooms = {}, name, p;
 

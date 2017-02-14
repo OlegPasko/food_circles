@@ -1,9 +1,9 @@
 class Charity < ApplicationRecord
-  image_accessor :image
-  image_accessor :logo
-  image_accessor :photo
+  dragonfly_accessor :image
+  dragonfly_accessor :logo
+  dragonfly_accessor :photo
 
-  default_scope order('charities.order ASC')
+  default_scope { order('charities.order ASC') }
 
   belongs_to :charity
   belongs_to :region

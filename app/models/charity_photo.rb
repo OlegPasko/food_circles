@@ -1,5 +1,5 @@
 class CharityPhoto < ApplicationRecord
-  image_accessor :photo
+  dragonfly_accessor :photo
 
   validates :photo, presence: true
   belongs_to :charity

@@ -32,10 +32,10 @@ class Venue < ApplicationRecord
   # set_rgeo_factory_for_column(:latlon,
   #                            RGeo::Geographic.spherical_factory(:srid => SRID))
 
-  image_accessor :main_image
-  image_accessor :outside_image
-  image_accessor :restaurant_tile_image
-  image_accessor :timeline_image
+  dragonfly_accessor :main_image
+  dragonfly_accessor :outside_image
+  dragonfly_accessor :restaurant_tile_image
+  dragonfly_accessor :timeline_image
 
 
   validates_presence_of :name

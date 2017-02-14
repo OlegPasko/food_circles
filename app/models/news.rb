@@ -1,6 +1,6 @@
 class News < ApplicationRecord
-  image_accessor :mobile_image
-  image_accessor :website_image
+  dragonfly_accessor :mobile_image
+  dragonfly_accessor :website_image
 
   #default_scope order('news.order ASC')
 

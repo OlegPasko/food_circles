@@ -17,9 +17,15 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
 module FoodCircles
+
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.autoload_paths += %W(#{config.root}/app/models/validators)
+    config.assets.paths << "#{Rails.root}/vendor/assets/javascripts"
+    config.assets.paths << "#{Rails.root}/public/assets"
+    config.autoload_paths += %W(#{config.root}/app/decorators)
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
