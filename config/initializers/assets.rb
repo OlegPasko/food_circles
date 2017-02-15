@@ -7,7 +7,7 @@ Rails.application.config.assets.paths << Rails.root.join("app", "assets")
 Rails.application.config.assets.paths << Rails.root.join("vendor", "assets")
 Rails.application.config.assets.paths << Rails.root.join("public", "assets")
 
- Rails.application.config.assets.precompile += %w( jquerysmartbanner.css )
+Rails.application.config.assets.precompile += %w( jquerysmartbanner.css )
 Rails.application.config.assets.precompile += %w( colorbox.css )
 Rails.application.config.assets.precompile += %w( home.css )
 Rails.application.config.assets.precompile += %w( colorbox.css )
@@ -22,6 +22,10 @@ Rails.application.config.assets.precompile += %w( jquerysmartbanner.js )
 Rails.application.config.assets.precompile += %w( home.js )
 Rails.application.config.assets.precompile += %w( colorbox.js )
 Rails.application.config.assets.precompile += %w( fonts.js )
+Rails.application.config.assets.precompile += %w( faq.css )
+Rails.application.config.assets.precompile += %w( faq.js )
+Rails.application.config.assets.precompile += %w( timeline.js )
+Rails.application.config.assets.precompile += %w( timeline.css )
 
 # Dont work, but WHY?
 

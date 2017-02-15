@@ -10,9 +10,9 @@ module RailsAdmin
   class ApplicationController < ::ApplicationController
     newrelic_ignore if defined?(NewRelic)
 
-    before_filter :_authenticate!
-    before_filter :_authorize!
-    before_filter :_audit!
+    before_action :_authenticate!
+    before_action :_authorize!
+    before_action :_audit!
 
     helper_method :_current_user, :_attr_accessible_role, :_get_plugin_name
 

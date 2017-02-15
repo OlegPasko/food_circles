@@ -2,9 +2,9 @@ class User < ApplicationRecord
   include Validators
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  #
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, #:token_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   # Setup accessible (or protected) attributes for your model
@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   # validates :email, on: :update, email: true
   # validates :email, on: :create, allow_nil: true, email: true
-  validates :email, on: :update, 'validators/email': true
-  validates :email, on: :create, allow_nil: true, 'validators/email': true
+  validates :email, on: :update, :'validators/email' => true
+  validates :email, on: :create, allow_nil: true, :'validators/email' => true
   has_many :reservations
   has_many :venues
   has_many :payments

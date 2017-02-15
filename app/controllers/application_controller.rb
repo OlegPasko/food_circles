@@ -6,10 +6,10 @@
 
     protect_from_forgery
 
-    before_filter :email_server
-    before_filter :prepare_for_mobile
-    before_filter :detect_email_omniauth
-    before_filter :check_subdomain
+    before_action :email_server
+    before_action :prepare_for_mobile
+    before_action :detect_email_omniauth
+    before_action :check_subdomain
 
 
     ACCOUNT_SID = "AC085df9dc6444a3588933ae0ddd9d95e7"

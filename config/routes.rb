@@ -138,9 +138,9 @@ Rails.application.routes.draw do
   get '/notification' => 'application#notification'
 
   # HighVoltage
-  get '/faq/:id' => 'faq#show' # , :as => 'faq'
-  get '/faq' => 'faq#show' # , :as => 'faq', :id => 'faq'
-  get '/about_we' => 'faq#show' # , :as => 'about_we', :id => 'about_we'
+  #get '/faq/:id' => 'faq#show', :as => 'faq'
+  get '/faq' => 'faq#show', :as => 'faq', :id => 'faq'
+  get '/about_we' => 'faq#show', :as => 'about_we', :id => 'about_we'
 
   # Popups
   get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
