@@ -26,7 +26,8 @@ Rails.application.config.assets.precompile += %w( faq.css )
 Rails.application.config.assets.precompile += %w( faq.js )
 Rails.application.config.assets.precompile += %w( timeline.js )
 Rails.application.config.assets.precompile += %w( timeline.css )
-
+Rails.application.config.assets.precompile += %w( about_we.js )
+Rails.application.config.assets.precompile += %w( about_we.css )
 # Dont work, but WHY?
 
 # Rails.application.config.assets.precompile += %w( *.css *.js )

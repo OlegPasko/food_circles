@@ -1,3 +1,4 @@
-class FaqController < HighVoltage::PagesController
-	layout "application"
+class FaqController < ApplicationController
+	def show
+	end
 end
