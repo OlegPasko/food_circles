@@ -142,7 +142,7 @@ Rails.application.routes.draw do
   # HighVoltage
   #get '/faq/:id' => 'faq#show', :as => 'faq'
   get '/faq' => 'faq#show', :as => 'faq', :id => 'faq'
-  get '/about_we' => 'about_we#show', :as => 'about_we', :id => 'about_we'
+  get '/about_we' => 'faq#about_we', :as => 'about_we', :id => 'about_we'
 
   # Popups
   get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
