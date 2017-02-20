@@ -93,7 +93,6 @@
         $doc
 
             .on('click', function (event) {
-                event.preventDefault();
                 $('.sign-form').each(function () {
                     if ($(this).css('visibility') == 'visible') {
                         if ($(event.target).is('.sign-form') == false && $(event.target).closest('.sign-form').length == 0) {

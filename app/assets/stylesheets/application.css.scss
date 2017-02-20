@@ -737,7 +737,7 @@ textarea.field.small {
 /*=== Icons ===*/
 [class^="icon-"], [class*=" icon-"] {
   display: inline-block;
-  background: asset-asset-url('sprite.png') no-repeat 0 0;
+  background: asset-url('sprite.png') no-repeat 0 0;
   border: none;
   text-align: center;
   *display: inline;
@@ -1722,7 +1722,7 @@ body.active-popup {
 }
 
 .lt-ie8 .banner .cnt {
-  background: url(image_path('/*darken.png*/')) no-repeat center center;
+  background: url(image_path('darken.png')) no-repeat center center;
   width: 860px;
   margin-left: -430px;
 }
