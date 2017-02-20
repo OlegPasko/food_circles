@@ -21,7 +21,7 @@ class CreatePaymentNotification < ActiveRecord::Migration
       t.integer :paypal_id
       t.integer :user_id
       t.text :parameters
-      
+
       t.datetime :payment_date
 
       t.timestamps

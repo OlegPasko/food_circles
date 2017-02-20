@@ -8,6 +8,6 @@ class AddMissingFieldsToPurchase < ActiveRecord::Migration
     add_column :payments, :name, :string
     add_column :payments, :phone, :string
     add_column :payments, :called, :boolean
-    
+
   end
 end

@@ -32,6 +32,7 @@ class User < ApplicationRecord
 
   serialize :friends
   attr_accessor :do_password_validation
+
   def do_password_validation
     return @do_password_validation unless @do_password_validation.nil?
     true
@@ -46,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def format
-    self.phone.gsub!(/[^0-9]/,"") if self.phone
+    self.phone.gsub!(/[^0-9]/, "") if self.phone
   end
 
   # Setup OmniAuth
@@ -65,13 +66,13 @@ class User < ApplicationRecord
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
-      user = User.create(name:auth.info.name,
-                         provider:auth.provider,
-                         email:auth.info.email,
-                         uid:auth.uid,
-                         password:Devise.friendly_token[0,20]
+      user = User.create(name: auth.info.name,
+                         provider: auth.provider,
+                         email: auth.info.email,
+                         uid: auth.uid,
+                         password: Devise.friendly_token[0, 20]
 
-                        )
+      )
     end
     user
   end
@@ -79,12 +80,12 @@ class User < ApplicationRecord
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
-      user = User.create(name:auth.info.name,
-                         provider:auth.provider,
+      user = User.create(name: auth.info.name,
+                         provider: auth.provider,
                          email: "#{auth.info.nickname}@twitter.com",
-                         uid:auth.uid,
-                         password:Devise.friendly_token[0,20]
-                        )
+                         uid: auth.uid,
+                         password: Devise.friendly_token[0, 20]
+      )
     end
     user
   end

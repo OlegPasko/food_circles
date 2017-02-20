@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     post '/registrations/twitter_signup' => 'users/omniauth_callbacks#twitter_signup', :as => 'twitter_signup'
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   resources :payment_notifications
 
@@ -118,7 +118,7 @@ Rails.application.routes.draw do
 
     get '/news' => 'news#show'
 
-    get '/venues/:lat/:lon' => 'venues#show', :constraints => { lat: /[^\/]*/, lon: /[^\/]*/ }
+    get '/venues/:lat/:lon' => 'venues#show', :constraints => {lat: /[^\/]*/, lon: /[^\/]*/}
     get '/homeless/:device_id' => 'venues#homeless'
     get '/charities' => 'charities#show'
 

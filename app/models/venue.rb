@@ -95,8 +95,8 @@ class Venue < ApplicationRecord
 
   def has_new_vouchers?
     vouchers_available_changed? &&
-    vouchers_available_change.first &&
-    vouchers_available_change.first < vouchers_available_change.last
+        vouchers_available_change.first &&
+        vouchers_available_change.first < vouchers_available_change.last
   end
 
   def has_vouchers?
@@ -116,43 +116,43 @@ class Venue < ApplicationRecord
 
   def as_json(options={})
     data = {
-              id: self.id,
-              name: self.name,
-              address: self.address,
-              city: self.city,
-              longitude: self.longitude,
-              latitude: self.latitude,
-              # :lat => self.latlon.y,
-              # :lon => self.latlon.x,
-              description: self.description,
-              neighborhood: self.neighborhood,
-              phone: self.phone,
-              state: self.state.nil? ? "" : self.state.name,
-              web: self.web,
-              zip: self.zip,
-              rating: self.rating,
-              tags: self.venue_tags,
-              open_times: self.times || "Not Available",
-              reviews: self.reviews.first(3),
-              main_image: (self.main_image ? self.main_image.url : ''),
-              timeline_image: (self.timeline_image ? self.timeline_image.url : ''),
-              outside_image: (self.outside_image ? self.outside_image.url : ''),
-              restaurant_tile_image: (self.restaurant_tile_image ? self.restaurant_tile_image.url : ''),
-              start: (self.available? ? 'Later Tonight' : self.open_at),
-              end: self.close_at,
-              vouchers_available: self.num_vouchers,
-              # :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
-              social_links: self.social_links,
-              slug: self.slug,
-              device_id: self.device_id
-          }
+        id: self.id,
+        name: self.name,
+        address: self.address,
+        city: self.city,
+        longitude: self.longitude,
+        latitude: self.latitude,
+        # :lat => self.latlon.y,
+        # :lon => self.latlon.x,
+        description: self.description,
+        neighborhood: self.neighborhood,
+        phone: self.phone,
+        state: self.state.nil? ? "" : self.state.name,
+        web: self.web,
+        zip: self.zip,
+        rating: self.rating,
+        tags: self.venue_tags,
+        open_times: self.times || "Not Available",
+        reviews: self.reviews.first(3),
+        main_image: (self.main_image ? self.main_image.url : ''),
+        timeline_image: (self.timeline_image ? self.timeline_image.url : ''),
+        outside_image: (self.outside_image ? self.outside_image.url : ''),
+        restaurant_tile_image: (self.restaurant_tile_image ? self.restaurant_tile_image.url : ''),
+        start: (self.available? ? 'Later Tonight' : self.open_at),
+        end: self.close_at,
+        vouchers_available: self.num_vouchers,
+        # :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
+        social_links: self.social_links,
+        slug: self.slug,
+        device_id: self.device_id
+    }
     data[:offers] = if options[:all]
-      self.offers
-    elsif options[:not_available]
-      self.offers.not_available
-    else
-      self.offers.currently_available
-    end.order(:min_diners)
+                      self.offers
+                    elsif options[:not_available]
+                      self.offers.not_available
+                    else
+                      self.offers.currently_available
+                    end.order(:min_diners)
 
     data
   end
@@ -185,7 +185,7 @@ class Venue < ApplicationRecord
     t = ((t - t.beginning_of_week) / 60) + 300
 
     o = OpenTime
-      .where("open_times.openable_type = 'Offer' AND :t BETWEEN open_times.start AND open_times.end", {:t => t})
+            .where("open_times.openable_type = 'Offer' AND :t BETWEEN open_times.start AND open_times.end", {:t => t})
     o.each do |e|
       offer = Offer.find_by_id e.openable_id
       if offer && offer.venue_id == self.id
@@ -215,7 +215,7 @@ class Venue < ApplicationRecord
   def available?
     t = ((Time.now - Time.now.beginning_of_week) / 60) + 300
     v = Offer.joins(:open_times).
-      where('offers.venue_id = :id AND :now BETWEEN open_times.start AND open_times.end', {now: t, id: self.id})
+        where('offers.venue_id = :id AND :now BETWEEN open_times.start AND open_times.end', {now: t, id: self.id})
     v.count != 0
   end
 
@@ -226,8 +226,8 @@ class Venue < ApplicationRecord
   def self.currently_available(time=Time.now)
     t = ((time - time.beginning_of_week) / 60) + 300
     Venue.joins(:offers => :open_times).
-      where("? BETWEEN open_times.start AND open_times.end", t).
-      uniq
+        where("? BETWEEN open_times.start AND open_times.end", t).
+        uniq
   end
 
   # def self.currently_available_with_location(lat, lon, time=Time.now)
@@ -244,8 +244,8 @@ class Venue < ApplicationRecord
     t = ((Time.now - Time.now.beginning_of_week) / 60) + 300
     day_end = ((Time.now.end_of_day - Time.now.beginning_of_week) / 60) + 300
     Venue.joins(offers: :open_times).
-      where("open_times.start BETWEEN :now AND :day_end", {now: t, day_end: day_end}).
-      uniq
+        where("open_times.start BETWEEN :now AND :day_end", {now: t, day_end: day_end}).
+        uniq
   end
 
   # def self.not_available_with_location(lat, lon, time=Time.now)
@@ -307,7 +307,7 @@ class Venue < ApplicationRecord
 
   def self.updateRatings
     Venue.all.each do |v|
-      query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{v.name} #{v.address} #{v.city} #{v.state.name}&sensor=true&key=#{PLACES_KEY}".gsub(/\s/,'+').gsub("'",'')
+      query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{v.name} #{v.address} #{v.city} #{v.state.name}&sensor=true&key=#{PLACES_KEY}".gsub(/\s/, '+').gsub("'", '')
       j = JSON.parse(open(query).read)
 
       next if j['status'] == "ZERO_RESULTS"

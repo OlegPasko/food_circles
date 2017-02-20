@@ -1,159 +1,172 @@
 <% content_for(:title, "FoodCircles – For Companies | Repurpose Company Dining to Feed the Hungry") %>
 
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s);
+  js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=148554958654775";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-    <div id="headline">
-    <div class="container">
+<div id="headline">
+  <div class="container">
 
-        <h1>Eat Lunch Together.</h1>
-        <p>COMPANY TRACKING + CHAT ON A MAP + COORDINATE PUBLICALLY OR PRIVATELY</p>
-        <%= link_to 'Request Invite', '#companies-form', class: 'btn-standart top-btn' %>
-        <div id="chatapp-image">
-            <%= image_tag "companies/companies-chatapp.png" %>
-        </div>
-
-    </div> <!--container -->
+    <h1>Eat Lunch Together.</h1>
+    <p>COMPANY TRACKING + CHAT ON A MAP + COORDINATE PUBLICALLY OR PRIVATELY</p>
+    <%= link_to 'Request Invite', '#companies-form', class: 'btn-standart top-btn' %>
+    <div id="chatapp-image">
+      <%= image_tag "companies/companies-chatapp.png" %>
     </div>
 
-    <div id="white-section">
+  </div> <!--container -->
+</div>
 
-        <div class="container">
+<div id="white-section">
 
-            <div id="companies-chat" class="grid">
-                <div class="left-section">
-                    <h1>Company Tracking</h1>
-                    <p>One dollar in voucher purchases feeds one child.  Watch the impact your company makes locally simply by taking out clients, guests, or co-workers.</p>
-                </div>
-                <div class="right-section">
-                    <%= image_tag "companies/companies-chat.png" %>
-                </div>
-                
-            </div>
+  <div class="container">
 
-            <div id="companies-tracking" class="grid">
+    <div id="companies-chat" class="grid">
+      <div class="left-section">
+        <h1>Company Tracking</h1>
+        <p>One dollar in voucher purchases feeds one child. Watch the impact your company makes locally simply by taking
+          out clients, guests, or co-workers.</p>
+      </div>
+      <div class="right-section">
+        <%= image_tag "companies/companies-chat.png" %>
+      </div>
 
-                 <div class="left-section">
-                    <%= image_tag "companies/companies-tracking.png" %>
-                </div>
-                <div class="right-section">
-                    <h1>Chat on a Map</h1>
-                    <p>Integrated block-by-block directions allowing you and co-workers or nearby friends to compare and contrast the options.</p>
-                </div>
-                
-            </div>
+    </div>
 
-            <div id="companies-coordinate" class="grid">
+    <div id="companies-tracking" class="grid">
 
-                 <div class="left-section">
-                    <h1>Coordinate Publicly Or Privately</h1>
-                    <p>Create a "lunch boat" for all to join or chat individually.  Pull in co-workers or friends in nearby buildings.</p>
-                </div>
-                <div class="right-section">
-                    <%= image_tag "companies/companies-coordinate.png" %>
-                </div>
-                
-            </div>
-            
-            <div id="companies-form">
+      <div class="left-section">
+        <%= image_tag "companies/companies-tracking.png" %>
+      </div>
+      <div class="right-section">
+        <h1>Chat on a Map</h1>
+        <p>Integrated block-by-block directions allowing you and co-workers or nearby friends to compare and contrast
+          the options.</p>
+      </div>
 
-            <%= form_tag companies_path, method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
-                <%= text_field_tag :company, nil, :placeholder => "company"%>
-                <%= text_field_tag :name, nil, :placeholder => "name"%>
-                <%= text_field_tag :email, nil, :placeholder => "email"%>
-                <%= submit_tag "Request Invite", :class => "btn-standart company-submit", style: "width: 300px;" %>
-            <% end %>
-            <p><span style="color: #8a857f;"><i>Admitting select organizations. Request<br>an invite and we'll contact you.</i></span>
-            </p>
-            <div id="socialsharebuttons">
-            <br><br>
-            <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-            
-            <div class="clear"><br></div>
-            
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </div>
-            </div>
+    </div>
+
+    <div id="companies-coordinate" class="grid">
+
+      <div class="left-section">
+        <h1>Coordinate Publicly Or Privately</h1>
+        <p>Create a "lunch boat" for all to join or chat individually. Pull in co-workers or friends in nearby
+          buildings.</p>
+      </div>
+      <div class="right-section">
+        <%= image_tag "companies/companies-coordinate.png" %>
+      </div>
+
+    </div>
+
+    <div id="companies-form">
+
+      <%= form_tag companies_path, method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
+          <%= text_field_tag :company, nil, :placeholder => "company" %>
+          <%= text_field_tag :name, nil, :placeholder => "name" %>
+          <%= text_field_tag :email, nil, :placeholder => "email" %>
+          <%= submit_tag "Request Invite", :class => "btn-standart company-submit", style: "width: 300px;" %>
+      <% end %>
+      <p>
+        <span style="color: #8a857f;"><i>Admitting select organizations. Request<br>an invite and we'll contact you.</i></span>
+      </p>
+      <div id="socialsharebuttons">
+        <br><br>
+        <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+        <div class="clear"><br></div>
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
+        <script>!function (d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+          if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = p + '://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js, fjs);
+          }
+        }(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
 
 
-        </div> <!-- container -->
+  </div> <!-- container -->
 
-       </div> <!-- white section -->
+</div> <!-- white section -->
 <script>
 
 
-//for smooth scrolling
+  //for smooth scrolling
 
-    $(function() {
-    
-        function filterPath(string) {
-            return string
-            .replace(/^\//,'')
-            .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
-            .replace(/\/$/,'');
+  $(function () {
+
+    function filterPath(string) {
+      return string
+          .replace(/^\//, '')
+          .replace(/(index|default).[a-zA-Z]{3,4}$/, '')
+          .replace(/\/$/, '');
+    }
+
+    var locationPath = filterPath(location.pathname);
+    var scrollElem = scrollableElement('html', 'body');
+
+    // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
+    $('a[href*=#]').each(function () {
+
+      // Ensure it's a same-page link
+      var thisPath = filterPath(this.pathname) || locationPath;
+      if (locationPath == thisPath
+          && (location.hostname == this.hostname || !this.hostname)
+          && this.hash.replace(/#/, '')) {
+
+        // Ensure target exists
+        var $target = $(this.hash), target = this.hash;
+        if (target) {
+
+          // Find location of target
+          var targetOffset = $target.offset().top;
+          $(this).click(function (event) {
+
+            // Prevent jump-down
+            event.preventDefault();
+
+            // Animate to target
+            $(scrollElem).animate({scrollTop: targetOffset}, 400, function () {
+
+              // Set hash in URL after animation successful
+              location.hash = target;
+
+            });
+          });
         }
-    
-        var locationPath = filterPath(location.pathname);
-        var scrollElem = scrollableElement('html', 'body');
-    
-        // Any links with hash tags in them (can't do ^= because of fully qualified URL potential)
-        $('a[href*=#]').each(function() {
-    
-            // Ensure it's a same-page link
-            var thisPath = filterPath(this.pathname) || locationPath;
-            if (  locationPath == thisPath
-                && (location.hostname == this.hostname || !this.hostname)
-                && this.hash.replace(/#/,'') ) {
-    
-                    // Ensure target exists
-                    var $target = $(this.hash), target = this.hash;
-                    if (target) {
-    
-                        // Find location of target
-                        var targetOffset = $target.offset().top;
-                        $(this).click(function(event) {
-    
-                            // Prevent jump-down
-                            event.preventDefault();
-    
-                            // Animate to target
-                            $(scrollElem).animate({scrollTop: targetOffset}, 400, function() {
-    
-                                // Set hash in URL after animation successful
-                                location.hash = target;
-    
-                            });
-                        });
-                    }
-            }
-    
-        });
-    
-        // Use the first element that is "scrollable"  (cross-browser fix?)
-        function scrollableElement(els) {
-            for (var i = 0, argLength = arguments.length; i <argLength; i++) {
-                var el = arguments[i],
-                $scrollElement = $(el);
-                if ($scrollElement.scrollTop()> 0) {
-                    return el;
-                } else {
-                    $scrollElement.scrollTop(1);
-                    var isScrollable = $scrollElement.scrollTop()> 0;
-                    $scrollElement.scrollTop(0);
-                    if (isScrollable) {
-                        return el;
-                    }
-                }
-            }
-            return [];
-        }
-    
+      }
+
     });
+
+    // Use the first element that is "scrollable"  (cross-browser fix?)
+    function scrollableElement(els) {
+      for (var i = 0, argLength = arguments.length; i < argLength; i++) {
+        var el = arguments[i],
+            $scrollElement = $(el);
+        if ($scrollElement.scrollTop() > 0) {
+          return el;
+        } else {
+          $scrollElement.scrollTop(1);
+          var isScrollable = $scrollElement.scrollTop() > 0;
+          $scrollElement.scrollTop(0);
+          if (isScrollable) {
+            return el;
+          }
+        }
+      }
+      return [];
+    }
+
+  });
 </script>

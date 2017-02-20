@@ -1,75 +1,87 @@
 <% content_for(:title, "FoodCircles – Nominate a Family for a Free Thankgiving Meal from the Gilmore Collection") %>
 
 <% set_meta_tags :og => {
-        :title    => 'Nominate a Family for a Thanksgiving Meal From Gilmore Collection',
-        :description    => 'Help us see the invisible. Tell us a brief story about a family that may not be able to provide for Thanksgiving. The Gilmore Collection will deliver gourmet meals to five of them the night before.',
-        :image     => 'https://dl.dropboxusercontent.com/u/38930645/nominate-2.jpg',
-        :url      => url_for(:only_path => false),
-        :site_name => "FoodCircles",
-        :type => 'website'
+    :title => 'Nominate a Family for a Thanksgiving Meal From Gilmore Collection',
+    :description => 'Help us see the invisible. Tell us a brief story about a family that may not be able to provide for Thanksgiving. The Gilmore Collection will deliver gourmet meals to five of them the night before.',
+    :image => 'https://dl.dropboxusercontent.com/u/38930645/nominate-2.jpg',
+    :url => url_for(:only_path => false),
+    :site_name => "FoodCircles",
+    :type => 'website'
 }
 %>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s);
+  js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=148554958654775";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="container">
-        <h2>Nominate a Family for a Thankgiving from Gilmore Collection</h2>
+  <h2>Nominate a Family for a Thankgiving from Gilmore Collection</h2>
 
-        <div class="placard beta">
-          <h1>Share a Slice of a Family's Story</h1>
-          <div id="needtoknow">
-          <p>
-            <strong>The Gilmore Collection is cooking a special meal for five families this Thanksgiving.</strong> Please let us know about a family that may not be able to enjoy a traditional Thanksgiving meal on their own. Names will not be released publicly.</p>
-          <br>
-          <p>Selected families will be notified in advance. The deadline to nominate is <strong>Friday midnight, 21st of November.</strong></p>
-          </div>
+  <div class="placard beta">
+    <h1>Share a Slice of a Family's Story</h1>
+    <div id="needtoknow">
+      <p>
+        <strong>The Gilmore Collection is cooking a special meal for five families this Thanksgiving.</strong> Please
+        let us know about a family that may not be able to enjoy a traditional Thanksgiving meal on their own. Names
+        will not be released publicly.</p>
+      <br>
+      <p>Selected families will be notified in advance. The deadline to nominate is
+        <strong>Friday midnight, 21st of November.</strong></p>
+    </div>
+  </div>
+
+  <div class="placard omega">
+    <%= image_tag "stringleft.png", class: "stringleft" %>
+    <%= image_tag "stringright.png", class: "stringright" %>
+
+    <h1>Nominate a Family</h1>
+    <%= form_tag '/nominate', :id => "nominate", method: :post do %>
+        <h2>Name of the family?</h2>
+        <%= text_field_tag :name, nil, size: "60", class: 'field standart organizers-field' %>
+        <h2>If selected, how may we get in contact with them?</h2>
+        <p>Known phone number, or email?</p>
+        <%= text_field_tag :contact, nil, size: "60", class: 'field standart organizers-field' %>
+        <h2>Share their story or current circumstances here.</h2>
+        <p>(will not be released publicly)</p>
+        <%= text_area_tag :story, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %>
+        <h2>How may we get in contact with you?</h2>
+        <p>In case we need help getting in touch with the family.</p>
+        <%= text_field_tag :email, nil, size: "60", class: 'field standart organizers-field' %>
+        <h2>Any other comments or feedback?</h2>
+        <%= text_area_tag :feedback, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %><br/>
+        <%= submit_tag "Submit", :class => "btn-standart" %>
+
+        <div id="socialsharebuttonsorg">
+          <br><br>
+          <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+          <div class="clear"><br></div>
+
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
+          <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+              js = d.createElement(s);
+              js.id = id;
+              js.src = p + '://platform.twitter.com/widgets.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            }
+          }(document, 'script', 'twitter-wjs');</script>
         </div>
-
-        <div class="placard omega">
-            <%= image_tag "stringleft.png", class:"stringleft" %>
-            <%= image_tag "stringright.png", class:"stringright" %>
-
-            <h1>Nominate a Family</h1>
-            <%= form_tag '/nominate', :id => "nominate", method: :post do %>
-                <h2>Name of the family?</h2>
-                <%= text_field_tag :name, nil, size: "60", class: 'field standart organizers-field' %>
-                <h2>If selected, how may we get in contact with them?</h2>
-                <p>Known phone number, or email?</p>
-                <%= text_field_tag :contact, nil, size: "60", class: 'field standart organizers-field' %>
-                <h2>Share their story or current circumstances here.</h2>
-                <p>(will not be released publicly)</p>
-                <%= text_area_tag :story, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %>
-                <h2>How may we get in contact with you?</h2>
-                <p>In case we need help getting in touch with the family.</p>
-                <%= text_field_tag :email, nil, size: "60", class: 'field standart organizers-field' %>
-                <h2>Any other comments or feedback?</h2>
-                <%= text_area_tag :feedback, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %><br />
-                <%= submit_tag "Submit", :class => "btn-standart" %>
-
-                <div id="socialsharebuttonsorg">
-                <br><br>
-                <div class="fb-like" data-href="http://www.joinfoodcircles.org/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-
-                <div class="clear"><br></div>
-
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.joinfoodcircles.org" data-via="FoodCircles" data-hashtags="BOFO">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                </div>
-            <% end %>
-            </div>
-        </div>
+    <% end %>
+  </div>
+</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
 <script>
-$('.teampick a').on('click', function(e) {
+  $('.teampick a').on('click', function (e) {
     e.preventDefault();
     var $this = $(this);
     if ($this.parent().is('.active')) return;
@@ -77,79 +89,79 @@ $('.teampick a').on('click', function(e) {
     $this.parent().addClass('active');
 
     var $current = $('.teammember.active'),
-        $dest    = $($this.attr('href')),
-        offset   = $current.position();
+        $dest = $($this.attr('href')),
+        offset = $current.position();
 
     $current.css({
-        top: offset.top,
-        left: offset.left,
-        position: 'absolute'
+      top: offset.top,
+      left: offset.left,
+      position: 'absolute'
     }).animate({
-        opacity: 0
-    }, function(){
-        $(this).removeClass('active').css({
-            position: 'static',
-            opacity: 1
-        });
+      opacity: 0
+    }, function () {
+      $(this).removeClass('active').css({
+        position: 'static',
+        opacity: 1
+      });
     });
     $dest.css({
-        opacity: 0
+      opacity: 0
     }).addClass('active').animate({
-        opacity: 1
+      opacity: 1
     });
 
-});
+  });
 </script>
 
 
 
 <script type="text/javascript">
-    (function(){
+  (function () {
     var words = [
-        'omelets',
-        "hors d'oeuvres",
-        'lunch',
-        'desserts'
-        ], i = 0;
-    setInterval(function(){
-        $('#meal').fadeOut(function(){
-            $(this).html(words[i=(i+1)%words.length]).fadeIn();
-        });
+      'omelets',
+      "hors d'oeuvres",
+      'lunch',
+      'desserts'
+    ], i = 0;
+    setInterval(function () {
+      $('#meal').fadeOut(function () {
+        $(this).html(words[i = (i + 1) % words.length]).fadeIn();
+      });
     }, 5000);
 
-})();
-    </script>
+  })();
+</script>
 
-    <script type="text/javascript">
-    (function(){
+<script type="text/javascript">
+  (function () {
     var words = [
-        '8',
-        '100',
-        '25',
-        '67'
-        ], i = 0;
-    setInterval(function(){
-        $('#number').fadeOut(function(){
-            $(this).html(words[i=(i+1)%words.length]).fadeIn();
-        });
+      '8',
+      '100',
+      '25',
+      '67'
+    ], i = 0;
+    setInterval(function () {
+      $('#number').fadeOut(function () {
+        $(this).html(words[i = (i + 1) % words.length]).fadeIn();
+      });
     }, 5000);
 
-})();
-    </script>
+  })();
+</script>
 
-    <script type="text/javascript">
-   (function(){
+<script type="text/javascript">
+  (function () {
     var words = [
-        'Monday',
-        'Saturday',
-        'Thursday',
-        'Sunday'
-        ], i = 0;
-    setInterval(function(){
-        $('#day').fadeOut(function(){
-            $(this).html(words[i=(i+1)%words.length]).fadeIn();
-        });
+      'Monday',
+      'Saturday',
+      'Thursday',
+      'Sunday'
+    ], i = 0;
+    setInterval(function () {
+      $('#day').fadeOut(function () {
+        $(this).html(words[i = (i + 1) % words.length]).fadeIn();
+      });
     }, 5000);
 
-})();
-    </script>
+  })();
+</script>

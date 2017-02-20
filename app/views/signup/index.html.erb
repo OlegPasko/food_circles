@@ -1,82 +1,89 @@
 <% content_for(:title, "FoodCircles – Restaurants | Let's Get You Started") %>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
+  js = d.createElement(s);
+  js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=148554958654775";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script src="https://bluefire-secure.com/crypto/js/bf-encrypt-latest.min.js" type="text/javascript"></script>
-<%= javascript_include_tag  'signup' %>
+<%= javascript_include_tag 'signup' %>
 
 <div class="container">
-        <div class="placard-sidebar">
-            <h3>Build meaningful relationships</h3>
-            <p class="hilitd">We're here to help your diners feel good, and most importantly, <em>do</em> good just by trying out <strong id="sidebar_restaurant_name"></strong></p>
-            <h5>Here's how it works again:</h5>
-            <br>
-            <p class="bullets"><strong>1).</strong> You share you're a "Buy One, Feed One" establishment and pick a dish to donate.</p>
-            <p class="bullets"><strong>2). </strong> Supporters from nonprofits give $1 or greater online for your dish.</p>
-            <p class="bullets"><strong>3). </strong> 100% of purchases go straight to the need, and we report monthly on groups you met.</p>
-            <p class="bullets">This costs you $100/mo and we apply a 50% discount until we <strong>prove</strong> we can send you <strong>at least 8 groups</strong> per month. That's typically a 4x-6x return on your investment. Cancel anytime.</p>
-            <img src="" alt="">
-            <p>
-                <img src="" alt=""> <strong>616 61-FOOD-6</strong><br>
-                <img src="" alt=""> <strong><a href="mailto:hey@joinfoodcircles.org">hey@joinfoodcircles.org</a></strong>
-            </p>
-        </div>
-        <div class="placard alpha thin">
+  <div class="placard-sidebar">
+    <h3>Build meaningful relationships</h3>
+    <p class="hilitd">We're here to help your diners feel good, and most importantly, <em>do</em> good just by trying
+      out <strong id="sidebar_restaurant_name"></strong></p>
+    <h5>Here's how it works again:</h5>
+    <br>
+    <p class="bullets"><strong>1).</strong> You share you're a "Buy One, Feed One" establishment and pick a dish to
+      donate.</p>
+    <p class="bullets"><strong>2). </strong> Supporters from nonprofits give $1 or greater online for your dish.</p>
+    <p class="bullets"><strong>3). </strong> 100% of purchases go straight to the need, and we report monthly on groups
+      you met.</p>
+    <p class="bullets">This costs you $100/mo and we apply a 50% discount until we <strong>prove</strong> we can send
+      you <strong>at least 8 groups</strong> per month. That's typically a 4x-6x return on your investment. Cancel
+      anytime.</p>
+    <img src="" alt="">
+    <p>
+      <img src="" alt=""> <strong>616 61-FOOD-6</strong><br>
+      <img src="" alt=""> <strong><a href="mailto:hey@joinfoodcircles.org">hey@joinfoodcircles.org</a></strong>
+    </p>
+  </div>
+  <div class="placard alpha thin">
 
-          <%= form_tag signup_url, method: :post, id: 'signup' do %>
+    <%= form_tag signup_url, method: :post, id: 'signup' do %>
 
-                <h1>Tell Us About Yourself…</h1>
-                <p>Always feel free to give us a call too (616-61-FOOD-6) if you have questions or prefer to sign up that way.</p>  
+        <h1>Tell Us About Yourself…</h1>
+        <p>Always feel free to give us a call too (616-61-FOOD-6) if you have questions or prefer to sign up that
+          way.</p>
 
-                <input type="text" name="first_name" class="field standart small-input" placeholder="Name">
-                <input type="text" name="email" class="field standart small-input" placeholder="Email">
-                <input type="text" name="restaurant_name" class="field standart small-input" placeholder="Restaurant Name">
-                <input type="text" name="restaurant_city" class="field standart small-input" placeholder="Restaurant City">
-                <br><br><br>
-                <input type="text" name="social_contact" class="field standart input" placeholder="PR/Social Media Email (if different)">
-                <br>
-                <input type="text" name="first_dish" class="field standart input" placeholder="Your First 'Buy One, Feed One' Dish">
-                <input type="text" name="first_dish_price" class="field standart small-input" placeholder="Menu Price">
-                <label>
-                    <input type="file" name="">
-                    Dish Photo (Optional)
-                </label>
-                <br><br>
-                <h1>Payment Details</h1>
+        <input type="text" name="first_name" class="field standart small-input" placeholder="Name">
+        <input type="text" name="email" class="field standart small-input" placeholder="Email">
+        <input type="text" name="restaurant_name" class="field standart small-input" placeholder="Restaurant Name">
+        <input type="text" name="restaurant_city" class="field standart small-input" placeholder="Restaurant City">
+        <br><br><br>
+        <input type="text" name="social_contact" class="field standart input" placeholder="PR/Social Media Email (if different)">
+        <br>
+        <input type="text" name="first_dish" class="field standart input" placeholder="Your First 'Buy One, Feed One' Dish">
+        <input type="text" name="first_dish_price" class="field standart small-input" placeholder="Menu Price">
+        <label>
+          <input type="file" name="">
+          Dish Photo (Optional)
+        </label>
+        <br><br>
+        <h1>Payment Details</h1>
 
-                <input type="text" name="_cc" id="cc-input" class="field standart input unmasked" placeholder="Credit or Debit Card Number">
-                <input type="hidden" name="cc" id="cc-hidden">
+        <input type="text" name="_cc" id="cc-input" class="field standart input unmasked" placeholder="Credit or Debit Card Number">
+        <input type="hidden" name="cc" id="cc-hidden">
 
-                <input type="text" name="exp" class="field standart small-input" placeholder="Expiry MM/YY">
-                <input type="text" name="cvv" class="field standart small-input" placeholder="CVV Code">
-            <input type="text" name="zip" class="field standart shifted-input" placeholder="Billing Zipcode">
-                <br>
-                <p class="small">
-                    * Your card will not be charged until your "go-live" date.
-                </p>
-                <br><br>
-                <input type="submit" value="Sign us up!" class="btn-large">
+        <input type="text" name="exp" class="field standart small-input" placeholder="Expiry MM/YY">
+        <input type="text" name="cvv" class="field standart small-input" placeholder="CVV Code">
+        <input type="text" name="zip" class="field standart shifted-input" placeholder="Billing Zipcode">
+        <br>
+        <p class="small">
+          * Your card will not be charged until your "go-live" date.
+        </p>
+        <br><br>
+        <input type="submit" value="Sign us up!" class="btn-large">
 
-                <img src="https://dl.dropboxusercontent.com/u/38930645/site%20assets/heart.png" alt="Picture" style="margin:50px auto 0;display:block">
+        <img src="https://dl.dropboxusercontent.com/u/38930645/site%20assets/heart.png" alt="Picture" style="margin:50px auto 0;display:block">
 
-            <% end %>
-            <div class="clear"><br></div>
-            </div>
-            </div>
+    <% end %>
+    <div class="clear"><br></div>
+  </div>
+</div>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
 <script type="text/javascript">
-    (function(){
-    $('input[name="restaurant_name"]').on('change keyup', function(){
-        $('#sidebar_restaurant_name').text($(this).val() || 'your restaurant.');
+  (function () {
+    $('input[name="restaurant_name"]').on('change keyup', function () {
+      $('#sidebar_restaurant_name').text($(this).val() || 'your restaurant.');
     }).trigger('change');
-    })();
-    </script>
+  })();
+</script>

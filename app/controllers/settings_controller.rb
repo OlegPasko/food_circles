@@ -10,8 +10,8 @@ class SettingsController < ApplicationController
     load_payments
 
     @card_last_4_digits = if current_user.stripe_customer_token && customer = stripe_customer
-      customer.active_card.last4
-    end
+                            customer.active_card.last4
+                          end
   end
 
   def update

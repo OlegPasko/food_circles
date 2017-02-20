@@ -5,15 +5,15 @@
       <p><%= payment.created_at.strftime("%m/%d/%y") %></p>
     </div><!-- /.head -->
     <% if payment.active? %>
-      <a href="/reciept/<%= payment.id %>" class="body recieptlink popup-link">
-        <span>View Reciept</span>
-        <%= image_tag payment.offer.venue.timeline_image.thumb("205x155").url if payment.offer.venue.timeline_image %>
-      </a><!-- /.body -->
+        <a href="/reciept/<%= payment.id %>" class="body recieptlink popup-link">
+          <span>View Reciept</span>
+          <%= image_tag payment.offer.venue.timeline_image.thumb("205x155").url if payment.offer.venue.timeline_image %>
+        </a><!-- /.body -->
     <% else %>
-      <div class="body <%= payment.state.downcase %>">
-        <span> <%= payment.state %> </span>
-        <%= image_tag payment.offer.venue.timeline_image.thumb("205x155").url if payment.offer.venue.timeline_image %>
-      </div>
+        <div class="body <%= payment.state.downcase %>">
+          <span> <%= payment.state %> </span>
+          <%= image_tag payment.offer.venue.timeline_image.thumb("205x155").url if payment.offer.venue.timeline_image %>
+        </div>
     <% end %>
     <div class="foot">
       <div class="kids">
@@ -21,16 +21,16 @@
         <%= payment.amount.to_i %>
       </div><!-- /.kids -->
       <div class="socials">
-        <a href= "http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://joinfoodcircles.org/<%=payment.offer.venue.slug%>&p[images][0]=http://staging.foodcircles.net<%= payment.offer.venue.restaurant_tile_image.thumb("274x163").url%>.png&p[title]=Bought 1, fed <%=payment.amount.to_i%> <%=payment.amount.to_i > 1 ? "children" : "child"%>.&p[summary]=Fed <%=payment.amount.to_i%> <%=payment.amount.to_i > 1 ? "children" : "child"%> simply by eating out. Picked out <%=payment.offer.venue.name%> via FoodCircles." target="_blank" class="icon-yellow-facebook"></a>
-        <a href="https://twitter.com/intent/tweet?status=Fed%20<%=payment.amount.to_i%>%20<%=payment.amount.to_i > 1 ? "children" : "child"%>%20in%20need%20simply%20by%20eating%20out.%20Picked%20out%20<%=payment.offer.venue.name%>%20via%20@foodcircles.%20%23bofo%20http://joinfoodcircles.org/<%=payment.offer.venue.slug%>" target="_blank" class="icon-yellow-twitter"></a>
+        <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://joinfoodcircles.org/<%= payment.offer.venue.slug %>&p[images][0]=http://staging.foodcircles.net<%= payment.offer.venue.restaurant_tile_image.thumb("274x163").url %>.png&p[title]=Bought 1, fed <%= payment.amount.to_i %> <%= payment.amount.to_i > 1 ? "children" : "child" %>.&p[summary]=Fed <%= payment.amount.to_i %> <%= payment.amount.to_i > 1 ? "children" : "child" %> simply by eating out. Picked out <%= payment.offer.venue.name %> via FoodCircles." target="_blank" class="icon-yellow-facebook"></a>
+        <a href="https://twitter.com/intent/tweet?status=Fed%20<%= payment.amount.to_i %>%20<%= payment.amount.to_i > 1 ? "children" : "child" %>%20in%20need%20simply%20by%20eating%20out.%20Picked%20out%20<%= payment.offer.venue.name %>%20via%20@foodcircles.%20%23bofo%20http://joinfoodcircles.org/<%= payment.offer.venue.slug %>" target="_blank" class="icon-yellow-twitter"></a>
       </div><!-- /.socials -->
       <span class="divider"></span>
     </div><!-- /.foot -->
   </div><!-- /.cnt -->
   <%- if payment_counter % 2 == 0 %>
-    <i class="arrow-right"><i class="arrow-right"></i></i>
+      <i class="arrow-right"><i class="arrow-right"></i></i>
   <%- else %>
-    <i class="arrow-left"><i class="arrow-left"></i></i>
+      <i class="arrow-left"><i class="arrow-left"></i></i>
   <%- end %>
   <i class="circle"></i>
 </div><!-- /.block left -->

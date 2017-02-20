@@ -13,7 +13,7 @@ class Api::PaymentsController < ApplicationController
       venue.save
       UserMailer.voucher(current_user, @payment).deliver
 
-      render :json => {:error => false, :content => @payment.as_json }
+      render :json => {:error => false, :content => @payment.as_json}
     else
       render :json => {:error => true, :description => "Error saving the payment", :errors => @payment.errors.full_messages}
     end

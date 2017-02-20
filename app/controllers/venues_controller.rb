@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  protect_from_forgery :except => :subscribe 
+  protect_from_forgery :except => :subscribe
 
   def index
 
@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
 
     if params[:offline]
       begin
-        @venues = (lat(params[:lat]) ? Venue.visible.active.not_available_with_location(params[:lat],params[:lon]) : Venue.visible.active.not_available)
+        @venues = (lat(params[:lat]) ? Venue.visible.active.not_available_with_location(params[:lat], params[:lon]) : Venue.visible.active.not_available)
         if !@venues || !@venues.any?
           @venues = Venue.visible.active.not_available
         end
@@ -16,7 +16,7 @@ class VenuesController < ApplicationController
       end
     else
       begin
-        @venues = (lat(params[:lat]) ? Venue.visible.active.currently_available_with_location(params[:lat],params[:lon]) : Venue.visible.active.currently_available)
+        @venues = (lat(params[:lat]) ? Venue.visible.active.currently_available_with_location(params[:lat], params[:lon]) : Venue.visible.active.currently_available)
         if !@venues || !@venues.any?
           @venues = Venue.visible.active.currently_available
         end
@@ -26,8 +26,7 @@ class VenuesController < ApplicationController
     end
 
 
-
-    if ['json','jsonp'].include?(params[:format])
+    if ['json', 'jsonp'].include?(params[:format])
       if (params[:offline])
         render :json => (lat(params[:lat]) ? @venues.as_json(:lat => params[:lat], :lon => params[:lon], :not_available => true) : @venues), :callback => params[:callback]
       else
@@ -40,66 +39,66 @@ class VenuesController < ApplicationController
     # @v = Venue.find(params[:id])
     @offer = Venue.find(params[:id]).offers.first
 
-    if ['json','jsonp'].include?(params[:format])
-        render :json => @v, :callback => params[:callback]
+    if ['json', 'jsonp'].include?(params[:format])
+      render :json => @v, :callback => params[:callback]
     end
   end
 
   def subscribe
     partial, message = if current_user
-      venue = Venue.find(params[:id])
-      user = current_user
-      notification_request = NotificationRequest.new(:venue => venue, :user => current_user)
-      if notification_request.save
-        ['subscribe_success', 'Got it. Look for an email next week.']
-      else
-        ['subscribe_success', "Hang tight- we'll email you, promise."]
-      end
-    else
-      ['subscribe_error', 'Sign up to get notified.']
-    end
+                         venue = Venue.find(params[:id])
+                         user = current_user
+                         notification_request = NotificationRequest.new(:venue => venue, :user => current_user)
+                         if notification_request.save
+                           ['subscribe_success', 'Got it. Look for an email next week.']
+                         else
+                           ['subscribe_success', "Hang tight- we'll email you, promise."]
+                         end
+                       else
+                         ['subscribe_error', 'Sign up to get notified.']
+                       end
 
     respond_to do |format|
-      format.js{ render partial, locals: {message: message} }
+      format.js { render partial, locals: {message: message} }
     end
   end
 
   def unsubscribe
     partial, message = if current_user
-      venue = Venue.find(params[:id])
-      user = current_user
-      notification_reqs = user.notification_requests.where(:venue_id => venue.id)
-      if notification_reqs.size > 0
-        notification_reqs.destroy_all
-        ['unsubscribe_success', 'Subscription cancelled']
-      else
-        ['unsubscribe_success', "Already unsubscribed!"]
-      end
-    else
-      ['unsubscribe_error', 'Sign in to unsubscribe.']
-    end
+                         venue = Venue.find(params[:id])
+                         user = current_user
+                         notification_reqs = user.notification_requests.where(:venue_id => venue.id)
+                         if notification_reqs.size > 0
+                           notification_reqs.destroy_all
+                           ['unsubscribe_success', 'Subscription cancelled']
+                         else
+                           ['unsubscribe_success', "Already unsubscribed!"]
+                         end
+                       else
+                         ['unsubscribe_error', 'Sign in to unsubscribe.']
+                       end
 
     respond_to do |format|
-      format.js{ render partial, locals: {message: message} }
+      format.js { render partial, locals: {message: message} }
     end
   end
 
   def subscribed
     subscribed = if current_user
-      venue = Venue.find(params[:id])
-      user = current_user
-      notification_reqs = user.notification_requests.where(:venue_id => venue.id)
-      if notification_reqs.size > 0
-        true
-      else
-        false
-      end
-    else
-      false
-    end
+                   venue = Venue.find(params[:id])
+                   user = current_user
+                   notification_reqs = user.notification_requests.where(:venue_id => venue.id)
+                   if notification_reqs.size > 0
+                     true
+                   else
+                     false
+                   end
+                 else
+                   false
+                 end
 
     respond_to do |format|
-      format.json{ render json: {:subscribed => subscribed} }
+      format.json { render json: {:subscribed => subscribed} }
     end
   end
 

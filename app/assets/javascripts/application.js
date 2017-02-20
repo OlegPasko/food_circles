@@ -12,15 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require turbolinks
-//= require bootstrap-sprockets
-//= require jquery-ui-1.10.3.custom.min
+//= require_tree .
 
-$(function(){
-   // Adjust Alert box size
+$(function () {
+    // Adjust Alert box size
     adjust_alert_box_size();
 });
 
-function adjust_alert_box_size(){
-    $("#alerts_container").width($(".alert").width()+90);
+function adjust_alert_box_size() {
+    $("#alerts_container").width($(".alert").width() + 90);
 }

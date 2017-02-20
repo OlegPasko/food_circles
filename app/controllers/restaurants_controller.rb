@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
 
   def create
     enqueue_mix_panel_event "Submits Restaurants Get Involved Form"
-    if(params[:email])
+    if (params[:email])
       if valid_email?(params[:email])
         signup
       else

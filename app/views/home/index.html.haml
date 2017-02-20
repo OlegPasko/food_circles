@@ -10,7 +10,7 @@
   %ul{class: "slides"}
     - @news.each do |news|
       %li
-        %a{href: news.website_url || "#",  :"data-mixpanel-event" => "Clicked a news link", :"data-mixpanel-options" => {news_link: news.website_url}.to_json}
+        %a{href: news.website_url || "#",  "data-mixpanel-event": "Clicked a news link", "data-mixpanel-options": { news_link: news.website_url }.to_json}
           %img{src: news.website_image.url, alt: "", width: "1280", height: "360"}
   %a{href: "#", class: "slide-prev icon-arrow-prev"}
   %a{href: "#", class: "slide-next icon-arrow-next"}
@@ -24,20 +24,19 @@
       .goal-indication
         %span.sofar
           %p
-            <!-- = weekly_progress[:current_progress] -->
         %span.weeklygoal
           %p
-            <!-- = weekly_progress[:adjusted_total] -->
+
 #home
   .container
     .products
       .products-head
         .head-btns
           %a.btn-standart{href: "https://itunes.apple.com/us/app/foodcircles-for-iphone/id710592600"}
-            %img.app-icon{src: "/apple-logo.png"}>/
+            = image_tag "apple-logo.png", class: 'app-icon'
             Apple
           %a.btn-standart{href: "https://play.google.com/store/apps/details?id=co.foodcircles"}
-            %img.app-icon{src: "/android-logo.png"}>/
+            = image_tag "android-logo.png", class: 'app-icon'
             Android
 
 
@@ -71,7 +70,6 @@
                       %strong= venue.num_vouchers
                       %small left
 
-              /%a{href: main_app.deal_popup_not_logged_path(offer)}
               %a.deallink.popup-link{href: venue.offers.order("min_diners ASC").first.id.to_s, :"data-slug" => venue.slug, :"data-disabled" => "#{venue.sold_out?}", :"data-mixpanel-event" => "Clicked on a Restaurant", :"data-mixpanel-options" => {restaurant: venue.name}.to_json }
                 %span.price
                   %strong= number_to_currency(venue.offers.order("min_diners ASC").first.price, :precision => 0)

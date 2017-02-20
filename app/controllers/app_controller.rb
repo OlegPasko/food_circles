@@ -1,5 +1,5 @@
 class AppController < ApplicationController
- #tkxel_dev: Main controller for Voucher creation and Email notifications
+  #tkxel_dev: Main controller for Voucher creation and Email notifications
   def index
     Reservation.all(:select => "created_at, user_id")
     @vid = params[:v] if params[:v]
@@ -88,7 +88,7 @@ class AppController < ApplicationController
       if user.phone
         #code = (user.name ? "#{user.name.titleize} for #{r.offer.min_diners}" : r.coupon)
         code = r.coupon
-        sendText(user.phone,"Thank you for using Foodcircles! Your code is \"#{code}\" for #{r.offer.name} at #{r.venue.name}.  Please visit http://staging.foodcircles.net/payment/used?code=#{code} to mark your code used.")
+        sendText(user.phone, "Thank you for using Foodcircles! Your code is \"#{code}\" for #{r.offer.name} at #{r.venue.name}.  Please visit http://staging.foodcircles.net/payment/used?code=#{code} to mark your code used.")
       end
     rescue
       #we tried

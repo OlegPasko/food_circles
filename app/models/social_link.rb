@@ -7,12 +7,12 @@ class SocialLink < ApplicationRecord
 
   def source
     case url
-    when /www\.yelp\.(.+)/
-      "yelp"
-    when /www\.twitter\.(.+)/
-      "twitter"
-    else
-      "facebook"
+      when /www\.yelp\.(.+)/
+        "yelp"
+      when /www\.twitter\.(.+)/
+        "twitter"
+      else
+        "facebook"
     end
   end
 end

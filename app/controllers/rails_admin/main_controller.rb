@@ -40,7 +40,7 @@ module RailsAdmin
     end
 
     private
-    
+
     def get_layout
       "rails_admin/#{request.headers['X-PJAX'] ? 'pjax' : 'application'}"
     end
@@ -51,26 +51,26 @@ module RailsAdmin
 
     def get_sort_hash(model_config)
       abstract_model = model_config.abstract_model
-      params[:sort] = params[:sort_reverse] = nil unless model_config.list.fields.map {|f| f.name.to_s}.include? params[:sort]
+      params[:sort] = params[:sort_reverse] = nil unless model_config.list.fields.map { |f| f.name.to_s }.include? params[:sort]
 
       params[:sort] ||= model_config.list.sort_by.to_s
       params[:sort_reverse] ||= 'false'
 
-      field = model_config.list.fields.find{ |f| f.name.to_s == params[:sort] }
+      field = model_config.list.fields.find { |f| f.name.to_s == params[:sort] }
 
       column = if field.nil? || field.sortable == true # use params[:sort] on the base table
-        "#{abstract_model.table_name}.#{params[:sort]}"
-      elsif field.sortable == false # use default sort, asked field is not sortable
-        "#{abstract_model.table_name}.#{model_config.list.sort_by}"
-      elsif field.sortable.is_a?(String) && field.sortable.include?('.') # just provide sortable, don't do anything smart
-        field.sortable
-      elsif field.sortable.is_a?(Hash) # just join sortable hash, don't do anything smart
-        "#{field.sortable.keys.first}.#{field.sortable.values.first}"
-      elsif field.association? # use column on target table
-        "#{field.associated_model_config.abstract_model.table_name}.#{field.sortable}"
-      else # use described column in the field conf.
-        "#{abstract_model.table_name}.#{field.sortable}"
-      end
+                 "#{abstract_model.table_name}.#{params[:sort]}"
+               elsif field.sortable == false # use default sort, asked field is not sortable
+                 "#{abstract_model.table_name}.#{model_config.list.sort_by}"
+               elsif field.sortable.is_a?(String) && field.sortable.include?('.') # just provide sortable, don't do anything smart
+                 field.sortable
+               elsif field.sortable.is_a?(Hash) # just join sortable hash, don't do anything smart
+                 "#{field.sortable.keys.first}.#{field.sortable.values.first}"
+               elsif field.association? # use column on target table
+                 "#{field.associated_model_config.abstract_model.table_name}.#{field.sortable}"
+               else # use described column in the field conf.
+                 "#{abstract_model.table_name}.#{field.sortable}"
+               end
 
       reversed_sort = (field ? field.sort_reverse? : model_config.list.sort_reverse?)
       {:sort => column, :sort_reverse => (params[:sort_reverse] == reversed_sort.to_s)}
@@ -79,18 +79,18 @@ module RailsAdmin
     def redirect_to_on_success
       notice = t("admin.flash.successful", :name => @model_config.label, :action => t("admin.actions.#{@action.key}.done"))
       if params[:_add_another]
-        redirect_to new_path(:return_to => params[:return_to]), :flash => { :success => notice }
+        redirect_to new_path(:return_to => params[:return_to]), :flash => {:success => notice}
       elsif params[:_add_edit]
-        redirect_to edit_path(:id => @object.id, :return_to => params[:return_to]), :flash => { :success => notice }
+        redirect_to edit_path(:id => @object.id, :return_to => params[:return_to]), :flash => {:success => notice}
       else
-        redirect_to back_or_index, :flash => { :success => notice }
+        redirect_to back_or_index, :flash => {:success => notice}
       end
     end
 
     def sanitize_params_for!(action, model_config = @model_config, _params = params[@abstract_model.param_key])
       return unless _params.present?
       fields = model_config.send(action).fields
-      fields.select{ |f| f.respond_to?(:parse_input) }.each {|f| f.parse_input(_params) }
+      fields.select { |f| f.respond_to?(:parse_input) }.each { |f| f.parse_input(_params) }
 
       fields.select(&:nested_form).each do |association|
         children_params = association.multiple? ? _params[association.method_name].try(:values) : [_params[association.method_name]].compact
@@ -108,18 +108,18 @@ module RailsAdmin
 
       respond_to do |format|
         format.html { render whereto, :status => :not_acceptable }
-        format.js   { render whereto, :layout => false, :status => :not_acceptable  }
+        format.js { render whereto, :layout => false, :status => :not_acceptable }
       end
     end
 
     def check_for_cancel
       if params[:_continue]
-        redirect_to(back_or_index, :flash => { :info => t("admin.flash.noaction") })
+        redirect_to(back_or_index, :flash => {:info => t("admin.flash.noaction")})
       end
     end
 
     def get_collection(model_config, scope, pagination)
-      associations = model_config.list.fields.select {|f| f.type == :belongs_to_association && !f.polymorphic? }.map {|f| f.association[:name] }
+      associations = model_config.list.fields.select { |f| f.type == :belongs_to_association && !f.polymorphic? }.map { |f| f.association[:name] }
       options = {}
       options = options.merge(:page => (params[:page] || 1).to_i, :per => (params[:per] || model_config.list.items_per_page)) if pagination
       options = options.merge(:include => associations) unless associations.blank?
@@ -137,7 +137,7 @@ module RailsAdmin
       source_model_config = source_abstract_model.config
       source_object = source_abstract_model.get(params[:source_object_id])
       action = params[:current_action].in?(['create', 'update']) ? params[:current_action] : 'edit'
-      @association = source_model_config.send(action).fields.find{|f| f.name == params[:associated_collection].to_sym }.with(:controller => self, :object => source_object)
+      @association = source_model_config.send(action).fields.find { |f| f.name == params[:associated_collection].to_sym }.with(:controller => self, :object => source_object)
       @association.associated_collection_scope
     end
 

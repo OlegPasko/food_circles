@@ -204,7 +204,7 @@ textarea.field.small { padding:10px; width:240px; height:73px; }
 .white[class^="arrow-"], .white[class*=" arrow-"] { color:#fff; }
 
 /*=== Icons ===*/
-[class^="icon-"], [class*=" icon-"] { display:inline-block; background:url(images/sprite.png) no-repeat 0 0; border:none; text-align:center; *display:inline; *zoom:1; }
+[class^="icon-"], [class*=" icon-"] { display:inline-block; background:asset-url('sprite.png') no-repeat 0 0; border:none; text-align:center; *display:inline; *zoom:1; }
 
 [class^="icon-soc-"], [class*=" icon-soc-"] { width:28px; height:28px; }
 
@@ -305,7 +305,7 @@ textarea.field.small { padding:10px; width:240px; height:73px; }
 
 
 /*=== Logo ===*/
-#logo { float:left; background:url(images/sprite.png) no-repeat 0 0; width:132px; height:116px; font-size:0; line-height:0; text-indent:-4000px; margin-right:31px; }
+#logo { float:left; background: asset-url('sprite.png') no-repeat 0 0; width:132px; height:116px; font-size:0; line-height:0; text-indent:-4000px; margin-right:31px; }
 
 /*=== Tagline ===*/
 .tagline { float:left; font:italic 20px 'NeutrafaceSlab', serif; color:#7e7e7e; padding:48px 0 0; }

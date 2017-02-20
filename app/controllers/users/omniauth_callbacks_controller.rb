@@ -74,7 +74,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def twitter_signup
-    @user = User.find_by_email( params[:email])
+    @user = User.find_by_email(params[:email])
     if @user.nil?
       @user = User.new(name: session[:name],
                        provider: session[:provider],

@@ -1,0 +1,20 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/setup'
+    - 'config/database.yml'
+    - 'config/secrets.yml'
+    - 'config/initializers/devise.rb'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'db/migrate/**'
+    - 'spec/controllers/**/*'
+  Rails:
+    Enabled: true
+
+Metrics/LineLength:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false

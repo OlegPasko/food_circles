@@ -2,26 +2,26 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 
-Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.paths << Rails.root.join("app", "assets")
-Rails.application.config.assets.paths << Rails.root.join("vendor", "assets")
-Rails.application.config.assets.paths << Rails.root.join("public", "assets")
+# Rails.application.config.assets.version = '1.0'
+# Rails.application.config.assets.paths << Rails.root.join("app", "assets")
+# Rails.application.config.assets.paths << Rails.root.join("vendor", "assets")
+# Rails.application.config.assets.paths << Rails.root.join("public", "assets")
 
-Rails.application.config.assets.precompile += %w( jquerysmartbanner.css )
-Rails.application.config.assets.precompile += %w( colorbox.css )
+# Rails.application.config.assets.precompile += %w( jquerysmartbanner.css )
+# Rails.application.config.assets.precompile += %w( colorbox.css )
 # Rails.application.config.assets.precompile += %w( home.css )
-Rails.application.config.assets.precompile += %w( colorbox.js )
-Rails.application.config.assets.precompile += %w( fonts.css )
+# Rails.application.config.assets.precompile += %w( colorbox.js )
+# Rails.application.config.assets.precompile += %w( fonts.css )
 # Rails.application.config.assets.precompile += %w( restaurants.css )
 # Rails.application.config.assets.precompile += %w( restaurants.js )
 # Rails.application.config.assets.precompile += %w( nonprofits.css )
 # Rails.application.config.assets.precompile += %w( nonprofits.js )
 # Rails.application.config.assets.precompile += %w( students.css )
 # Rails.application.config.assets.precompile += %w( students.js )
-Rails.application.config.assets.precompile += %w( jquerysmartbanner.js )
+# Rails.application.config.assets.precompile += %w( jquerysmartbanner.js )
 # Rails.application.config.assets.precompile += %w( home.js )
 # Rails.application.config.assets.precompile += %w( colorbox.js )
-Rails.application.config.assets.precompile += %w( fonts.js )
+# Rails.application.config.assets.precompile += %w( fonts.js )
 # Rails.application.config.assets.precompile += %w( faq.css )
 # Rails.application.config.assets.precompile += %w( faq.js )
 # Rails.application.config.assets.precompile += %w( timeline.js )

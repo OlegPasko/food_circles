@@ -1,130 +1,130 @@
 <% content_for(:active_tab) do %>
-<div class="user-invites">
-  <%= link_to facebook_share_url("Buy One, Feed One", "Local restaurants, $1 appetizers, 100% donated to feed hungry children.", root_url), class: "btn-facebook grad full-width" do %>
-    <i class="icon-btn-facebook medium"></i>Share
-  <% end %>
+    <div class="user-invites">
+      <%= link_to facebook_share_url("Buy One, Feed One", "Local restaurants, $1 appetizers, 100% donated to feed hungry children.", root_url), class: "btn-facebook grad full-width" do %>
+          <i class="icon-btn-facebook medium"></i>Share
+      <% end %>
 
-  <%= link_to twitter_share_url("Your appetite is powerful. Local restaurants, $1 dishes, 100% donated to feed hungry children. @foodcircles", root_url), class: "btn-twitter grad full-width" do %>
-    <i class="icon-btn-twitter medium"></i>Share
-  <% end %>
+      <%= link_to twitter_share_url("Your appetite is powerful. Local restaurants, $1 dishes, 100% donated to feed hungry children. @foodcircles", root_url), class: "btn-twitter grad full-width" do %>
+          <i class="icon-btn-twitter medium"></i>Share
+      <% end %>
 
-  <div class="balloon">
-    <i class="arrow-up"><i class="arrow-up"></i></i>
-    You can feed a child; your network can feed a classroom.
-    <a href="#" class="icon-x close"></a>
-  </div><!-- /.balloon -->
-</div><!-- /.user-invites -->
-<%-if @payments.empty? && @reservations.empty? %>
-  <div class="no-activity-message">
-    <p>I see you haven’t used FoodCircles yet.<br> Let’s get started on our journey to end hunger.</p>
-    <a href="http://joinfoodcircles.org/">View Restaurants</a>
-  </div><!-- /.no-activity-message -->
-<%- end %>
-<div class="timeline">
-  <%-if @payments.empty? && @reservations.empty? %>
-  <div class="tab-cnt active" id="timeline">
-      <div class="block left">
-        <div class="cnt">
-          <div class="head">
-            <h5>Georgio’s Pizza</h5>
-            <p>3/12/13</p>
-          </div><!-- /.head -->
-          <a href="#" class="body">
-            <span>View Reciept</span>
-            <img src="css/images/brownies-med.jpg" alt="" width="205" height="155" />
-          </a><!-- /.body -->
-          <div class="foot">
-            <div class="kids">
-              <i class="icon-kid"></i>
-              2
-            </div><!-- /.kids -->
-            <div class="socials">
-              <a href="#" class="icon-yellow-facebook"></a>
-              <a href="#" class="icon-yellow-twitter"></a>
-            </div><!-- /.socials -->
-            <span class="divider"></span>
-          </div><!-- /.foot -->
-        </div><!-- /.cnt -->
-        <i class="arrow-right"><i class="arrow-right"></i></i>
-        <i class="circle"></i>
-      </div><!-- /.block left -->
-      <div class="block right">
-        <div class="cnt">
-          <div class="head">
-            <h5>Stella’s Lounge</h5>
-            <p>3/03/13</p>
-          </div><!-- /.head -->
-          <a href="#" class="body">
-            <span>View Reciept</span>
-            <img src="css/images/crack-fries-med.jpg" alt="" width="205" height="155" />
-          </a><!-- /.body -->
-          <div class="foot">
-            <div class="kids">
-              <i class="icon-kid"></i>
-              2
-            </div><!-- /.kids -->
-            <div class="socials">
-              <a href="#" class="icon-yellow-facebook"></a>
-              <a href="#" class="icon-yellow-twitter"></a>
-            </div><!-- /.socials -->
-            <span class="divider"></span>
-          </div><!-- /.foot -->
-        </div><!-- /.cnt -->
-        <i class="arrow-left"><i class="arrow-left"></i></i>
-        <i class="circle"></i>
-      </div><!-- /.block right -->
-      <div class="block left">
-        <div class="cnt">
-          <div class="head">
-            <h5>Two Beards Deli</h5>
-            <p>3/01/13</p>
-          </div><!-- /.head -->
-          <a href="#" class="body">
-            <span>View Reciept</span>
-            <img src="css/images/fountain-drinks-med.jpg" alt="" width="205" height="155" />
-          </a><!-- /.body -->
-          <div class="foot">
-            <div class="kids">
-              <i class="icon-kid"></i>
-              2
-            </div><!-- /.kids -->
-            <div class="socials">
-              <a href="#" class="icon-yellow-facebook"></a>
-              <a href="#" class="icon-yellow-twitter"></a>
-            </div><!-- /.socials -->
-            <span class="divider"></span>
-          </div><!-- /.foot -->
-        </div><!-- /.cnt -->
-        <i class="arrow-right"><i class="arrow-right"></i></i>
-        <i class="circle"></i>
-      </div><!-- /.block left -->
-      <div class="block right highlight">
-        <div class="cnt">
-          <h5><a href="#">Jonathan Kumar</a></h5>
-          <div class="kids">
-            <i class="icon-kid-small"></i> 2
-          </div><!-- /.kids -->
-          <p><a href="#">San Chez Bistro</a></p>
-          <img src="css/images/crack-fries-small.jpg" alt="" width="75" height="90" />
-        </div><!-- /.cnt -->
-        <i class="arrow-left"><i class="arrow-left"></i></i>
-        <i class="circle"></i>
-      </div><!-- /.block right -->
-      <span class="line"></span>
+      <div class="balloon">
+        <i class="arrow-up"><i class="arrow-up"></i></i>
+        You can feed a child; your network can feed a classroom.
+        <a href="#" class="icon-x close"></a>
+      </div><!-- /.balloon -->
+    </div><!-- /.user-invites -->
+    <%- if @payments.empty? && @reservations.empty? %>
+        <div class="no-activity-message">
+          <p>I see you haven’t used FoodCircles yet.<br> Let’s get started on our journey to end hunger.</p>
+          <a href="http://joinfoodcircles.org/">View Restaurants</a>
+        </div><!-- /.no-activity-message -->
+    <%- end %>
+    <div class="timeline">
+      <%- if @payments.empty? && @reservations.empty? %>
+          <div class="tab-cnt active" id="timeline">
+            <div class="block left">
+              <div class="cnt">
+                <div class="head">
+                  <h5>Georgio’s Pizza</h5>
+                  <p>3/12/13</p>
+                </div><!-- /.head -->
+                <a href="#" class="body">
+                  <span>View Reciept</span>
+                  <img src="css/images/brownies-med.jpg" alt="" width="205" height="155"/>
+                </a><!-- /.body -->
+                <div class="foot">
+                  <div class="kids">
+                    <i class="icon-kid"></i>
+                    2
+                  </div><!-- /.kids -->
+                  <div class="socials">
+                    <a href="#" class="icon-yellow-facebook"></a>
+                    <a href="#" class="icon-yellow-twitter"></a>
+                  </div><!-- /.socials -->
+                  <span class="divider"></span>
+                </div><!-- /.foot -->
+              </div><!-- /.cnt -->
+              <i class="arrow-right"><i class="arrow-right"></i></i>
+              <i class="circle"></i>
+            </div><!-- /.block left -->
+            <div class="block right">
+              <div class="cnt">
+                <div class="head">
+                  <h5>Stella’s Lounge</h5>
+                  <p>3/03/13</p>
+                </div><!-- /.head -->
+                <a href="#" class="body">
+                  <span>View Reciept</span>
+                  <img src="css/images/crack-fries-med.jpg" alt="" width="205" height="155"/>
+                </a><!-- /.body -->
+                <div class="foot">
+                  <div class="kids">
+                    <i class="icon-kid"></i>
+                    2
+                  </div><!-- /.kids -->
+                  <div class="socials">
+                    <a href="#" class="icon-yellow-facebook"></a>
+                    <a href="#" class="icon-yellow-twitter"></a>
+                  </div><!-- /.socials -->
+                  <span class="divider"></span>
+                </div><!-- /.foot -->
+              </div><!-- /.cnt -->
+              <i class="arrow-left"><i class="arrow-left"></i></i>
+              <i class="circle"></i>
+            </div><!-- /.block right -->
+            <div class="block left">
+              <div class="cnt">
+                <div class="head">
+                  <h5>Two Beards Deli</h5>
+                  <p>3/01/13</p>
+                </div><!-- /.head -->
+                <a href="#" class="body">
+                  <span>View Reciept</span>
+                  <img src="css/images/fountain-drinks-med.jpg" alt="" width="205" height="155"/>
+                </a><!-- /.body -->
+                <div class="foot">
+                  <div class="kids">
+                    <i class="icon-kid"></i>
+                    2
+                  </div><!-- /.kids -->
+                  <div class="socials">
+                    <a href="#" class="icon-yellow-facebook"></a>
+                    <a href="#" class="icon-yellow-twitter"></a>
+                  </div><!-- /.socials -->
+                  <span class="divider"></span>
+                </div><!-- /.foot -->
+              </div><!-- /.cnt -->
+              <i class="arrow-right"><i class="arrow-right"></i></i>
+              <i class="circle"></i>
+            </div><!-- /.block left -->
+            <div class="block right highlight">
+              <div class="cnt">
+                <h5><a href="#">Jonathan Kumar</a></h5>
+                <div class="kids">
+                  <i class="icon-kid-small"></i> 2
+                </div><!-- /.kids -->
+                <p><a href="#">San Chez Bistro</a></p>
+                <img src="css/images/crack-fries-small.jpg" alt="" width="75" height="90"/>
+              </div><!-- /.cnt -->
+              <i class="arrow-left"><i class="arrow-left"></i></i>
+              <i class="circle"></i>
+            </div><!-- /.block right -->
+            <span class="line"></span>
 
-  <%-else%>
-    <%= render :partial => "payment", :collection => @payments %>
-    <%= render :partial => "reservation", :collection => @reservations, :locals => {:total_payments => @payments.count } %>
+      <%- else %>
+          <%= render :partial => "payment", :collection => @payments %>
+          <%= render :partial => "reservation", :collection => @reservations, :locals => {:total_payments => @payments.count} %>
 
-    <span class="line"></span>
-  </div><!-- /.timeline -->
-  <%-end%>
+          <span class="line"></span>
+          </div><!-- /.timeline -->
+      <%- end %>
 <% end %>
-<%= render :partial => "shared/account", :locals => {:active_tab => "timeline" }%>
+<%= render :partial => "shared/account", :locals => {:active_tab => "timeline"} %>
 <%- if params[:reciept_id] %>
-  <script type="text/javascript">
-    $( function() {
-      $.popupOpen('/reciept/<%= params[:reciept_id] %>')
-    } )
-  </script>
+    <script type="text/javascript">
+      $(function () {
+        $.popupOpen('/reciept/<%= params[:reciept_id] %>')
+      })
+    </script>
 <%- end %>

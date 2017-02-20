@@ -6,6 +6,6 @@ class AddSocialTokensToUser < ActiveRecord::Migration
     add_column :users, :facebok_token, :string
     add_column :users, :has_twitter, :boolean
     add_column :users, :has_facebook, :boolean
-    
+
   end
 end

@@ -20,7 +20,7 @@ class StripePaymentsController < ApplicationController
       #tkxel_dev: create Customers and save them on stripe DB.
       customer = Stripe::Customer.create(
           :email => current_user.email,
-          :card  => params[:stripe_token]
+          :card => params[:stripe_token]
       )
       current_user.stripe_customer_token = customer.id
       current_user.save
@@ -28,10 +28,10 @@ class StripePaymentsController < ApplicationController
 
     #tkxel_dev: Charges to be deducted handle here , Credit card info. validation also complete in this phase.
     charge = Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => (@amount * 100).to_i,
+        :customer => customer.id,
+        :amount => (@amount * 100).to_i,
         :description => offer.venue.name + ' - ' + offer.name,
-        :currency    => 'usd'
+        :currency => 'usd'
     )
 
     payment = Payment.create(
@@ -47,14 +47,14 @@ class StripePaymentsController < ApplicationController
     #tkxel_dev: Error messages in case of incorrect Credentilas
 
     UserMailer.voucher(current_user, payment).deliver
-    
+
     unless current_user.phone.nil?
       SmsVoucherSender.new(current_user.phone, payment).send
     end
-    
+
     current_user.payments << payment
 
-    enqueue_mix_panel_event("Made a purchase", {restaurant: offer.venue.name, offer: offer.name })
+    enqueue_mix_panel_event("Made a purchase", {restaurant: offer.venue.name, offer: offer.name})
 
     respond_to do |format|
       format.html do

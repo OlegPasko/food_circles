@@ -3,11 +3,11 @@ class OpenTime < ApplicationRecord
 
   belongs_to :openable, polymorphic: true
 
-  validates_presence_of :start,:end
+  validates_presence_of :start, :end
 
   def as_json(options={})
-    { start: self.start,
-      end: self.end
+    {start: self.start,
+     end: self.end
     }
   end
 end

@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<title><%= content_for?(:title) ? content_for(:title) : 'FoodCircles – Try a Local Dish for $1 or More. 100% of Purchases Fund Meals for Malnourished Children.' %></title>
-    <meta name="p:domain_verify" content="569802fdc2acbfc3742a1204724a08f2"/>
-	<%
-      if @meta_tags.nil?
+<head>
+  <title><%= content_for?(:title) ? content_for(:title) : 'FoodCircles – Try a Local Dish for $1 or More. 100% of Purchases Fund Meals for Malnourished Children.' %></title>
+  <meta name="p:domain_verify" content="569802fdc2acbfc3742a1204724a08f2"/>
+  <%
+    if @meta_tags.nil?
       set_meta_tags :og => {
-            :title    => 'FoodCircles — Buy One, Feed One.',
-            :description    => 'Try a Dish at a Local Restaurant for Just $1. 100% of Your Purchase is Donated to Give One Dinner to a Child In Need.',
-            :type     => 'product',
-            :url      => url_for(:only_path => false),
-            :site_name => "FoodCircles"
-          }
-      end
-    %>
+          :title => 'FoodCircles — Buy One, Feed One.',
+          :description => 'Try a Dish at a Local Restaurant for Just $1. 100% of Your Purchase is Donated to Give One Dinner to a Child In Need.',
+          :type => 'product',
+          :url => url_for(:only_path => false),
+          :site_name => "FoodCircles"
+      }
+    end
+  %>
 
-    <%= display_meta_tags %>
-	<meta name="author" content="FoodCircles LLC">
-    <meta name="apple-itunes-app" content="app-id=710592600">
-    <meta name="google-play-app" content="app-id=co.foodcircles">
-    <meta name="viewport" content="width=device-width">
-	<link rel="apple-touch-icon" href="https://lh4.ggpht.com/kVGgp__A6KjNT9R9Dh_CBZavUvbNkAxTm4G5WpTkl1azWBpIam7IPsz1L-XI5Ddxfgg=w300
-">
-	<%= stylesheet_link_tag "jquerysmartbanner", :media => "all" %>
-    <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= display_meta_tags %>
+  <meta name="author" content="FoodCircles LLC">
+  <meta name="apple-itunes-app" content="app-id=710592600">
+  <meta name="google-play-app" content="app-id=co.foodcircles">
+  <meta name="viewport" content="width=device-width">
+  <link rel="apple-touch-icon" href="https://lh4.ggpht.com/kVGgp__A6KjNT9R9Dh_CBZavUvbNkAxTm4G5WpTkl1azWBpIam7IPsz1L-XI5Ddxfgg=w300">
 
-    <!--<%= stylesheet_link_tag "#{controller_name}", :media => "all" if FoodCircles::Application.assets.find_asset("#{controller_name}.css") %>-->
-    
-    <%= stylesheet_link_tag "colorbox", :media => "all" %>
-    <%= stylesheet_link_tag "fonts", :media => "all" %>
-    <%= javascript_include_tag "https://js.stripe.com/v1/", "application", "jquerysmartbanner" %>
-    <%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';" %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/" %>
+  <%= javascript_tag "Stripe.publishableKey = '#{Rails.configuration.stripe[:publishable_key]}';" %>
 
-    <!--<%= javascript_include_tag  'home', "#{controller_name}" if FoodCircles::Application.assets.find_asset("#{controller_name}.js") %>-->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <%= csrf_meta_tags %>
 
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<%= tag :meta, :name => 'stripe-key', :content => Rails.configuration.stripe[:publishable_key] %>
-    <%# render 'layouts/google-analytics' %>
-    <%# render 'layouts/mix-panel' %>
-  </head>
+<%- custom_body_classes << (user_signed_in? ? 'logged-in' : 'not-logged') %>
 
-  <%- custom_body_classes << (user_signed_in? ? 'logged-in' : 'not-logged') %>
-
-  <body class="<%= custom_body_classes.join ' ' %>" data-meta="<%="#{controller_name}"%>#<%="#{action_name}"%>">
-    <div id='wrapper' >
-        <div id ='flash'>
-          <%= flash_messages %>
-        </div>
-        <%= render :partial => 'partials/header' %>
-        <%= yield %>
-        <%= render :partial => "partials/footer" %>
-    </div>
-    <script type="text/javascript">
-    	$(function () { $.smartbanner({ daysHidden: 0, daysReminder: 0, title:'FoodCircles' }) })
-    </script>
-  </body>
+<body class="<%= custom_body_classes.join ' ' %>" data-meta="<%= "#{controller_name}" %>#<%= "#{action_name}" %>">
+<div id='wrapper'>
+  <div id='flash'>
+    <%= flash_messages %>
+  </div>
+  <%= render 'partials/header' %>
+  <%= yield %>
+  <%= render 'partials/footer' %>
+</div>
+<script type="text/javascript">
+  $(function () {
+    $.smartbanner({daysHidden: 0, daysReminder: 0, title: 'FoodCircles'})
+  })
+</script>
+</body>
 </html>

@@ -1,6 +1,6 @@
 class Api::GeneralController < ApplicationController
   def get_mailchimp_users
-    
+
     begin
       gb = Gibbon::API.new
       number_of_users = gb.lists.list(:filters => {:list_name => Rails.configuration.mailchimp_list_name})["data"][0]["stats"]["member_count"]
@@ -10,6 +10,6 @@ class Api::GeneralController < ApplicationController
     rescue Exception => e
       render :json => {:error => true, :description => "An unexpected error happened"}
     end
-    
+
   end
 end
