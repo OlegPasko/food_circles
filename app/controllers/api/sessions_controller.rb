@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class Api::SessionsController < ApplicationController
-  before_filter :authenticate_user!, only: [:update_profile]
-  skip_before_filter :detect_email_omniauth
+  before_action :authenticate_user!, only: [:update_profile]
+  skip_before_action :detect_email_omniauth
 
   def sign_in
     if params[:user_email] && params[:user_password]

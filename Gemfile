@@ -1,10 +1,10 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
@@ -83,7 +83,7 @@ gem 'friendly_id'
 gem 'will_paginate'
 gem 'twitter', '~> 6.1'
 gem 'meta-tags'
-#gem 'high_voltage', github: 'thoughtbot/high_voltage'
+# gem 'high_voltage', github: 'thoughtbot/high_voltage'
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'rails_admin'

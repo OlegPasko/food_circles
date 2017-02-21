@@ -2,8 +2,8 @@
 class AchievementsController < ApplicationController
   layout 'achievements'
 
-  before_filter :authenticate_user!
-  before_filter :only_admins
+  before_action :authenticate_user!
+  before_action :only_admins
 
   def only_admins
     redirect_to '/' unless warden.user.is_admin?

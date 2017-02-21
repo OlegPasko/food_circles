@@ -2,7 +2,7 @@
 class Api::TimelineController < ApplicationController
   include PaymentCommons
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     load_payments

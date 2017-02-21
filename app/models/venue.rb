@@ -302,7 +302,7 @@ class Venue < ApplicationRecord
   end
 
   def self.updateRatings
-    Venue.all.each do |v|
+    Venue.all.find_each do |v|
       query = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=#{v.name} #{v.address} #{v.city} #{v.state.name}&sensor=true&key=#{PLACES_KEY}".gsub(/\s/, '+').delete("'")
       j = JSON.parse(open(query).read)
 

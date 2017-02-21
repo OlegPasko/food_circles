@@ -2,7 +2,7 @@
 class SettingsController < ApplicationController
   include PaymentCommons
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     enqueue_mix_panel_event 'Visits Settings Page'
