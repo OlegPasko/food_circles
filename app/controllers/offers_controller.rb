@@ -1,11 +1,12 @@
+# frozen_string_literal: true
 class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
 
     get_progress
 
-    if ['json', 'jsonp'].include?(params[:format])
-      render :json => @offer, :callback => params[:callback]
+    if %w(json jsonp).include?(params[:format])
+      render json: @offer, callback: params[:callback]
     end
   end
 
@@ -28,11 +29,10 @@ class OffersController < ApplicationController
         format.html { redirect_to @offer, notice: 'Asset was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @asset.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   def update
@@ -43,7 +43,7 @@ class OffersController < ApplicationController
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end

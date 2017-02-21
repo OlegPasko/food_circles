@@ -1,7 +1,7 @@
 class AppController < ApplicationController
   #tkxel_dev: Main controller for Voucher creation and Email notifications
   def index
-    Reservation.all(:select => "created_at, user_id")
+    Reservation.all(select: "created_at, user_id")
     @vid = params[:v] if params[:v]
     @oid = params[:o] if params[:o]
   end
@@ -31,17 +31,17 @@ class AppController < ApplicationController
   def submit
     user = User.find_by_email(params[:email].downcase)
     if !user
-      render :action => "redirect_new_info"
+      render action: "redirect_new_info"
       return
     else
       o = Offer.find params[:offer]
-      @r = user.reservations.create(:occasion => params[:occasion],
-                                    :offer_id => params[:offer],
-                                    :charity_id => params[:charity],
-                                    :name => user.name + " reservation",
-                                    :venue_id => o.venue.id,
-                                    :num_diners => o.min_diners,
-                                    :coupon => genCoupon)
+      @r = user.reservations.create(occasion: params[:occasion],
+                                    offer_id: params[:offer],
+                                    charity_id: params[:charity],
+                                    name: user.name + " reservation",
+                                    venue_id: o.venue.id,
+                                    num_diners: o.min_diners,
+                                    coupon: genCoupon)
       handle_text(user, @r)
       handle_email(user, @r)
     end
@@ -56,17 +56,17 @@ class AppController < ApplicationController
 
   def create_voucher
     user = User.find_by_email(params[:email].downcase)
-    if !user
-      user = User.create!({:email => params[:email], :password => "I don't care.", :name => params[:name], :phone => params[:phone]})
+    unless user
+      user = User.create!({email: params[:email], password: "I don't care.", name: params[:name], phone: params[:phone]})
     end
     o = Offer.find params[:offer]
-    @r = user.reservations.create(:occasion => params[:occasion],
-                                  :offer_id => params[:offer],
-                                  :charity_id => params[:charity],
-                                  :name => user.name + "'s reservation",
-                                  :venue_id => o.venue.id,
-                                  :num_diners => o.min_diners,
-                                  :coupon => genCoupon)
+    @r = user.reservations.create(occasion: params[:occasion],
+                                  offer_id: params[:offer],
+                                  charity_id: params[:charity],
+                                  name: user.name + "'s reservation",
+                                  venue_id: o.venue.id,
+                                  num_diners: o.min_diners,
+                                  coupon: genCoupon)
     handle_text(user, @r)
     handle_email(user, @r)
   end

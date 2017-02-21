@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class InboxController < ApplicationController
   include Mandrill::Rails::WebHookProcessor
 
@@ -9,7 +10,7 @@ class InboxController < ApplicationController
 
       inbound_mark_used(from_email, mail_subject, mail_text)
     end
-    render :nothing => true
+    render nothing: true
   end
 
   def inbound_mark_used(from_email, mail_subject, mail_text)
@@ -17,17 +18,17 @@ class InboxController < ApplicationController
     subject = mail_subject
     text = mail_text
 
-    if (subject == "used")
+    if subject == 'used'
       payment = Payment.find_by_code(text)
-      payment.state = "Used"
+      payment.state = 'Used'
       payment.save
     else
-      #This needs to be updated to lookup payment by from e-mail
+      # This needs to be updated to lookup payment by from e-mail
       payment = Payment.find_by_code(text)
-      payment.state = "Used"
+      payment.state = 'Used'
       payment.save
     end
 
-    render :nothing => true
+    render nothing: true
   end
 end

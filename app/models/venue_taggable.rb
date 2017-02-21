@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class VenueTaggable < ApplicationRecord
   belongs_to :venue_tag
   belongs_to :venue

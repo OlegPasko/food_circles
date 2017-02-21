@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Charity < ApplicationRecord
   dragonfly_accessor :image
   dragonfly_accessor :logo
@@ -12,24 +13,24 @@ class Charity < ApplicationRecord
   has_many :follow_up_notes
   has_many :charity_photos
 
-  CHARITY_TYPE_ENUM = %w(main extra)
+  CHARITY_TYPE_ENUM = %w(main extra).freeze
 
   validates :name, presence: true
-  validates :charity_type, presence: true, :inclusion => {:in => CHARITY_TYPE_ENUM}
+  validates :charity_type, presence: true, inclusion: { in: CHARITY_TYPE_ENUM }
 
   rails_admin do
     edit do
       configure :subdomain do
-        label "Desired Subdomain"
+        label 'Desired Subdomain'
       end
       configure :charity_type, :enum do
-        label "Charity Type"
+        label 'Charity Type'
         enum do
           CHARITY_TYPE_ENUM
         end
       end
       configure :use_funds do
-        label "Use of Funds"
+        label 'Use of Funds'
       end
     end
   end
@@ -38,49 +39,44 @@ class Charity < ApplicationRecord
     where(active: true)
   end
 
-  def as_json(options={})
-    {id: self.id,
-     name: self.name,
-     address: self.address,
-     city: self.city,
-     description: self.description,
-     state: self.state.name,
-     image: self.image.present? ? self.image.url : ''
-    }
+  def as_json(_options = {})
+    { id: id,
+      name: name,
+      address: address,
+      city: city,
+      description: description,
+      state: state.name,
+      image: image.present? ? image.url : '' }
   end
 
   def full_address
-    "#{self.address}, #{self.city}, #{self.state.name}"
+    "#{address}, #{city}, #{state.name}"
   end
 
   def raw_msg_usefunds(amt)
-    uf = self.use_funds.dup
+    uf = use_funds.dup
     uf['%amt%'] = amt.to_s if uf.include? '%amt%'
 
     amt_mult = uf.match('%amt:([0-9\.]+)%')
-    uf[amt_mult[0]] = (amt.to_f*amt_mult[1].to_f).to_s unless amt_mult.nil?
+    uf[amt_mult[0]] = (amt.to_f * amt_mult[1].to_f).to_s unless amt_mult.nil?
 
     uf_array = ['%s%', '%ren%']
 
     uf_array.each do |t|
-      if uf.include? t
-        if amt > 1
-          uf[t] = t[1...-1]
-        else
-          uf[t] = ''
-        end
-      end
+      next unless uf.include? t
+      uf[t] = if amt > 1
+                t[1...-1]
+              else
+                ''
+              end
     end
 
-    return uf
+    uf
   end
 
   def msg_usefunds(amt)
     raw = raw_msg_usefunds(amt)
 
-    return ActionController::Base.helpers.strip_tags(raw)
-
+    ActionController::Base.helpers.strip_tags(raw)
   end
-
-
 end

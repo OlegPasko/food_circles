@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OmniauthAskForEmailController < ApplicationController
   before_filter :authenticate_user!
 
@@ -9,7 +10,7 @@ class OmniauthAskForEmailController < ApplicationController
     if current_user.save
       redirect_to root_path
     else
-      redirect_to :back, :alert => "There was an error (email #{current_user.errors.messages[:email].first})"
+      redirect_to :back, alert: "There was an error (email #{current_user.errors.messages[:email].first})"
     end
   end
 end

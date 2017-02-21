@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Calculations
   class Weekly
     attr_reader :venues, :current_weekly_payments, :offers
@@ -21,12 +22,12 @@ module Calculations
     end
 
     def meal_goal
-      weekly_meal_goal = (3.0/4.0) * offers_count
+      weekly_meal_goal = (3.0 / 4.0) * offers_count
       rounddown(weekly_meal_goal.floor)
     end
 
     def weekly_progress
-      {current_progress: progress.floor, adjusted_total: meal_goal}
+      { current_progress: progress.floor, adjusted_total: meal_goal }
     end
 
     def percent
@@ -35,7 +36,8 @@ module Calculations
     end
 
     private
-    def rounddown(value, nearest=5)
+
+    def rounddown(value, nearest = 5)
       value - (value % nearest)
     end
 
@@ -44,7 +46,7 @@ module Calculations
     end
 
     def progress
-      current_weekly_payments.sum("amount")
+      current_weekly_payments.sum('amount')
     end
   end
 end

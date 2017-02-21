@@ -1,15 +1,15 @@
+# frozen_string_literal: true
 module OffersHelper
   def min_deals(group)
-
-    str = "(add $"
+    str = '(add $'
     if group == 4
-      str << "1"
+      str << '1'
     elsif group == 6
-      str << "2"
+      str << '2'
     else
-      return ""
+      return ''
     end
-    str << ")"
+    str << ')'
     str
   end
 end

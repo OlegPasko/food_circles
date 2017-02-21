@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 class NonprofitsController < ApplicationController
   def index
-    enqueue_mix_panel_event "Visits Non Profits Get Involved Sub Page"
+    enqueue_mix_panel_event 'Visits Non Profits Get Involved Sub Page'
   end
 
   def create
-    enqueue_mix_panel_event "Submits Non Profits Get Involved Form"
+    enqueue_mix_panel_event 'Submits Non Profits Get Involved Form'
 
-    if (params[:email])
+    if params[:email]
       if valid_email?(params[:email])
         signup
       else
@@ -27,7 +28,7 @@ class NonprofitsController < ApplicationController
 
     @notification = Notification.create
     @notification.content = "Name: #{name}, Organization: #{organization}, Email: #{email}, Website: #{website}"
-    @notification.ticker = "A nonprofits signup"
+    @notification.ticker = 'A nonprofits signup'
     @notification.save
   end
 

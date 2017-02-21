@@ -3,7 +3,7 @@
 #info
   %h1= @c.name
   %span.address= @c.address
-%img#venue_map{:src => "http://maps.google.com/maps/api/staticmap?zoom=14&size=700x170&maptype=roadmap&markers=color:red|#{@address}&sensor=false"}
+%img#venue_map{src: "http://maps.google.com/maps/api/staticmap?zoom=14&size=700x170&maptype=roadmap&markers=color:red|#{@address}&sensor=false"}
 .clear
 %b Region:
 .tag= @c.region.name

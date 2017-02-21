@@ -13,8 +13,8 @@
       %tr
         %td= reg[:email]
         %td= reg[:offer]
-        %td{:class => "num"}= reg[:our_price]
-        %td{:class => "num"}
+        %td{class: "num"}= reg[:our_price]
+        %td{class: "num"}
           #{reg[:amount_paid]} <b>(+#{(reg[:amount_paid] - reg[:our_price]).to_i} !)</b>
         %td= reg[:date]
         %td= reg[:charity]
