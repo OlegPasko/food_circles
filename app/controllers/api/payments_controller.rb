@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class Api::PaymentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   # POST /api/payments
   def create
@@ -13,9 +14,9 @@ class Api::PaymentsController < ApplicationController
       venue.save
       UserMailer.voucher(current_user, @payment).deliver
 
-      render json: {error: false, content: @payment.as_json}
+      render json: { error: false, content: @payment.as_json }
     else
-      render json: {error: true, description: "Error saving the payment", errors: @payment.errors.full_messages}
+      render json: { error: true, description: 'Error saving the payment', errors: @payment.errors.full_messages }
     end
   end
 end

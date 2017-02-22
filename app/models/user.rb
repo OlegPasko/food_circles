@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class User < ApplicationRecord
   include Validators
 
@@ -14,15 +15,15 @@ class User < ApplicationRecord
 
   # validates :email, on: :update, email: true
   # validates :email, on: :create, allow_nil: true, email: true
-  validates :email, on: :update, :'validators/email' => true
-  validates :email, on: :create, allow_nil: true, :'validators/email' => true
+  validates :email, on: :update, 'validators/email': true
+  validates :email, on: :create, allow_nil: true, 'validators/email': true
   has_many :reservations
   has_many :venues
   has_many :payments
   has_many :user_badges
   has_many :notification_requests
   has_many :watched_venues, through: :notification_requests, source: :venue
-  has_many :external_uids, class_name: "ExternalUID", dependent: :destroy
+  has_many :external_uids, class_name: 'ExternalUID', dependent: :destroy
 
   has_and_belongs_to_many :follow_up_notes
 
@@ -43,18 +44,18 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    self.admin
+    admin
   end
 
   def format
-    self.phone.gsub!(/[^0-9]/, "") if self.phone
+    phone.gsub!(/[^0-9]/, '') if phone
   end
 
   # Setup OmniAuth
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |user|
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes'], without_protection: true) do |user|
         user.attributes = params
         user.valid?
       end
@@ -63,29 +64,26 @@ class User < ApplicationRecord
     end
   end
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_for_facebook_oauth(auth, _signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create(name: auth.info.name,
                          provider: auth.provider,
                          email: auth.info.email,
                          uid: auth.uid,
-                         password: Devise.friendly_token[0, 20]
-
-      )
+                         password: Devise.friendly_token[0, 20])
     end
     user
   end
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+  def self.find_for_twitter_oauth(auth, _signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create(name: auth.info.name,
                          provider: auth.provider,
                          email: "#{auth.info.nickname}@twitter.com",
                          uid: auth.uid,
-                         password: Devise.friendly_token[0, 20]
-      )
+                         password: Devise.friendly_token[0, 20])
     end
     user
   end

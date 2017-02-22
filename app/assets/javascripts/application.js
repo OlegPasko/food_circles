@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require gmaps
+//= require iscroll
+//= require moment
 //= require_tree .
 
 $(function () {

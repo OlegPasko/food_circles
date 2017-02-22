@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class FollowUpChecker
-
   def initialize
   end
 
@@ -19,5 +19,4 @@ class FollowUpChecker
       UserMailer.followup_email(payment).deliver
     end
   end
-
 end

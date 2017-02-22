@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class VenuesController < ApplicationController
   protect_from_forgery except: :subscribe
 
   def index
-
     params[:lat] = nil if ['null'].include? params[:lat]
 
     if params[:offline]
@@ -25,9 +25,8 @@ class VenuesController < ApplicationController
       end
     end
 
-
-    if ['json', 'jsonp'].include?(params[:format])
-      if (params[:offline])
+    if %w(json jsonp).include?(params[:format])
+      if params[:offline]
         render json: (lat(params[:lat]) ? @venues.as_json(lat: params[:lat], lon: params[:lon], not_available: true) : @venues), callback: params[:callback]
       else
         render json: (lat(params[:lat]) ? @venues.as_json(lat: params[:lat], lon: params[:lon]) : @venues), callback: params[:callback]
@@ -39,7 +38,7 @@ class VenuesController < ApplicationController
     # @v = Venue.find(params[:id])
     @offer = Venue.find(params[:id]).offers.first
 
-    if ['json', 'jsonp'].include?(params[:format])
+    if %w(json jsonp).include?(params[:format])
       render json: @v, callback: params[:callback]
     end
   end
@@ -59,7 +58,7 @@ class VenuesController < ApplicationController
                        end
 
     respond_to do |format|
-      format.js { render partial, locals: {message: message} }
+      format.js { render partial, locals: { message: message } }
     end
   end
 
@@ -68,18 +67,18 @@ class VenuesController < ApplicationController
                          venue = Venue.find(params[:id])
                          user = current_user
                          notification_reqs = user.notification_requests.where(venue_id: venue.id)
-                         if notification_reqs.size > 0
+                         if !notification_reqs.empty?
                            notification_reqs.destroy_all
                            ['unsubscribe_success', 'Subscription cancelled']
                          else
-                           ['unsubscribe_success', "Already unsubscribed!"]
+                           ['unsubscribe_success', 'Already unsubscribed!']
                          end
                        else
                          ['unsubscribe_error', 'Sign in to unsubscribe.']
                        end
 
     respond_to do |format|
-      format.js { render partial, locals: {message: message} }
+      format.js { render partial, locals: { message: message } }
     end
   end
 
@@ -88,7 +87,7 @@ class VenuesController < ApplicationController
                    venue = Venue.find(params[:id])
                    user = current_user
                    notification_reqs = user.notification_requests.where(venue_id: venue.id)
-                   if notification_reqs.size > 0
+                   if !notification_reqs.empty?
                      true
                    else
                      false
@@ -98,7 +97,7 @@ class VenuesController < ApplicationController
                  end
 
     respond_to do |format|
-      format.json { render json: {subscribed: subscribed} }
+      format.json { render json: { subscribed: subscribed } }
     end
   end
 

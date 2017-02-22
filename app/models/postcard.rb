@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Postcard < ApplicationRecord
   after_create :notify_support
 

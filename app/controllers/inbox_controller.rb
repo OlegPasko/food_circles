@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class InboxController < ApplicationController
   include Mandrill::Rails::WebHookProcessor
 
@@ -17,14 +18,14 @@ class InboxController < ApplicationController
     subject = mail_subject
     text = mail_text
 
-    if (subject == "used")
+    if subject == 'used'
       payment = Payment.find_by_code(text)
-      payment.state = "Used"
+      payment.state = 'Used'
       payment.save
     else
-      #This needs to be updated to lookup payment by from e-mail
+      # This needs to be updated to lookup payment by from e-mail
       payment = Payment.find_by_code(text)
-      payment.state = "Used"
+      payment.state = 'Used'
       payment.save
     end
 

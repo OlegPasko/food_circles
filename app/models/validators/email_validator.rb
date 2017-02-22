@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # app/models/validators/email_validator.rb
 
 require 'mail'
@@ -9,8 +10,7 @@ module Validators
         parsed = Mail::Address.new(value)
       rescue Mail::Field::ParseError => e
       end
-      record.errors.add attribute, "is not valid" unless !parsed.nil? && parsed.address == value && parsed.local != value # cannot be a local address
+      record.errors.add attribute, 'is not valid' unless !parsed.nil? && parsed.address == value && parsed.local != value # cannot be a local address
     end
   end
 end
-

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FollowUpNote < ApplicationRecord
   belongs_to :charity
 
@@ -7,7 +8,6 @@ class FollowUpNote < ApplicationRecord
 
   validates :note, presence: true
 
-
   rails_admin do
     edit do
       configure :note do
@@ -15,5 +15,4 @@ class FollowUpNote < ApplicationRecord
       end
     end
   end
-
 end

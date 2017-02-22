@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+# frozen_string_literal: true
 # RailsAdmin config file. Generated on May 03, 2012 05:10
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
-
   # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
   # require 'i18n'
   # I18n.default_locale = :de
@@ -17,15 +17,13 @@ RailsAdmin.config do |config|
   # config.audit_with :paper_trail, User
 
   # Set the admin name here (optional second array element will appear in a beautiful RailsAdmin red ©)
-  config.main_app_name = ['Foodcircles', 'Admin']
+  config.main_app_name = %w(Foodcircles Admin)
   # or for a dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
-
 
   config.authorize_with do
     redirect_to '/' unless warden.user.is_admin?
   end
-
 
   #  ==> Global show view settings
   # Display empty fields in show views

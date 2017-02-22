@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 class RegistrationsController < Devise::RegistrationsController
-  #tkxel_dev: Devise Controller override for Email Forget and signup scenario and for Email Sending.
+  # tkxel_dev: Devise Controller override for Email Forget and signup scenario and for Email Sending.
 
-  prepend_before_filter :require_no_authentication, only: [:new, :create, :cancel]
-  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
+  prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
 
   # GET /resource/sign_up
   def new
@@ -79,13 +80,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update_needs_confirmation?(resource, previous)
     resource.respond_to?(:pending_reconfirmation?) &&
-        resource.pending_reconfirmation? &&
-        previous != resource.unconfirmed_email
+      resource.pending_reconfirmation? &&
+      previous != resource.unconfirmed_email
   end
 
   # Build a devise resource passing in the session. Useful to move
   # temporary session data to the newly created user.
-  def build_resource(hash=nil)
+  def build_resource(hash = nil)
     hash ||= resource_params || {}
     self.resource = resource_class.new_with_session(hash, session)
   end
@@ -104,8 +105,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up for inactive accounts. You need to overwrite
   # this method in your own RegistrationsController.
-  def after_inactive_sign_up_path_for(resource)
-    respond_to?(:root_path) ? root_path : "/"
+  def after_inactive_sign_up_path_for(_resource)
+    respond_to?(:root_path) ? root_path : '/'
   end
 
   # The default url to be used after updating a resource. You need to overwrite
@@ -119,5 +120,4 @@ class RegistrationsController < Devise::RegistrationsController
     send(:"authenticate_#{resource_name}!", force: true)
     self.resource = send(:"current_#{resource_name}")
   end
-
 end

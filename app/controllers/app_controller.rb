@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class AppController < ApplicationController
-  #tkxel_dev: Main controller for Voucher creation and Email notifications
+  # tkxel_dev: Main controller for Voucher creation and Email notifications
   def index
-    Reservation.all(select: "created_at, user_id")
+    Reservation.all(select: 'created_at, user_id')
     @vid = params[:v] if params[:v]
     @oid = params[:o] if params[:o]
   end
@@ -11,11 +12,8 @@ class AppController < ApplicationController
   end
 
   def getVenues
-
-
     @v = Venue.active.currently_available
     @vc = Venue.active.not_available
-
   end
 
   def getCharities
@@ -31,14 +29,14 @@ class AppController < ApplicationController
   def submit
     user = User.find_by_email(params[:email].downcase)
     if !user
-      render action: "redirect_new_info"
+      render action: 'redirect_new_info'
       return
     else
       o = Offer.find params[:offer]
       @r = user.reservations.create(occasion: params[:occasion],
                                     offer_id: params[:offer],
                                     charity_id: params[:charity],
-                                    name: user.name + " reservation",
+                                    name: user.name + ' reservation',
                                     venue_id: o.venue.id,
                                     num_diners: o.min_diners,
                                     coupon: genCoupon)
@@ -56,8 +54,8 @@ class AppController < ApplicationController
 
   def create_voucher
     user = User.find_by_email(params[:email].downcase)
-    if !user
-      user = User.create!({email: params[:email], password: "I don't care.", name: params[:name], phone: params[:phone]})
+    unless user
+      user = User.create!(email: params[:email], password: "I don't care.", name: params[:name], phone: params[:phone])
     end
     o = Offer.find params[:offer]
     @r = user.reservations.create(occasion: params[:occasion],
@@ -84,20 +82,17 @@ class AppController < ApplicationController
   protected
 
   def handle_text(user, r)
-    begin
-      if user.phone
-        #code = (user.name ? "#{user.name.titleize} for #{r.offer.min_diners}" : r.coupon)
-        code = r.coupon
-        sendText(user.phone, "Thank you for using Foodcircles! Your code is \"#{code}\" for #{r.offer.name} at #{r.venue.name}.  Please visit http://staging.foodcircles.net/payment/used?code=#{code} to mark your code used.")
-      end
-    rescue
-      #we tried
+    if user.phone
+      # code = (user.name ? "#{user.name.titleize} for #{r.offer.min_diners}" : r.coupon)
+      code = r.coupon
+      sendText(user.phone, "Thank you for using Foodcircles! Your code is \"#{code}\" for #{r.offer.name} at #{r.venue.name}.  Please visit http://staging.foodcircles.net/payment/used?code=#{code} to mark your code used.")
     end
+  rescue
+    # we tried
   end
 
   def handle_email(user, r)
-    #tkxel_dev:Send user voucher confirmation via Email
+    # tkxel_dev:Send user voucher confirmation via Email
     UserMailer.voucher(user, r).deliver
   end
-
 end

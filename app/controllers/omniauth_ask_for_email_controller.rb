@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class OmniauthAskForEmailController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
   end

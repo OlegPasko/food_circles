@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 class MobileController < ApplicationController
   def login
     @user = User.find_by_email(params[:email].downcase)
-    if !@user
-      @user = User.create!({email: params[:email], password: params[:password], name: params[:email]})
+    unless @user
+      @user = User.create!(email: params[:email], password: params[:password], name: params[:email])
     end
 
     o = Offer.find(params[:offer])
@@ -24,13 +25,13 @@ class MobileController < ApplicationController
     o = Offer.find(params[:offer])
     @user = User.find_by_email(params[:email])
     if @user
-      render json: {success: false, errors: 'Your account already exists. Please sign in instead.', status: 500}, callback: params[:callback]
+      render json: { success: false, errors: 'Your account already exists. Please sign in instead.', status: 500 }, callback: params[:callback]
       return
     end
     begin
-      @user = User.create!({email: params[:email], password: params[:password], name: params[:name]})
+      @user = User.create!(email: params[:email], password: params[:password], name: params[:name])
     rescue
-      render json: {success: false, errors: 'There was an error creating your account', status: 500}, callback: params[:callback]
+      render json: { success: false, errors: 'There was an error creating your account', status: 500 }, callback: params[:callback]
       return
     end
     @r = @user.reservations.create
@@ -62,6 +63,6 @@ class MobileController < ApplicationController
   def num_users
     count = User.count
 
-    render json: {count: count}
+    render json: { count: count }
   end
 end

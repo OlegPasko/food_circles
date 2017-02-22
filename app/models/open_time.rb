@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OpenTime < ApplicationRecord
   # DEPRECATED, SOON TO BE DELETED
 
@@ -5,9 +6,8 @@ class OpenTime < ApplicationRecord
 
   validates_presence_of :start, :end
 
-  def as_json(options={})
-    {start: self.start,
-     end: self.end
-    }
+  def as_json(_options = {})
+    { start: start,
+      end: self.end }
   end
 end

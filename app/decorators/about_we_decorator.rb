@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class AchievementsDecorator < Draper::Decorator
+class AboutWeDecorator < Draper::Decorator
   delegate_all
 
   # Define presentation-specific methods here. Helpers are accessed through

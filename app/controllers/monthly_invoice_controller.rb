@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class MonthlyInvoiceController < ApplicationController
   def monthly_invoice
     venue = Venue.find(params[:vid].to_i)

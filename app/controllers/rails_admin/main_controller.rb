@@ -1,23 +1,22 @@
+# frozen_string_literal: true
 module RailsAdmin
-
   class MainController < RailsAdmin::ApplicationController
-
     include ActionView::Helpers::TextHelper
     include RailsAdmin::MainHelper
     include RailsAdmin::ApplicationHelper
 
     layout :get_layout
 
-    before_filter :get_model, except: RailsAdmin::Config::Actions.all(:root).map(&:action_name)
-    before_filter :get_object, only: RailsAdmin::Config::Actions.all(:member).map(&:action_name)
-    before_filter :check_for_cancel
+    before_action :get_model, except: RailsAdmin::Config::Actions.all(:root).map(&:action_name)
+    before_action :get_object, only: RailsAdmin::Config::Actions.all(:member).map(&:action_name)
+    before_action :check_for_cancel
 
     RailsAdmin::Config::Actions.all.each do |action|
       class_eval %{
         def #{action.action_name}
           action = RailsAdmin::Config::Actions.find('#{action.action_name}'.to_sym)
           @authorization_adapter.try(:authorize, action.authorization_key, @abstract_model, @object)
-          @action = action.with({controller: self, abstract_model: @abstract_model, object: @object})
+          @action = action.with({:controller => self, :abstract_model => @abstract_model, :object => @object})
           @page_name = wording_for(:title)
 
           instance_eval &@action.controller
@@ -26,7 +25,7 @@ module RailsAdmin
     end
 
     def bulk_action
-      self.send(params[:bulk_action]) if params[:bulk_action].in?(RailsAdmin::Config::Actions.all(controller: self, abstract_model: @abstract_model).select(&:bulkable?).map(&:route_fragment))
+      send(params[:bulk_action]) if params[:bulk_action].in?(RailsAdmin::Config::Actions.all(controller: self, abstract_model: @abstract_model).select(&:bulkable?).map(&:route_fragment))
     end
 
     def list_entries(model_config = @model_config, auth_scope_key = :index, additional_scope = get_association_scope_from_params, pagination = !(params[:associated_collection] || params[:all]))
@@ -73,17 +72,17 @@ module RailsAdmin
                end
 
       reversed_sort = (field ? field.sort_reverse? : model_config.list.sort_reverse?)
-      {sort: column, sort_reverse: (params[:sort_reverse] == reversed_sort.to_s)}
+      { sort: column, sort_reverse: (params[:sort_reverse] == reversed_sort.to_s) }
     end
 
     def redirect_to_on_success
-      notice = t("admin.flash.successful", name: @model_config.label, action: t("admin.actions.#{@action.key}.done"))
+      notice = t('admin.flash.successful', name: @model_config.label, action: t("admin.actions.#{@action.key}.done"))
       if params[:_add_another]
-        redirect_to new_path(return_to: params[:return_to]), flash: {success: notice}
+        redirect_to new_path(return_to: params[:return_to]), flash: { success: notice }
       elsif params[:_add_edit]
-        redirect_to edit_path(id: @object.id, return_to: params[:return_to]), flash: {success: notice}
+        redirect_to edit_path(id: @object.id, return_to: params[:return_to]), flash: { success: notice }
       else
-        redirect_to back_or_index, flash: {success: notice}
+        redirect_to back_or_index, flash: { success: notice }
       end
     end
 
@@ -100,10 +99,10 @@ module RailsAdmin
       end
     end
 
-    def handle_save_error whereto = :new
+    def handle_save_error(whereto = :new)
       action = params[:action]
 
-      flash.now[:error] = t("admin.flash.error", name: @model_config.label, action: t("admin.actions.#{@action.key}.done"))
+      flash.now[:error] = t('admin.flash.error', name: @model_config.label, action: t("admin.actions.#{@action.key}.done"))
       flash.now[:error] += ". #{@object.errors[:base].to_sentence}" unless @object.errors[:base].blank?
 
       respond_to do |format|
@@ -114,7 +113,7 @@ module RailsAdmin
 
     def check_for_cancel
       if params[:_continue]
-        redirect_to(back_or_index, flash: {info: t("admin.flash.noaction")})
+        redirect_to(back_or_index, flash: { info: t('admin.flash.noaction') })
       end
     end
 
@@ -136,7 +135,7 @@ module RailsAdmin
       source_abstract_model = RailsAdmin::AbstractModel.new(to_model_name(params[:source_abstract_model]))
       source_model_config = source_abstract_model.config
       source_object = source_abstract_model.get(params[:source_object_id])
-      action = params[:current_action].in?(['create', 'update']) ? params[:current_action] : 'edit'
+      action = params[:current_action].in?(%w(create update)) ? params[:current_action] : 'edit'
       @association = source_model_config.send(action).fields.find { |f| f.name == params[:associated_collection].to_sym }.with(controller: self, object: source_object)
       @association.associated_collection_scope
     end

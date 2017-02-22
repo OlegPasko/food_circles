@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class ExpiringSoonChecker
-
   def initialize
   end
 
@@ -19,5 +19,4 @@ class ExpiringSoonChecker
       UserMailer.voucher_expiring_soon(payment.id).deliver
     end
   end
-
 end
