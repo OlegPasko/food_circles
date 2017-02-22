@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+News.create!(
+  title: 'title',
+  mobile_image: open("#{Rails.root}/app/assets/images/logo_old.png"),
+  website_image: open("#{Rails.root}/app/assets/images/logo_old.png")
+)
+News.create!(
+  title: 'title',
+  mobile_image: open("#{Rails.root}/app/assets/images/sellit.png"),
+  website_image: open("#{Rails.root}/app/assets/images/sellit.png")
+)
+News.create!(
+  title: 'title',
+  mobile_image: open("#{Rails.root}/app/assets/images/dinein.png"),
+  website_image: open("#{Rails.root}/app/assets/images/dinein.png")
+)
