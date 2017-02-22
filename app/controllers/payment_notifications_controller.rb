@@ -1,12 +1,24 @@
 # frozen_string_literal: true
 class PaymentNotificationsController < ApplicationController
+
   def create
     @payment_notification = PaymentNotification.new(params[:payment_notification])
 
     # PaymentNotification.create!()
 
-    PaymentNotification.create!(user_id: params[:custom], address_city: params[:address_city], address_country: params[:address_country], address_name: params[:address_name], address_state: params[:address_state], address_street: params[:address_street], address_zip: params[:address_zip], first_name: params[:first_name], invoice: params[:invoice], last_name: params[:last_name], status: params[:payment_status], mc_currency: [:mc_currency], mc_gross: params[:mc_gross], payer_email: params[:payer_email], payer_status: params[:payer_status], payment_date: params[:payment_date], payment_type: params[:payment_type], txn_id: params[:txn_id], verify_sign: params[:verify_sign])
+    PaymentNotification.create!(payment_notification_params)
 
     render nothing: true
+  end
+
+  private
+
+  def payment_notification_params
+    params.require(:payment_notification).permit(:parameters, :paypal_id, :status,
+                                                 :transaction_id, :address_city, :address_country,
+                                                 :address_name, :address_state, :address_street, :address_zip,
+                                                 :first_name, :invoice, :last_name, :mc_currency, :mc_gross,
+                                                 :payer_email, :payer_status, :payment_date, :payment_type,
+                                                 :txn_id, :verify_sign, :user_id)
   end
 end

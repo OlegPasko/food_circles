@@ -16,10 +16,9 @@ class RestaurantsController < ApplicationController
   end
 
   def signup
-    email = params[:email]
-    name = params[:name]
-    UserMailer.restaurant_notify(email, name).deliver
-    UserMailer.restaurant_signup(email, name).deliver
+
+    UserMailer.restaurant_notify(restorant_params).deliver
+    UserMailer.restaurant_signup(restorant_params).deliver
 
     @notification = Notification.create
     @notification.content = "Name: #{name}, Email: #{email}"
@@ -31,4 +30,11 @@ class RestaurantsController < ApplicationController
     valid = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     email.present? && (email =~ valid)
   end
+
+  private
+
+  def restorant_params
+    params.require(:restaurants).require(:name, :email)
+  end
+
 end

@@ -23,7 +23,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new(params[:offer])
+    @offer = Offer.create(offer_params)
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'Asset was successfully created.' }
@@ -39,7 +39,7 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
 
     respond_to do |format|
-      if @offer.update_attributes(params[:offer])
+      if @offer.update_attributes(offer_params)
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
         format.json { head :no_content }
       else
@@ -47,5 +47,11 @@ class OffersController < ApplicationController
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+  def offer_params
+    params.require(:offer).permit(:name, :venue_id, :category_ids, :price,
+                                  :original_price, :total, :available, :min_diners, :details)
   end
 end
