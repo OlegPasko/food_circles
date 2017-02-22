@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'about_we/show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/sessions/omniauth_email' => 'omniauth_ask_for_email#index', :as => 'omniauth_email'
-  put '/sessions/omniauth_email' => 'omniauth_ask_for_email#submit', :as => 'omniauth_email_submit'
+  get '/sessions/omniauth_email' => 'omniauth_ask_for_email#index', as: 'omniauth_email'
+  put '/sessions/omniauth_email' => 'omniauth_ask_for_email#submit', as: 'omniauth_email_submit'
 
   get 'reservation/used_email' => 'reservation#used_email'
   get 'reservation/used' => 'reservation#used'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'payment/active' => 'payment#active'
   get 'payment/expired' => 'payment#expired'
   get 'payment/inbound_mark_used' => 'payment#inbound_mark_used'
-  get 'payment/send_text' => 'payment#send_text', :as => 'payment_send_text'
+  get 'payment/send_text' => 'payment#send_text', as: 'payment_send_text'
 
   get 'signup' => 'signup#index', as: 'signup'
   post 'signup' => 'signup#create'
@@ -26,18 +26,18 @@ Rails.application.routes.draw do
 
   get 'socialbutterflies/index'
 
-  # match '/offers' => 'offers#index', :as => :offers
+  # match '/offers' => 'offers#index', as: :offers
   resources :offers
   resources :categories
-  get '/timeline' => 'timeline#index', :as => :timeline
-  # match '/payment' => 'payment#index', :as => :payment
-  post '/payment/stripe' => 'payment#stripe', :as => :stripe
+  get '/timeline' => 'timeline#index', as: :timeline
+  # match '/payment' => 'payment#index', as: :payment
+  post '/payment/stripe' => 'payment#stripe', as: :stripe
 
   get 'user_signup/create'
 
   resources :stripe_payments, only: [:new, :create]
 
-  get '/monthly_invoice' => 'monthly_invoice#monthly_invoice', :as => :invoice
+  get '/monthly_invoice' => 'monthly_invoice#monthly_invoice', as: :invoice
 
   resources :chat, only: [:index, :show] do
     collection do
@@ -55,18 +55,18 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    get '/registrations/new_twitter' => 'users/omniauth_callbacks#new_twitter', :as => 'new_twitter'
-    post '/registrations/twitter_signup' => 'users/omniauth_callbacks#twitter_signup', :as => 'twitter_signup'
+    get '/registrations/new_twitter' => 'users/omniauth_callbacks#new_twitter', as: 'new_twitter'
+    post '/registrations/twitter_signup' => 'users/omniauth_callbacks#twitter_signup', as: 'twitter_signup'
   end
 
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   resources :payment_notifications
 
-  get '/achievements' => 'achievements#index', :as => :achievements
-  get '/achievements/best_donors' => 'achievements#best_donors', :as => :achievements_best_donors
+  get '/achievements' => 'achievements#index', as: :achievements
+  get '/achievements/best_donors' => 'achievements#best_donors', as: :achievements_best_donors
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :socialbutterflies
   resources :restaurants
@@ -102,7 +102,7 @@ Rails.application.routes.draw do
   get '/getCharities' => 'app#getCharities'
   post '/confirm' => 'app#confirm'
   post '/submit' => 'app#submit'
-  get '/newinfo' => 'app#newinfo', :as => :user_info
+  get '/newinfo' => 'app#newinfo', as: :user_info
   get '/create_voucher' => 'app#create_voucher'
   get '/voucher' => 'app#voucher'
 
@@ -118,7 +118,7 @@ Rails.application.routes.draw do
 
     get '/news' => 'news#show'
 
-    get '/venues/:lat/:lon' => 'venues#show', :constraints => {lat: /[^\/]*/, lon: /[^\/]*/}
+    get '/venues/:lat/:lon' => 'venues#show', constraints: {lat: /[^\/]*/, lon: /[^\/]*/}
     get '/homeless/:device_id' => 'venues#homeless'
     get '/charities' => 'charities#show'
 
@@ -140,22 +140,22 @@ Rails.application.routes.draw do
   get '/notification' => 'application#notification'
 
   # HighVoltage
-  #get '/faq/:id' => 'faq#show', :as => 'faq'
-  get '/faq' => 'faq#show', :as => 'faq', :id => 'faq'
-  get '/about_we' => 'faq#about_we', :as => 'about_we', :id => 'about_we'
+  #get '/faq/:id' => 'faq#show', as: 'faq'
+  get '/faq' => 'faq#show', as: 'faq', id: 'faq'
+  get '/about_we' => 'faq#about_we', as: 'about_we', id: 'about_we'
 
   # Popups
-  get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', :as => :non_profit_on_grand_rapids_popup
-  get '/postcard_popup' => 'popups#postcard', :as => :postcard_popup
+  get '/non_profit_on_grand_rapids' => 'popups#non_profit_on_grand_rapids', as: :non_profit_on_grand_rapids_popup
+  get '/postcard_popup' => 'popups#postcard', as: :postcard_popup
   post '/notify_signup' => 'popups#notify_signup'
   get '/app_popup' => 'popups#app_popup'
-  get '/:id' => 'home#index', :as => :venue_popup
+  get '/:id' => 'home#index', as: :venue_popup
   get '/deal_popup_not_logged/:id' => 'popups#deal_popup_not_logged'
   get '/reciept/:id' => 'popups#reciept'
 
-  get '/download' => 'application#download', :as => :download
+  get '/download' => 'application#download', as: :download
 
-  get '/sms' => 'receive_texts#index', :via => :post
+  get '/sms' => 'receive_texts#index', via: :post
 
   get '/receive_text/used_code' => 'receive_text#used_code'
   get '/receive_text/used_last' => 'receive_text#used_last'
@@ -163,8 +163,8 @@ Rails.application.routes.draw do
   get '/editor/:id' => 'editor#show'
 
   get '/race' => 'race#index'
-  get '/cater' => 'home#cater' # , :as => :notgr
-  get '/thanks' => 'home#thanks' # , :as => :notgr
+  get '/cater' => 'home#cater' # , as: :notgr
+  get '/thanks' => 'home#thanks' # , as: :notgr
 
   root to: 'home#index'
 end

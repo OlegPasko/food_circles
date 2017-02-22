@@ -10,7 +10,7 @@ module ApplicationHelper
     search_terms << venue.state.name if venue.state && venue.state.name
 
     query = {
-        :q => search_terms.join(", ")
+        q: search_terms.join(", ")
     }
     maps_base_uri.query = query.to_query
     maps_base_uri.to_s
@@ -44,12 +44,12 @@ module ApplicationHelper
     facebook_sharing_uri = URI.parse "http://www.facebook.com/sharer/sharer.php"
     image_url = URI.join "http://#{request.host}", "assets/", "logo_old.png"
     facebook_query = {
-        :s => 100,
-        :p => {
-            :url => url,
-            :images => {0 => image_url.to_s},
-            :title => title,
-            :summary => summary
+        s: 100,
+        p: {
+            url: url,
+            images: {0 => image_url.to_s},
+            title: title,
+            summary: summary
         }
     }
     facebook_sharing_uri.query = facebook_query.to_query
@@ -60,8 +60,8 @@ module ApplicationHelper
     twitter_sharing_uri = URI.parse "https://twitter.com/intent/tweet"
 
     twitter_query = {
-        :text => text,
-        :url => url
+        text: text,
+        url: url
     }
 
     twitter_sharing_uri.query = twitter_query.to_query
@@ -79,9 +79,9 @@ module ApplicationHelper
       next unless [:error, :info, :success, :warning].include?(type)
 
       Array(message).each do |msg|
-        text = content_tag :div, :class => "stack-bar-top main", :id => "alerts_container" do
-          content_tag :div, :class => "alert alert-#{type}" do
-            content_tag(:button, "x", :class => "close", "data-dismiss" => "alert") +
+        text = content_tag :div, class: "stack-bar-top main", id: "alerts_container" do
+          content_tag :div, class: "alert alert-#{type}" do
+            content_tag(:button, "x", class: "close", "data-dismiss" => "alert") +
                 msg.html_safe
           end
         end

@@ -1,4 +1,4 @@
-.restaurant{:data => {:id => "#{v.id}", :lat => "#{v.latlon.lat}", :lon => "#{v.latlon.lon}"}}
+.restaurant{data: {id: "#{v.id}", lat: "#{v.latlon.lat}", lon: "#{v.latlon.lon}"}}
   = image_tag v.image.thumb('50x50#').url if v.image
   %div
     %h4= v.name

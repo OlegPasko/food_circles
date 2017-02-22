@@ -2,7 +2,7 @@
     <%= flash[:error] %>
 <% end %>
 
-<%= form_tag :controller => 'stripe_payments', :action => 'create' do %>
+<%= form_tag controller: 'stripe_payments', action: 'create' do %>
     <article>
       <label class="amount">
         <span>Amount: $5.00</span>

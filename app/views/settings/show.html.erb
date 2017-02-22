@@ -102,7 +102,7 @@
             <div class="row">
               <span class="label">CREDIT CARD</span>
               <span class="value">**** **** **** **** <%= @card_last_4_digits %></span>
-              <%= link_to "delete", credit_card_settings_path, :remote => true, :method => :delete, :confirm => "Are you sure?", :class => ["delete"] %>
+              <%= link_to "delete", credit_card_settings_path, remote: true, method: :delete, confirm: "Are you sure?", class: ["delete"] %>
               <input type="text" class="field" value=""/>
             </div><!-- /.row -->
           </fieldset>
@@ -116,7 +116,7 @@
           <span class="label">Facebook</span>
           <% if current_user.has_facebook %>
               <span class="value">Connected</span>
-              <%= link_to "Disconnect", facebook_connection_settings_path, :remote => true, :method => :delete, :confirm => "Are you sure?", :class => ["delete"] %>
+              <%= link_to "Disconnect", facebook_connection_settings_path, remote: true, method: :delete, confirm: "Are you sure?", class: ["delete"] %>
           <% else %>
               <span class="value"><em>Not connected</em></span>
           <% end %>
@@ -125,7 +125,7 @@
           <span class="label">Twitter</span>
           <% if current_user.has_twitter %>
               <span class="value">Connected</span>
-              <%= link_to "Disconnect", twitter_connection_settings_path, :remote => true, :method => :delete, :confirm => "Are you sure?", :class => ["delete"] %>
+              <%= link_to "Disconnect", twitter_connection_settings_path, remote: true, method: :delete, confirm: "Are you sure?", class: ["delete"] %>
           <% else %>
               <span class="value"><em>Not connected</em></span>
           <% end %>
@@ -133,4 +133,4 @@
       </fieldset>
     </div><!-- /.settings -->
 <% end %>
-<%= render :partial => "shared/account", :locals => {:active_tab => "settings"} %>
+<%= render partial: "shared/account", locals: {active_tab: "settings"} %>

@@ -4,7 +4,7 @@ var c;
 $('#charities').remove();
 $('#confirm').remove();
 
-$('#holder').append("<%= escape_javascript(render :partial => 'app/charities') %>");
+$('#holder').append("<%= escape_javascript(render partial: 'app/charities') %>");
 setTimeout(function () {
   $('#holder').get(0).scrollTop = $('#holder').get(0).scrollHeight;
   $('#charities').ScrollTo({duration: 1000}).animate({opacity: 1}, 1000);

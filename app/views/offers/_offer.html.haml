@@ -22,9 +22,9 @@
       /%a{href: main_app.deal_popup_not_logged_path(offer)}
       %a.deallink.popup-link{href: '/deal_popup_not_logged/' + offer.id.to_s}
         %span.price
-          %strong= number_to_currency(offer.price, :precision => 0)
+          %strong= number_to_currency(offer.price, precision: 0)
           %span{class: "old"}
-            = number_to_currency(offer.original_price, :precision => 0)
+            = number_to_currency(offer.original_price, precision: 0)
             %i{class: "icon-strike strike"}
           %span{class: "shadow"}
         = image_tag offer.image.url(:deal)

@@ -1,5 +1,5 @@
 if ($('#confirm').length > 0) $('#confirm').remove();
-$('#holder').append("<%= escape_javascript(render :partial => 'app/confirm') %>");
+$('#holder').append("<%= escape_javascript(render partial: 'app/confirm') %>");
 
 setTimeout(function () {
   $('#holder').get(0).scrollTop = $('#holder').get(0).scrollHeight;

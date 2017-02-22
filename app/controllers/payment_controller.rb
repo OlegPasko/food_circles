@@ -18,7 +18,7 @@ class PaymentController < ApplicationController
       payment.save
     end
 
-    render :nothing => true
+    render nothing: true
   end
 
   def expired
@@ -31,7 +31,7 @@ class PaymentController < ApplicationController
     payment.state = "Expired" unless payment.used?
     payment.save
 
-    render :nothing => true
+    render nothing: true
   end
 
   def used
@@ -47,10 +47,10 @@ class PaymentController < ApplicationController
 
     if params[:source] == "email"
       respond_to do |format|
-        format.html { render :text => 'Voucher confirmed as used.  Thanks for your purchase and for feeding children in need through your dining.' }
+        format.html { render text: 'Voucher confirmed as used.  Thanks for your purchase and for feeding children in need through your dining.' }
       end
     else
-      render :nothing => true
+      render nothing: true
     end
   end
 

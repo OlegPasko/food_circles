@@ -1,8 +1,8 @@
-= render :partial => 'partials/header'
+= render partial: 'partials/header'
 #container
   #locate
     Can we locate you so we can can give you directions to restaurants?
-    %button{:onclick => 'javscript:locate()'} Hokay! Doo eet!
+    %button{onclick: 'javscript:locate()'} Hokay! Doo eet!
   #participants
     .participant
       %h6 Coda
@@ -22,14 +22,14 @@
       %hr
       %input#data
       %br
-      %a{:href => 'javascript:setName()'} Change name
-      %a{:href => 'javascript:showRooms()'} Join Room
+      %a{href: 'javascript:setName()'} Change name
+      %a{href: 'javascript:showRooms()'} Join Room
     #list
     #map
     .clear
 #overlay
   #roomlist
-    %a{:href => 'javascript:closeModal()'}
+    %a{href: 'javascript:closeModal()'}
     %h1
     %ul
-      %input{:placeholder => 'create new room...'}
+      %input{placeholder: 'create new room...'}

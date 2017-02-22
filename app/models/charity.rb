@@ -15,7 +15,7 @@ class Charity < ApplicationRecord
   CHARITY_TYPE_ENUM = %w(main extra)
 
   validates :name, presence: true
-  validates :charity_type, presence: true, :inclusion => {:in => CHARITY_TYPE_ENUM}
+  validates :charity_type, presence: true, inclusion: {in: CHARITY_TYPE_ENUM}
 
   rails_admin do
     edit do

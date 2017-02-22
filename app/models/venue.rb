@@ -30,7 +30,7 @@ class Venue < ApplicationRecord
   # SRID = 4326
 
   # set_rgeo_factory_for_column(:latlon,
-  #                            RGeo::Geographic.spherical_factory(:srid => SRID))
+  #                            RGeo::Geographic.spherical_factory(srid: SRID))
 
   dragonfly_accessor :main_image
   dragonfly_accessor :outside_image
@@ -45,7 +45,7 @@ class Venue < ApplicationRecord
   validates :email, on: :create, allow_nil: true, 'validators/email': true
 
 
-  # before_save :update_latlon, :if => :dirty_latlon?
+  # before_save :update_latlon, if: :dirty_latlon?
   after_save :notify_watching_users_about_new_vouchers, if: :has_new_vouchers?
   after_create :ensure_always_open
 
@@ -122,8 +122,8 @@ class Venue < ApplicationRecord
         city: self.city,
         longitude: self.longitude,
         latitude: self.latitude,
-        # :lat => self.latlon.y,
-        # :lon => self.latlon.x,
+        # lat: self.latlon.y,
+        # lon: self.latlon.x,
         description: self.description,
         neighborhood: self.neighborhood,
         phone: self.phone,
@@ -141,7 +141,7 @@ class Venue < ApplicationRecord
         start: (self.available? ? 'Later Tonight' : self.open_at),
         end: self.close_at,
         vouchers_available: self.num_vouchers,
-        # :distance => (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
+        # distance: (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
         social_links: self.social_links,
         slug: self.slug,
         device_id: self.device_id
@@ -185,7 +185,7 @@ class Venue < ApplicationRecord
     t = ((t - t.beginning_of_week) / 60) + 300
 
     o = OpenTime
-            .where("open_times.openable_type = 'Offer' AND :t BETWEEN open_times.start AND open_times.end", {:t => t})
+            .where("open_times.openable_type = 'Offer' AND :t BETWEEN open_times.start AND open_times.end", {t: t})
     o.each do |e|
       offer = Offer.find_by_id e.openable_id
       if offer && offer.venue_id == self.id
@@ -225,7 +225,7 @@ class Venue < ApplicationRecord
 
   def self.currently_available(time=Time.now)
     t = ((time - time.beginning_of_week) / 60) + 300
-    Venue.joins(:offers => :open_times).
+    Venue.joins(offers: :open_times).
         where("? BETWEEN open_times.start AND open_times.end", t).
         uniq
   end
@@ -234,7 +234,7 @@ class Venue < ApplicationRecord
   #  t = ((time - time.beginning_of_week) / 60) + 300
   #  sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
   #
-  #  Venue.joins(:offers => :open_times).
+  #  Venue.joins(offers: :open_times).
   #    where("#{sql_dist} < 50000 AND ? BETWEEN open_times.start AND open_times.end", t).
   #    order("#{sql_dist}").
   #    group("venues.id")
@@ -252,7 +252,7 @@ class Venue < ApplicationRecord
   #  t = ((time - time.beginning_of_week) / 60) + 300
   #  e = ((time.end_of_day - time.beginning_of_week) / 60) + 300
   #  sql_dist = "ST_Distance(venues.latlon, 'POINT(#{lat} #{lon})')"
-  #  Venue.joins(:offers => :open_times).
+  #  Venue.joins(offers: :open_times).
   #    where("#{sql_dist} < 50000 AND open_times.start BETWEEN :now AND :e", {now: t, e: e}).
   #    order("#{sql_dist}").
   #    group("venues.id")
@@ -275,7 +275,7 @@ class Venue < ApplicationRecord
     j = JSON.parse(open(query).read)
 
     j['result']['reviews'].each do |r|
-      self.reviews.create(:author_name => r['author_name'], :content => r['text'], :rating => r['aspects'][0]['rating'], :time => r['time'])
+      self.reviews.create(author_name: r['author_name'], content: r['text'], rating: r['aspects'][0]['rating'], time: r['time'])
     end
   end
 

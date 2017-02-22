@@ -1,5 +1,5 @@
-- @model_config.show.with(:object => @object, :view => self).visible_groups.each do |fieldset|
-  - unless (fields = fieldset.with(:object => @object, :view => self).visible_fields).empty?
+- @model_config.show.with(object: @object, view: self).visible_groups.each do |fieldset|
+  - unless (fields = fieldset.with(object: @object, view: self).visible_fields).empty?
     - if !(values = fields.map{ |f| v = f.value; (!v.nil? && v != '' && v != []) ? v : nil }).compact.empty? || !RailsAdmin::config.compact_show_view
       .fieldset
         %h4
@@ -9,6 +9,6 @@
         %dl
           - fields.each_with_index do |field, index|
             - if !values[index].nil? || !RailsAdmin::config.compact_show_view
-              %dt.label{:class => "#{field.type_css_class} #{field.css_class}"}= field.label
+              %dt.label{class: "#{field.type_css_class} #{field.css_class}"}= field.label
               %dd
                 %pre.prettyprint= field.pretty_value

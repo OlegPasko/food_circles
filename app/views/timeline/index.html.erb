@@ -113,14 +113,14 @@
             <span class="line"></span>
 
       <%- else %>
-          <%= render :partial => "payment", :collection => @payments %>
-          <%= render :partial => "reservation", :collection => @reservations, :locals => {:total_payments => @payments.count} %>
+          <%= render partial: "payment", collection: @payments %>
+          <%= render partial: "reservation", collection: @reservations, locals: {total_payments: @payments.count} %>
 
           <span class="line"></span>
           </div><!-- /.timeline -->
       <%- end %>
 <% end %>
-<%= render :partial => "shared/account", :locals => {:active_tab => "timeline"} %>
+<%= render partial: "shared/account", locals: {active_tab: "timeline"} %>
 <%- if params[:reciept_id] %>
     <script type="text/javascript">
       $(function () {

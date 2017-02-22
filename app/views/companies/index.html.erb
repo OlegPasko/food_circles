@@ -68,10 +68,10 @@
     <div id="companies-form">
 
       <%= form_tag companies_path, method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
-          <%= text_field_tag :company, nil, :placeholder => "company" %>
-          <%= text_field_tag :name, nil, :placeholder => "name" %>
-          <%= text_field_tag :email, nil, :placeholder => "email" %>
-          <%= submit_tag "Request Invite", :class => "btn-standart company-submit", style: "width: 300px;" %>
+          <%= text_field_tag :company, nil, placeholder: "company" %>
+          <%= text_field_tag :name, nil, placeholder: "name" %>
+          <%= text_field_tag :email, nil, placeholder: "email" %>
+          <%= submit_tag "Request Invite", class: "btn-standart company-submit", style: "width: 300px;" %>
       <% end %>
       <p>
         <span style="color: #8a857f;"><i>Admitting select organizations. Request<br>an invite and we'll contact you.</i></span>

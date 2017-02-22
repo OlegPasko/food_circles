@@ -12,9 +12,9 @@
             or enter your number to get a single text with the download link.</p>
           <%= form_tag "/", method: :post do %>
               <fieldset>
-                <%= text_field_tag :phone, nil, :placeholder => "(xxx) xxx-xxxx", :class => "field extra-big" %>
+                <%= text_field_tag :phone, nil, placeholder: "(xxx) xxx-xxxx", class: "field extra-big" %>
                 <%= hidden_field_tag :type, 'iphone' %>
-                <%= submit_tag "Send link", :class => "btn-medium submit" %>
+                <%= submit_tag "Send link", class: "btn-medium submit" %>
                 <small class="form-caption">You won't be added to any lists nor will your info be shared.</small>
               </fieldset>
           <% end %>
@@ -26,9 +26,9 @@
           <p><a href="https://play.google.com/store/apps/details?id=co.foodcircles">Visit Google Play here</a> or enter
             your number to get a single text with the download link.</p>
           <%= form_tag "/", method: :post do %>
-              <%= text_field_tag :phone, nil, :placeholder => "(xxx) xxx-xxxx", :class => "field extra-big" %>
+              <%= text_field_tag :phone, nil, placeholder: "(xxx) xxx-xxxx", class: "field extra-big" %>
               <%= hidden_field_tag :type, 'android' %>
-              <%= submit_tag "Send link", :class => "btn-medium submit" %>
+              <%= submit_tag "Send link", class: "btn-medium submit" %>
               <small class="form-caption">You won't be added to any lists nor will your info be shared.</small>
           <% end %>
         </div><!-- /.phone-module -->

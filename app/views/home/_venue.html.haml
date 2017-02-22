@@ -1,9 +1,9 @@
 - avail = v.available?
 %li
   - if avail
-    %span.logo= link_to image_tag(v.circle_image.thumb('110x').url, :alt => ""), venue_path(v) if v.circle_image
+    %span.logo= link_to image_tag(v.circle_image.thumb('110x').url, alt: ""), venue_path(v) if v.circle_image
   - else
-    %span.logo= image_tag(v.circle_image.thumb('110x').url, :alt => "")
+    %span.logo= image_tag(v.circle_image.thumb('110x').url, alt: "")
   %p
     %strong= v.name
     %span.time

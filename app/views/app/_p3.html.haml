@@ -11,12 +11,12 @@
   .tag= @o.name
   %b with a group size of at least
   .tag= @o.min_diners
-  %img#venue_map{:src => "http://maps.google.com/maps/api/staticmap?zoom=14&size=700x170&maptype=roadmap&markers=color:red|#{@address}&sensor=false"}
+  %img#venue_map{src: "http://maps.google.com/maps/api/staticmap?zoom=14&size=700x170&maptype=roadmap&markers=color:red|#{@address}&sensor=false"}
   %b Charity:
   .tag= link_to @c.name, @c.web
   %hr
   #tabs
-    .tab{:data => {:active => 'true'}} Sign Up
+    .tab{data: {active: 'true'}} Sign Up
     .tab Sign In
     .clear
     #tabContent
@@ -25,23 +25,23 @@
           %tr
             %td Name
             %td
-              %input{:type => 'text', :id => 'siname'}
+              %input{type: 'text', id: 'siname'}
           %tr
             %td Email
             %td
-              %input{:type => 'text', :id => 'siemail'}
+              %input{type: 'text', id: 'siemail'}
           %tr
             %td Password
             %td
-              %input{:type => 'password', :id => 'sipass'}
+              %input{type: 'password', id: 'sipass'}
           %tr
             %td Phone
             %td
-              %input{:type => 'text', :id => 'siphone'}
+              %input{type: 'text', id: 'siphone'}
           %tr
             %td Occasion (optional)
             %td
-              %input{:type => 'text', :id => 'siocc'}
+              %input{type: 'text', id: 'siocc'}
 
         #b1.bigButton Sign Up and Eat Out!
       #signin
@@ -49,13 +49,13 @@
           %tr
             %td Email
             %td
-              %input{:type => 'text', :id => 'suemail'}
+              %input{type: 'text', id: 'suemail'}
           %tr
             %td Password
             %td
-              %input{:type => 'password', :id => 'supass'}
+              %input{type: 'password', id: 'supass'}
           %tr
             %td Occasion (optional)
             %td
-              %input{:type => 'text', :id => 'suocc'}
+              %input{type: 'text', id: 'suocc'}
         #b2.bigButton Sign In and Eat Out!

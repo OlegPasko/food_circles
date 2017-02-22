@@ -46,7 +46,7 @@ module RailsAdmin
       venue_ids = Array.new
       #@reserve_venues have all data remember it.
       @reserve_venues = Reservation.where("created_at >= :start_date AND created_at <= :end_date",
-                                          {:start_date => start_date, :end_date => end_date})
+                                          {start_date: start_date, end_date: end_date})
       #tkxel_dev: Fetch venues_ids for total reservations in last month
       @reserve_venues.each_with_index do |venue, index|
         venue_ids[index] = venue.venue_id.to_i
@@ -105,19 +105,19 @@ module RailsAdmin
     end
 
     rescue_from RailsAdmin::ObjectNotFound do
-      flash[:error] = I18n.t('admin.flash.object_not_found', :model => @model_name, :id => params[:id])
+      flash[:error] = I18n.t('admin.flash.object_not_found', model: @model_name, id: params[:id])
       params[:action] = 'index'
       index
     end
 
     rescue_from RailsAdmin::ModelNotFound do
-      flash[:error] = I18n.t('admin.flash.model_not_found', :model => @model_name)
+      flash[:error] = I18n.t('admin.flash.model_not_found', model: @model_name)
       params[:action] = 'dashboard'
       dashboard
     end
 
     def not_found
-      render :file => Rails.root.join('public', '404.html'), :layout => false, :status => :not_found
+      render file: Rails.root.join('public', '404.html'), layout: false, status: :not_found
     end
 
     def rails_admin_controller?

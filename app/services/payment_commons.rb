@@ -4,7 +4,7 @@ module PaymentCommons
     return unless current_user.twitter_token && current_user.twitter_secret
     begin
       require 'twitter'
-      client = Twitter::Client.new(:oauth_token => current_user.twitter_token, :oauth_token_secret => current_user.twitter_secret)
+      client = Twitter::Client.new(oauth_token: current_user.twitter_token, oauth_token_secret: current_user.twitter_secret)
 
       user_ids = client.friends.map { |u| u.id }
       logger.debug "UIDS: #{user_ids}"

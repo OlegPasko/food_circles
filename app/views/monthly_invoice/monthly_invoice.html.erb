@@ -261,7 +261,7 @@
               </td>
               <td style="border:none; width:40%;">
 
-                <%= image_tag 'logo.png', :style => "width:175px; display:block;margin:10px auto; " %>
+                <%= image_tag 'logo.png', style: "width:175px; display:block;margin:10px auto; " %>
               </td>
               <td style="border:none; width:30%;">
                 <div id="venue_address"><b>Report
@@ -364,7 +364,7 @@
     </br>
 
     <div style='text-align:center; margin-top:160px' id="download">
-      <%= button_to "Download", invoice_path(:vid => @calculations.venue.id, :date => @calculations.date, :input_note => params[:input_note], :format => 'pdf') %>    </div>
+      <%= button_to "Download", invoice_path(vid: @calculations.venue.id, date: @calculations.date, input_note: params[:input_note], format: 'pdf') %>    </div>
   </div>
   <div id="loading" style="position: absolute; width: 100%; height: 100%; top:0">
     <div style="background-color: #ff8c00; color: #ffffff; width: 70px; margin:200px auto 0;"><b>Loading....</b></div>

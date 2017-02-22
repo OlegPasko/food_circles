@@ -1,6 +1,6 @@
 class AddVoucherToVenues < ActiveRecord::Migration
   def change
-    add_column :venues, :voucher, :string, :default => 5
+    add_column :venues, :voucher, :string, default: 5
 
   end
 end

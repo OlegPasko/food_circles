@@ -10,7 +10,7 @@ class StripePaymentsController < ApplicationController
     offer = Offer.find(params[:offer_id])
 
     if !user_signed_in?
-      @user = User.create!(:email => params[:user_email], :password => params[:user_password], :password_confirmation => params[:user_password])
+      @user = User.create!(email: params[:user_email], password: params[:user_password], password_confirmation: params[:user_password])
       sign_in(@user)
     end
 
@@ -19,8 +19,8 @@ class StripePaymentsController < ApplicationController
     else
       #tkxel_dev: create Customers and save them on stripe DB.
       customer = Stripe::Customer.create(
-          :email => current_user.email,
-          :card => params[:stripe_token]
+          email: current_user.email,
+          card: params[:stripe_token]
       )
       current_user.stripe_customer_token = customer.id
       current_user.save
@@ -28,10 +28,10 @@ class StripePaymentsController < ApplicationController
 
     #tkxel_dev: Charges to be deducted handle here , Credit card info. validation also complete in this phase.
     charge = Stripe::Charge.create(
-        :customer => customer.id,
-        :amount => (@amount * 100).to_i,
-        :description => offer.venue.name + ' - ' + offer.name,
-        :currency => 'usd'
+        customer: customer.id,
+        amount: (@amount * 100).to_i,
+        description: offer.venue.name + ' - ' + offer.name,
+        currency: 'usd'
     )
 
     payment = Payment.create(
@@ -58,20 +58,20 @@ class StripePaymentsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to :controller => 'timeline', :action => 'index', :reciept_id => payment.id
+        redirect_to controller: 'timeline', action: 'index', reciept_id: payment.id
       end
       format.json do
-        render :json => {:redirect_to => url_for(:controller => 'timeline', :action => 'index', :reciept_id => payment.id)}
+        render json: {redirect_to: url_for(controller: 'timeline', action: 'index', reciept_id: payment.id)}
       end
     end
   rescue Stripe::CardError, ActiveRecord::RecordInvalid => e
     respond_to do |format|
       format.html do
         flash[:error] = e.message
-        render :action => 'new'
+        render action: 'new'
       end
       format.json do
-        render :json => {:error => e.message}, status: 500
+        render json: {error: e.message}, status: 500
       end
     end
   end

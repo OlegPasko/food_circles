@@ -1,23 +1,23 @@
-= render :partial => 'partials/header'
+= render partial: 'partials/header'
 #race
   .container
-    %div{:role => "main"}
+    %div{role: "main"}
       %section.content
-        %img.logo{:alt => "The Great Race", :src => "/assets/race/tgr-logo.png"}/
+        %img.logo{alt: "The Great Race", src: "/assets/race/tgr-logo.png"}/
         #about
           %h2 Be first to one of 15 restaurants, and we'll buy your dinner.
           %p
             Each time you use the FoodCircles app to grab an open table at a restaurant, via
             = succeed "," do
-              %a{:href => "https://play.google.com/store/apps/details?id=co.foodcircles", :target => "_blank"} Android
+              %a{href: "https://play.google.com/store/apps/details?id=co.foodcircles", target: "_blank"} Android
             = succeed "," do
-              %a{:href => "http://itunes.apple.com/us/app/id526107767?mt=8", :target => "_blank"} Apple
+              %a{href: "http://itunes.apple.com/us/app/id526107767?mt=8", target: "_blank"} Apple
             any
             = succeed "," do
-              %a{:href => "http://m.foodcircles.net", :target => "_blank"} other smart device
+              %a{href: "http://m.foodcircles.net", target: "_blank"} other smart device
             or just our
             = succeed "," do
-              %a{:href => "http://foodcircles.net", :target => "_blank"} website
+              %a{href: "http://foodcircles.net", target: "_blank"} website
             we provide a meal to a kid living under the poverty line.
             %b Buy one, feed one.
             (BOFO)
@@ -30,25 +30,25 @@
           %h2 How to Participate
           %ul
             %li
-              %img{:alt => "Step 1", :src => "/assets/race/step-1.png"}>/
+              %img{alt: "Step 1", src: "/assets/race/step-1.png"}>/
               Check the Claims List
             %li
-              %img{:alt => "Step 2", :src => "/assets/race/step-2.png"}>/
+              %img{alt: "Step 2", src: "/assets/race/step-2.png"}>/
               Use Our App to Dine Out
             %li
-              %img{:alt => "Step 3", :src => "/assets/race/step-3.png"}>/
+              %img{alt: "Step 3", src: "/assets/race/step-3.png"}>/
               Post Receipt to
               = succeed "/" do
-                %a{:href => "http://twitter.com/foodcircles"} Tw
-              %a{:href => "http://facebook.com/foodcircles"} Fb
+                %a{href: "http://twitter.com/foodcircles"} Tw
+              %a{href: "http://facebook.com/foodcircles"} Fb
             %li
-              %img{:alt => "Step 4", :src => "/assets/race/step-4.png"}>/
+              %img{alt: "Step 4", src: "/assets/race/step-4.png"}>/
               Get a Check in the Mail
           .apps
             %p
-              %a{:href => "https://www.google.com/search?q=foodcircles+app"} Download App
+              %a{href: "https://www.google.com/search?q=foodcircles+app"} Download App
               \/
-              %a{:href => "http://foodcircles.net/app"} Use Website
+              %a{href: "http://foodcircles.net/app"} Use Website
       %section.content
         #claim-list
           %h2 Claims List
@@ -100,9 +100,9 @@
               %span CLAIMED
           .apps
             %p
-              %a{:href => "https://www.google.com/search?q=foodcircles+app"} Download App
+              %a{href: "https://www.google.com/search?q=foodcircles+app"} Download App
               \/
-              %a{:href => "http://foodcircles.net/app"} Use Website
+              %a{href: "http://foodcircles.net/app"} Use Website
       %section.content
         #faq
           %h2 FAQ
@@ -121,9 +121,9 @@
               %p
                 We buy meals for people in need either through our local partner,
                 = succeed "," do
-                  %a{:href => "http://kidsfoodbasket.org"} Kids Food Basket
+                  %a{href: "http://kidsfoodbasket.org"} Kids Food Basket
                 or our partner based in Kenya,
-                %a{:href => "http://worldvision.org"} World Vision
+                %a{href: "http://worldvision.org"} World Vision
             %li
               %h3 What if I go over the spending limit?
               %p Great! It's good to support local-owned business.  We can only afford to reimburse up to our stated limit, but splurging just got a whole lot cheaper.
@@ -164,9 +164,9 @@
               %p We think there exists "space" where restaurants can benefit, and consumers can benefit at the same time without harming each other.  Economics majors might call what exists today "a Pareto inefficiency".  Anywayâ¦ if restaurants fill tables when they're vacant, and those obliging to fill tables get special treatment, all through FoodCircles, our company might stand to benefit.  At the core of each of us though, we know that if we benefit, we have the responsibility to help others not as fortunate.  So that's why we buy a meal for someone in need every time someone fills a table through our app.  When you eat, so do they.
           .apps
             %p
-              %a{:href => "https://www.google.com/search?q=foodcircles+app"} Download App
+              %a{href: "https://www.google.com/search?q=foodcircles+app"} Download App
               \/
-              %a{:href => "http://foodcircles.net/app"} Use Website
+              %a{href: "http://foodcircles.net/app"} Use Website
       %section.content
         #rules
           %h2 Rules of the Race
@@ -224,4 +224,4 @@
         #contact
           %h2
             Contact Us:
-            %a{:href => "mailto:hey@foodcircles.net"} hey@foodcircles.net
+            %a{href: "mailto:hey@foodcircles.net"} hey@foodcircles.net

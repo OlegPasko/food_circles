@@ -11,7 +11,7 @@
                 </li>
             <% end %>
             <li></li>
-            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
           </ul>
         </div><!-- /.tabs-nav -->
         <p class="meta">You have fed <strong><%= @payments.map(&:amount).inject(0, &:+).floor %> kids</strong> to date

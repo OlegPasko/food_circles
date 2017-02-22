@@ -10,7 +10,7 @@
 #about
   .container
     %h2 About We
-    = render :partial => 'partials/faq_sidebar'
+    = render partial: 'partials/faq_sidebar'
     .questions
       .question
         %h3 Yeah, we know it doesn't sound right.
@@ -28,19 +28,19 @@
     .teampick
       %ul
         %li.jonathan.active
-          %a{:href => "#jonathan"} Managing Director
+          %a{href: "#jonathan"} Managing Director
         %li.adam
-          %a{:href => "#adam"} Lead Designer
+          %a{href: "#adam"} Lead Designer
         %li.mike
-          %a{:href => "#mike"} Ops. Engineer
+          %a{href: "#mike"} Ops. Engineer
         %li.lacides
-          %a{:href => "#lacides"} API Engineer
+          %a{href: "#lacides"} API Engineer
         %li.bruno
-          %a{:href => "#bruno"} iOS Developer
+          %a{href: "#bruno"} iOS Developer
         %li.taylor
-          %a{:href => "#taylor"} Frontend Developer
+          %a{href: "#taylor"} Frontend Developer
         %li.pseibelt
-          %a{:href => "#pseibelt"} Backend Developer
+          %a{href: "#pseibelt"} Backend Developer
     #jonathan.teammember.active
       %h3 Jonathan Kumar
       %h4
@@ -54,15 +54,15 @@
         to play pickup sports, talk about poverty, or to get into trouble.
       %ul.contact
         %li
-          %a.fb{:href => "https://www.facebook.com/jkooms"} Facebook
+          %a.fb{href: "https://www.facebook.com/jkooms"} Facebook
         %li
-          %a.tw{:href => "https://www.twitter.com/jkooms"} Twitter
+          %a.tw{href: "https://www.twitter.com/jkooms"} Twitter
         %li
-          %a.sk{:href => "skype:jtkumario?chat"} Skype
+          %a.sk{href: "skype:jtkumario?chat"} Skype
         %li
-          %a.em{:href => "mailto:jonathan@foodcircles.net"} Email
+          %a.em{href: "mailto:jonathan@foodcircles.net"} Email
         %li
-          %a.li{:href => "linkd.in/JonKumar"} LinkedIn
+          %a.li{href: "linkd.in/JonKumar"} LinkedIn
     #adam.teammember
       %h3 Adam Salois
       %h4
@@ -76,13 +76,13 @@
         to hang out on porches, grab a brew, or any and all beach related activities (even winter).
       %ul.contact
         %li
-          %a.fb{:href => "fb.com/saloisa"} Facebook
+          %a.fb{href: "fb.com/saloisa"} Facebook
         %li
-          %a.tw{:href => "twitter.com/SLICEosaurus"} Twitter
+          %a.tw{href: "twitter.com/SLICEosaurus"} Twitter
         %li
-          %a.sk{:href => "skype:adam.salois?chat"} Skype
+          %a.sk{href: "skype:adam.salois?chat"} Skype
         %li
-          %a.em{:href => "mailto:a@foodcircles.net"} Email
+          %a.em{href: "mailto:a@foodcircles.net"} Email
         %li
     #mike.teammember
       %h3 Mike King
@@ -97,9 +97,9 @@
         to debate Pokemon, race BMW's, or hit up a ska concert.
       %ul.contact
         %li
-          %a.li{:href => "http://www.linkedin.com/profile/view?id=175476844"} LinkedIn
+          %a.li{href: "http://www.linkedin.com/profile/view?id=175476844"} LinkedIn
         %li
-          %a.em{:href => "mailto:mikejoinfoodcircles.org"} Email
+          %a.em{href: "mailto:mikejoinfoodcircles.org"} Email
     #lacides.teammember
       %h3 Lacides Barros
       %h4
@@ -113,9 +113,9 @@
         to visit Columbia, start coding with us, or report any bugs.
       %ul.contact
         %li
-          %a.li{:href => "http://www.linkedin.com/profile/view?id=175476844"} LinkedIn
+          %a.li{href: "http://www.linkedin.com/profile/view?id=175476844"} LinkedIn
         %li
-          %a.em{:href => "mailto:lcharris89@gmail.com/"} Email
+          %a.em{href: "mailto:lcharris89@gmail.com/"} Email
     #bruno.teammember
       %h3 Bruno Guidolim
       %h4
@@ -129,11 +129,11 @@
         to chat about apps, Brazil, and how to make the best "brigadeiro".
       %ul.contact
         %li
-          %a.em{:href => "mailto:b@joinfoodcircles.org"} Email
+          %a.em{href: "mailto:b@joinfoodcircles.org"} Email
         %li
-          %a.ws{:href => "http://www.guidolim.com"} Website
+          %a.ws{href: "http://www.guidolim.com"} Website
         %li
-          %a.li{:href => "http://br.linkedin.com/in/brunoguidolim/en"} LinkedIn
+          %a.li{href: "http://br.linkedin.com/in/brunoguidolim/en"} LinkedIn
     #taylor.teammember
       %h3 Taylor Satula
       %h4
@@ -147,17 +147,17 @@
         lets chat about downhill biking, interior design, or just to swap funny Youtube videos.
       %ul.contact
         %li
-          %a.fb{:href => "http://fb.com/taylorsatula"} Facebook
+          %a.fb{href: "http://fb.com/taylorsatula"} Facebook
         %li
-          %a.tw{:href => "http://twitter.com/gotpurpledrank"} Twitter
+          %a.tw{href: "http://twitter.com/gotpurpledrank"} Twitter
         %li
-          %a.sk{:href => "skype:taylor.satula?chat"} Skype
+          %a.sk{href: "skype:taylor.satula?chat"} Skype
         %li
-          %a.li{:href => "http://www.linkedin.com/pub/taylor-satula/8a/834/504/"} LinkedIn
+          %a.li{href: "http://www.linkedin.com/pub/taylor-satula/8a/834/504/"} LinkedIn
         %li
-          %a.em{:href => "mailto:taylor@threepixeldrift.com/"} Email
+          %a.em{href: "mailto:taylor@threepixeldrift.com/"} Email
         %li
-          %a.ws{:href => "http://www.threepixeldrift.com/"} Website
+          %a.ws{href: "http://www.threepixeldrift.com/"} Website
     #pseibelt.teammember
       %h3 Pablo Seibelt
       %h4
@@ -171,11 +171,11 @@
         to talk about inequality, software, philosophy, or if you intend to visit Buenos Aires.
       %ul.contact
         %li
-          %a.tw{:href => "http://twitter.com/sicarul"} Twitter
+          %a.tw{href: "http://twitter.com/sicarul"} Twitter
         %li
-          %a.em{:href => "mailto:pabloseibelt@sicarul.com"} Email
+          %a.em{href: "mailto:pabloseibelt@sicarul.com"} Email
         %li
-          %a.ws{:href => "http://www.sicarul.com/"} Website
+          %a.ws{href: "http://www.sicarul.com/"} Website
   .clear
 #fbcomments
   .container
@@ -185,7 +185,7 @@
           .fb-like{"data-action" => "like", "data-href" => "http://www.joinfoodcircles.org", "data-layout" => "standard", "data-share" => "true", "data-show-faces" => "true"}
           %br
           %br
-          %a.twitter-share-button{"data-hashtags" => "BOFO", "data-url" => "http://www.joinfoodcircles.org", "data-via" => "FoodCircles", :href => "https://twitter.com/share"} Tweet
+          %a.twitter-share-button{"data-hashtags" => "BOFO", "data-url" => "http://www.joinfoodcircles.org", "data-via" => "FoodCircles", href: "https://twitter.com/share"} Tweet
           :javascript
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     %h4

@@ -8,6 +8,6 @@ class CreateBadges < ActiveRecord::Migration
       t.timestamps
     end
 
-    Badge.create :code => 'paidmore', :category => 'Generosity', :title => 'Paid More than Minimum'
+    Badge.create code: 'paidmore', category: 'Generosity', title: 'Paid More than Minimum'
   end
 end

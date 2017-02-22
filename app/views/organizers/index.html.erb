@@ -58,7 +58,7 @@
     <%= image_tag "stringright.png", class: "stringright" %>
 
     <h1>Sign up</h1>
-    <%= form_tag organizers_path, :id => "organizers", method: :post do %>
+    <%= form_tag organizers_path, id: "organizers", method: :post do %>
         <h2>Are you looking for a venue or do you have the space set?</h2>
         <%= radio_button_tag :location, 'at the restaurant', value: "1", class: "custom-input" %>
         <%= label_tag 'at the restaurant', 'I want a venue' %>
@@ -91,7 +91,7 @@
         <br/>
         <h2>Any other comments or feedback?</h2>
         <%= text_area_tag :feedback, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %><br/>
-        <%= submit_tag "Submit", :class => "btn-standart" %>
+        <%= submit_tag "Submit", class: "btn-standart" %>
 
         <div id="socialsharebuttonsorg">
           <br><br>

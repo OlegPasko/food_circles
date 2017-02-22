@@ -15,7 +15,7 @@ class Reservation < ApplicationRecord
   def self.weekly_update
 
 
-    auto_emails = Reservation.all(:select => "created_at");
+    auto_emails = Reservation.all(select: "created_at");
 
     UserMailer.weekly_mail().deliver
 

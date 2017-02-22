@@ -1,5 +1,5 @@
 class VenuesController < ApplicationController
-  protect_from_forgery :except => :subscribe
+  protect_from_forgery except: :subscribe
 
   def index
 
@@ -28,9 +28,9 @@ class VenuesController < ApplicationController
 
     if ['json', 'jsonp'].include?(params[:format])
       if (params[:offline])
-        render :json => (lat(params[:lat]) ? @venues.as_json(:lat => params[:lat], :lon => params[:lon], :not_available => true) : @venues), :callback => params[:callback]
+        render json: (lat(params[:lat]) ? @venues.as_json(lat: params[:lat], lon: params[:lon], not_available: true) : @venues), callback: params[:callback]
       else
-        render :json => (lat(params[:lat]) ? @venues.as_json(:lat => params[:lat], :lon => params[:lon]) : @venues), :callback => params[:callback]
+        render json: (lat(params[:lat]) ? @venues.as_json(lat: params[:lat], lon: params[:lon]) : @venues), callback: params[:callback]
       end
     end
   end
@@ -40,7 +40,7 @@ class VenuesController < ApplicationController
     @offer = Venue.find(params[:id]).offers.first
 
     if ['json', 'jsonp'].include?(params[:format])
-      render :json => @v, :callback => params[:callback]
+      render json: @v, callback: params[:callback]
     end
   end
 
@@ -48,7 +48,7 @@ class VenuesController < ApplicationController
     partial, message = if current_user
                          venue = Venue.find(params[:id])
                          user = current_user
-                         notification_request = NotificationRequest.new(:venue => venue, :user => current_user)
+                         notification_request = NotificationRequest.new(venue: venue, user: current_user)
                          if notification_request.save
                            ['subscribe_success', 'Got it. Look for an email next week.']
                          else
@@ -67,7 +67,7 @@ class VenuesController < ApplicationController
     partial, message = if current_user
                          venue = Venue.find(params[:id])
                          user = current_user
-                         notification_reqs = user.notification_requests.where(:venue_id => venue.id)
+                         notification_reqs = user.notification_requests.where(venue_id: venue.id)
                          if notification_reqs.size > 0
                            notification_reqs.destroy_all
                            ['unsubscribe_success', 'Subscription cancelled']
@@ -87,7 +87,7 @@ class VenuesController < ApplicationController
     subscribed = if current_user
                    venue = Venue.find(params[:id])
                    user = current_user
-                   notification_reqs = user.notification_requests.where(:venue_id => venue.id)
+                   notification_reqs = user.notification_requests.where(venue_id: venue.id)
                    if notification_reqs.size > 0
                      true
                    else
@@ -98,7 +98,7 @@ class VenuesController < ApplicationController
                  end
 
     respond_to do |format|
-      format.json { render json: {:subscribed => subscribed} }
+      format.json { render json: {subscribed: subscribed} }
     end
   end
 

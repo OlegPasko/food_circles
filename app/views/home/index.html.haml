@@ -49,7 +49,7 @@
 
       .products-tiles
         - @venues.each do |venue|
-          %div{:data => {:lat=>venue.latitude, :lon=>venue.longitude}, class: "tile #{ venue.num_vouchers > 2 ? "green" : (venue.num_vouchers == 1 ? "red" : "yellow")} #{( venue.num_vouchers == 0 ? "sold-out" : "" )} #{venue.venue_tags.map{|c| c.name.parameterize }.join(" ")} #{venue.experience_tags.map{|c| c.name.parameterize }.join(" ")} #{venue.city.parameterize}"}
+          %div{data: {lat:venue.latitude, lon:venue.longitude}, class: "tile #{ venue.num_vouchers > 2 ? "green" : (venue.num_vouchers == 1 ? "red" : "yellow")} #{( venue.num_vouchers == 0 ? "sold-out" : "" )} #{venue.venue_tags.map{|c| c.name.parameterize }.join(" ")} #{venue.experience_tags.map{|c| c.name.parameterize }.join(" ")} #{venue.city.parameterize}"}
             %h3= venue.name
             .thumb
               - if venue.has_vouchers?
@@ -63,7 +63,7 @@
                 - if venue.sold_out?
                   %span.pbar{style: "height: 0"}
                     - unless @watched_venues.include? venue
-                      = link_to content_tag(:small, "Notify me"), subscribe_venue_path(venue), :remote => true, :method => :post, :class => [:block, :notification_request]
+                      = link_to content_tag(:small, "Notify me"), subscribe_venue_path(venue), remote: true, method: :post, class: [:block, :notification_request]
                 - else
                   %span.pbar{style: "height:" + percent.to_s + "%"}
                     %span.block
@@ -72,9 +72,9 @@
 
               %a.deallink.popup-link{href: venue.offers.order("min_diners ASC").first.id.to_s, :"data-slug" => venue.slug, :"data-disabled" => "#{venue.sold_out?}", :"data-mixpanel-event" => "Clicked on a Restaurant", :"data-mixpanel-options" => {restaurant: venue.name}.to_json }
                 %span.price
-                  %strong= number_to_currency(venue.offers.order("min_diners ASC").first.price, :precision => 0)
+                  %strong= number_to_currency(venue.offers.order("min_diners ASC").first.price, precision: 0)
                   %span{class: "old"}
-                    = number_to_currency(venue.offers.order("min_diners ASC").first.original_price, :precision => 0)
+                    = number_to_currency(venue.offers.order("min_diners ASC").first.original_price, precision: 0)
                     %i{class: "icon-strike strike"}
                 %span{class: "shadow"}
                 = image_tag venue.restaurant_tile_image.thumb("274x163").url
@@ -96,4 +96,4 @@
             %small Restaurant
             %i.icon-plus
 
-      = will_paginate @venues, :style => 'display: none;'
+      = will_paginate @venues, style: 'display: none;'

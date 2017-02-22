@@ -1,8 +1,8 @@
 #sidebar
   %ul
-    %li{:class => "#{ 'active' if params[:id] == 'about_we' }"}
+    %li{class: "#{ 'active' if params[:id] == 'about_we' }"}
       = link_to "About We", "/about_we"
-    %li{:class => "#{ 'active' if params[:id] == 'faq' }"}
+    %li{class: "#{ 'active' if params[:id] == 'faq' }"}
       = link_to "FAQ", '/faq'
     %li
       = link_to 'For Restaurants', '/restaurants'

@@ -2,7 +2,7 @@ class RemindListController < ApplicationController
   require 'resolv'
 
   def create
-    @reminder = RemindList.create(:blah => params[:blah])
+    @reminder = RemindList.create(blah: params[:blah])
     email = @reminder.blah
 
     unless email.blank?
@@ -16,7 +16,7 @@ class RemindListController < ApplicationController
         end
       end
     end
-    render :nothing => true
+    render nothing: true
   end
 
 

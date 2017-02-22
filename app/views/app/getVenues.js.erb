@@ -1,4 +1,4 @@
-$('#holder').html("<%= escape_javascript(render :partial => 'venues') %>");
+$('#holder').html("<%= escape_javascript(render partial: 'venues') %>");
 setTimeout(function () {
   $('.restaurant').click(function () {
     $('.restaurant').attr('data-active', 'false');

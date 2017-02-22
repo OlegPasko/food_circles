@@ -6,7 +6,7 @@ class CreateCategoriesOffersJoinTable < ActiveRecord::Migration
   end
 
   def change
-    create_table :categories_offers, :id => false do |t|
+    create_table :categories_offers, id: false do |t|
       t.integer :category_id
       t.integer :offer_id
     end

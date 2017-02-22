@@ -11,12 +11,12 @@
     -# - if @v.available? and @v.voucher != '0'
     -#   %table#rewards
     -#     - @v.offers.sort{|u,v|u.min_diners<=>v.min_diners}.each do |o|
-    -#       = render :partial => 'app/offer', :locals => {:o => o}
+    -#       = render partial: 'app/offer', locals: {o: o}
     -# - elsif !@v.available? and @v.voucher != '0'
     -#   %table#rewards.closed
     -#     - @v.offers.sort{|u,v|u.min_diners<=>v.min_diners}.each do |o|
-    -#       = render :partial => 'app/offer', :locals => {:o => o}
+    -#       = render partial: 'app/offer', locals: {o: o}
     -# - else
     -#   %table#rewards
     -#     No Reward is available
-    -# .bigButton{:data => {:active => 'false'}} Select this Perk and Continue >>
+    -# .bigButton{data: {active: 'false'}} Select this Perk and Continue >>

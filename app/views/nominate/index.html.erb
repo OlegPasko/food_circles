@@ -1,12 +1,12 @@
 <% content_for(:title, "FoodCircles – Nominate a Family for a Free Thankgiving Meal from the Gilmore Collection") %>
 
-<% set_meta_tags :og => {
-    :title => 'Nominate a Family for a Thanksgiving Meal From Gilmore Collection',
-    :description => 'Help us see the invisible. Tell us a brief story about a family that may not be able to provide for Thanksgiving. The Gilmore Collection will deliver gourmet meals to five of them the night before.',
-    :image => 'https://dl.dropboxusercontent.com/u/38930645/nominate-2.jpg',
-    :url => url_for(:only_path => false),
-    :site_name => "FoodCircles",
-    :type => 'website'
+<% set_meta_tags og: {
+    title: 'Nominate a Family for a Thanksgiving Meal From Gilmore Collection',
+    description: 'Help us see the invisible. Tell us a brief story about a family that may not be able to provide for Thanksgiving. The Gilmore Collection will deliver gourmet meals to five of them the night before.',
+    image: 'https://dl.dropboxusercontent.com/u/38930645/nominate-2.jpg',
+    url: url_for(only_path: false),
+    site_name: "FoodCircles",
+    type: 'website'
 }
 %>
 
@@ -41,7 +41,7 @@
     <%= image_tag "stringright.png", class: "stringright" %>
 
     <h1>Nominate a Family</h1>
-    <%= form_tag '/nominate', :id => "nominate", method: :post do %>
+    <%= form_tag '/nominate', id: "nominate", method: :post do %>
         <h2>Name of the family?</h2>
         <%= text_field_tag :name, nil, size: "60", class: 'field standart organizers-field' %>
         <h2>If selected, how may we get in contact with them?</h2>
@@ -55,7 +55,7 @@
         <%= text_field_tag :email, nil, size: "60", class: 'field standart organizers-field' %>
         <h2>Any other comments or feedback?</h2>
         <%= text_area_tag :feedback, nil, rows: "10", cols: "60", class: 'field standart organizers-field' %><br/>
-        <%= submit_tag "Submit", :class => "btn-standart" %>
+        <%= submit_tag "Submit", class: "btn-standart" %>
 
         <div id="socialsharebuttonsorg">
           <br><br>

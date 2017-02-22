@@ -47,7 +47,7 @@
     </div>
     <div id="butterfly-submit">
       <%= form_tag socialbutterflies_path, method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
-          <%= text_field_tag :facebook, nil, :placeholder => "http://www.facebook.com/yourprofile", :size => "65" %>
+          <%= text_field_tag :facebook, nil, placeholder: "http://www.facebook.com/yourprofile", size: "65" %>
           <br/>
           <%= submit_tag "Apply", class: "btn-standart" %>
       <% end %>

@@ -5,7 +5,7 @@ class ReservationController < ApplicationController
     reservation.state = "Active";
     reservation.save;
 
-    render :nothing => true
+    render nothing: true
   end
 
   def expired
@@ -13,7 +13,7 @@ class ReservationController < ApplicationController
     reservation.state = "Expired";
     reservation.save;
 
-    render :nothing => true
+    render nothing: true
   end
 
   def used
@@ -21,7 +21,7 @@ class ReservationController < ApplicationController
     reservation.state = "Used";
     reservation.save;
 
-    render :nothing => true
+    render nothing: true
   end
 
 end

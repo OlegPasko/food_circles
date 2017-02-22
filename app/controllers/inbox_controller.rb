@@ -9,7 +9,7 @@ class InboxController < ApplicationController
 
       inbound_mark_used(from_email, mail_subject, mail_text)
     end
-    render :nothing => true
+    render nothing: true
   end
 
   def inbound_mark_used(from_email, mail_subject, mail_text)
@@ -28,6 +28,6 @@ class InboxController < ApplicationController
       payment.save
     end
 
-    render :nothing => true
+    render nothing: true
   end
 end

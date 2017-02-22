@@ -29,7 +29,7 @@ class ReceiveTextController < ApplicationController
       if body = "used"
         user = User.find_by_phone(from)
         if !user.blank?
-          payment = Payment.where(:user_id => user.id).limit(1).order('created_at desc').first
+          payment = Payment.where(user_id: user.id).limit(1).order('created_at desc').first
         else
           response = "Uknown user - is this phone number registered with your FoodCircles profile?"
         end
@@ -45,7 +45,7 @@ class ReceiveTextController < ApplicationController
       sendText(from, response)
     end
 
-    render :nothing => true
+    render nothing: true
 
   end
 
@@ -72,6 +72,6 @@ class ReceiveTextController < ApplicationController
 
     sendText(from, response)
 
-    render :nothing => true
+    render nothing: true
   end
 end

@@ -2,16 +2,16 @@
   usefunds = "#{@usefunds}";
 .popup.deal-popup
   .deal
-    = form_tag("/stripe_payments.json", :method => "post", :id => "dealform", :remote => true, :"data-show-ajax-status-on" => "#dealbuy", :"data-processing-text" => "Processing ...") do
-      %input{:name => "stripe_token", :type => "hidden"}
+    = form_tag("/stripe_payments.json", method: "post", id: "dealform", remote: true, :"data-show-ajax-status-on" => "#dealbuy", :"data-processing-text" => "Processing ...") do
+      %input{name: "stripe_token", type: "hidden"}
       .deal-main
         .deal-banner
           = image_tag @offer.venue.main_image.thumb("670x313").url
           %h2= @offer.venue.name
           -#%span.price
-            -#%strong= number_to_currency(@min_offer.price, :precision => 0)
+            -#%strong= number_to_currency(@min_offer.price, precision: 0)
             -#%small
-              -#= number_to_currency(@min_offer.original_price, :precision => 0)
+              -#= number_to_currency(@min_offer.original_price, precision: 0)
               -#%i.icon-strike-big.strike
           %span.count
             = @min_offer.venue.vouchers_available
@@ -26,39 +26,39 @@
               - @offer.venue.offers.order("min_diners ASC").each_with_index do |offer, i|
                 %li.radio-holder
                   - if i == 0
-                    %label{:for => "qty-1"}= offer.name
+                    %label{for: "qty-1"}= offer.name
                   - else
-                    %label{:for => "qty-1"}
+                    %label{for: "qty-1"}
                       = offer.name
                   -#.testing no "add $1" = min_deals(offer.min_diners)
                   - if i == 0
-                    %input#qty-1.custom-input{:checked => "checked", "data-details" => offer.details, "data-name" => offer.name, "data-originalprice" => prettify_float(offer.original_price), "data-price" => prettify_float(offer.price), :name => "offer_id", :type => "radio", :value => offer.id, :"data-mixpanel-event" => "Selected a different deal", :"data-mixpanel-trigger-on" => "change", :"data-mixpanel-options" => {:restaurant => offer.venue.name, :offer => offer.name}.to_json}/
+                    %input#qty-1.custom-input{checked: "checked", "data-details" => offer.details, "data-name" => offer.name, "data-originalprice" => prettify_float(offer.original_price), "data-price" => prettify_float(offer.price), name: "offer_id", type: "radio", value: offer.id, :"data-mixpanel-event" => "Selected a different deal", :"data-mixpanel-trigger-on" => "change", :"data-mixpanel-options" => {restaurant: offer.venue.name, offer: offer.name}.to_json}/
                   - else
-                    %input#qty-1.custom-input{"data-details" => offer.details, "data-name" => offer.name, "data-originalprice" => prettify_float(offer.original_price), "data-price" => prettify_float(offer.price), :name => "offer_id", :type => "radio", :value => offer.id, :"data-mixpanel-event" => "Selected a different deal", :"data-mixpanel-trigger-on" => "change", :"data-mixpanel-options" => {:restaurant => offer.venue.name, :offer => offer.name}.to_json}/
+                    %input#qty-1.custom-input{"data-details" => offer.details, "data-name" => offer.name, "data-originalprice" => prettify_float(offer.original_price), "data-price" => prettify_float(offer.price), name: "offer_id", type: "radio", value: offer.id, :"data-mixpanel-event" => "Selected a different deal", :"data-mixpanel-trigger-on" => "change", :"data-mixpanel-options" => {restaurant: offer.venue.name, offer: offer.name}.to_json}/
           -#.qty
           -#.description
           .pay-box
             %h3 Pay What You Want
             %span.field-holder
               %span.prefix $
-              %input.field{:name => "amount", :type => "text", :value => "1"}/
+              %input.field{name: "amount", type: "text", value: "1"}/
             .slider-holder
               %span.min $1
               %span.max $18
               %span.mid $9
               .slider-wrap
                 %span.bg-holder
-                .slider{:"data-mixpanel-options" => {:restaurant => @offer.venue.name}.to_json }
+                .slider{:"data-mixpanel-options" => {restaurant: @offer.venue.name}.to_json }
             -#.slider
             -#.slider-wrap
             -#.slider-holder
             .donation-info
               (slide to give more)
               %br/
-              .meal-text{ :style => "display: inline-block" }
+              .meal-text{ style: "display: inline-block" }
                 dollar donated
             .donation-info
-            %a.btn-large.full-width.light-shadow.buy-btn{:href => "#", :"data-mixpanel-options" => {:restaurant => @offer.venue.name}.to_json, :"data-mixpanel-event" => "Clicked 'I want this'" } I want this!
+            %a.btn-large.full-width.light-shadow.buy-btn{href: "#", :"data-mixpanel-options" => {restaurant: @offer.venue.name}.to_json, :"data-mixpanel-event" => "Clicked 'I want this'" } I want this!
             .help
               .balloon
                 %h6 HOW TO REDEEM
@@ -74,11 +74,11 @@
                     Enjoy with regular food purchase
                 %i.arrow-down
                   %i.arrow-down
-                %a.balloon-close{:href => "#"} Close
+                %a.balloon-close{href: "#"} Close
               -#.balloon
               %span
                 Expires in 30 days
-                %a.ballon-expander{:href => "#"}
+                %a.ballon-expander{href: "#"}
                   (How to redeem)
       -#.help
       -#.pay-box
@@ -89,18 +89,18 @@
           %fieldset.new-card
             .cards-head
               - if stripe_customer?
-                = render :partial => "offers/existing_credit_card_fields"
+                = render partial: "offers/existing_credit_card_fields"
               - else
-                = render :partial => "offers/new_credit_card_fields"
+                = render partial: "offers/new_credit_card_fields"
           %fieldset
             %h5
               %span.give-to
               %span.line
             .choose-organization
-              = render :partial => "offers/charity", :collection => ListCharities(), :locals => {:venue => @offer.venue}
+              = render partial: "offers/charity", collection: ListCharities(), locals: {venue: @offer.venue}
             -#.choose-organization
             .foot
-              %a#dealbuy.btn-standart.full-width.light-shadow.large-font{:href => "#", "data-submit-to-stripe" => "#{!stripe_customer?}"} Buy
+              %a#dealbuy.btn-standart.full-width.light-shadow.large-font{href: "#", "data-submit-to-stripe" => "#{!stripe_customer?}"} Buy
               %p.secured
                 %i.icon-secure
                 SECURE – PAYMENTS PROCESSED BY STRIPE
@@ -111,7 +111,7 @@
   -#.deal
   .deal-payment
     .head
-      %a.back{:href => "#"} &#8592; back to restaurant
+      %a.back{href: "#"} &#8592; back to restaurant
       .profile
         - if user_signed_in?
           .row
@@ -120,7 +120,7 @@
           .form-foot
             %em
               Not you?
-              = link_to('Logout', destroy_user_session_path, :method => :delete)
+              = link_to('Logout', destroy_user_session_path, method: :delete)
 
         - else
           %span.or
@@ -135,17 +135,17 @@
               %a{href: "/users/auth/facebook", class: "btn-facebook fatter"}
 
                 %i{class: "icon-btn-facebook medium"}
-              %input.field.standart.focus#user_email{:name=>"user_email", :placeholder=>"New email", :size=>"30", :tabindex=>"1", :type=>"email"}
+              %input.field.standart.focus#user_email{name:"user_email", placeholder:"New email", size:"30", tabindex:"1", type:"email"}
             .row
               %a{href: "/users/auth/twitter", class: "btn-twitter fatter"}
 
                 %i{class: "icon-btn-twitter medium"}
-              %input.field.standart#user_password{:name=>"user_password", :placeholder=>"New password", :size=>"30", :tabindex=>"2", :type=>"password"}
+              %input.field.standart#user_password{name:"user_password", placeholder:"New password", size:"30", tabindex:"2", type:"password"}
             .form-foot
               %em
-                %a{:href => "#"} Use existing account
+                %a{href: "#"} Use existing account
               .clear
-          = form_for(resource, :as => resource_name, :url => user_session_path, html:{class: 'hidden', id: "sign-in-form"}) do |f|
+          = form_for(resource, as: resource_name, url: user_session_path, html:{class: 'hidden', id: "sign-in-form"}) do |f|
             %h5
               Use Existing Account
               %span.line
@@ -174,18 +174,18 @@
   .mini-profile
     %i.arrow-down
       %i.arrow-down
-    = image_tag @offer.venue.outside_image.thumb("130x135").url, :class => 'thumb' if @offer.venue.outside_image
+    = image_tag @offer.venue.outside_image.thumb("130x135").url, class: 'thumb' if @offer.venue.outside_image
     %h4
       %small= @offer.venue.phone
-      = link_to @offer.venue.name, @offer.venue.web, :target => "_blank"
+      = link_to @offer.venue.name, @offer.venue.web, target: "_blank"
     %p= @offer.venue.description
     .foot
-      = link_to "Get directions", google_maps_search(@offer.venue), :class => "right", :target => "_blank", :"data-mixpanel-event" => "Clicked on get directions", :"data-mixpanel-options" => {restaurant: @offer.venue.name}.to_json
+      = link_to "Get directions", google_maps_search(@offer.venue), class: "right", target: "_blank", :"data-mixpanel-event" => "Clicked on get directions", :"data-mixpanel-options" => {restaurant: @offer.venue.name}.to_json
 
       - if @offer.venue.social_links.any?
         .social
           - @offer.venue.social_links.each do |social_link|
-            = link_to '', social_link.url, :class => "icon-#{social_link.source}-med", :target => "_blank", :"data-mixpanel-event" => "Clicked on social link", :"data-mixpanel-options" => {restaurant: @offer.venue.name, social_source: social_link.source}.to_json
+            = link_to '', social_link.url, class: "icon-#{social_link.source}-med", target: "_blank", :"data-mixpanel-event" => "Clicked on social link", :"data-mixpanel-options" => {restaurant: @offer.venue.name, social_source: social_link.source}.to_json
               / /.social
               / /.foot
               / /.mini-profile
