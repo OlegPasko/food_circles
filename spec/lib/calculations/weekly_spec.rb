@@ -22,7 +22,7 @@ describe Calculations::Weekly do
 
   describe "#weekly_progress" do
     it "calculates the progress made within a week" do
-      expected_hash = {:current_progress=>0, :adjusted_total=>11.25}
+      expected_hash = {current_progress:0, adjusted_total:11.25}
 
       weekly_calculations = Calculations::Weekly.new
       weekly_calculations.weekly_progress.should == expected_hash

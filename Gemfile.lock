@@ -326,6 +326,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rgeo (0.5.3)
     rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -456,6 +457,7 @@ DEPENDENCIES
   rails_admin
   rb-readline
   remotipart (~> 1.2)
+  rgeo
   rspec-rails
   sass-rails (~> 5.0)
   spring
@@ -472,4 +474,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.14.3
+   1.14.4

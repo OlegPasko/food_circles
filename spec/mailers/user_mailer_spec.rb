@@ -5,11 +5,11 @@ describe UserMailer do
 
   it "voucher expiring soon" do
     Timecop.freeze(Time.new(2013, 11, 2, 11, 25)) do
-      user = FactoryGirl.create(:user, :email => "test@test.com")
-      venue = FactoryGirl.create(:venue, :name => "Mike's burgers", :phone => "983-143-1233")
-      charity = FactoryGirl.create(:charity, :name => "Donate for life")
-      offer = FactoryGirl.create(:offer, :name => "Extra fries", :venue_id => venue.id)
-      payment = FactoryGirl.create(:payment, :user_id => user.id, :offer_id => offer.id, :charity_id => charity.id)
+      user = FactoryGirl.create(:user, email: "test@test.com")
+      venue = FactoryGirl.create(:venue, name: "Mike's burgers", phone: "983-143-1233")
+      charity = FactoryGirl.create(:charity, name: "Donate for life")
+      offer = FactoryGirl.create(:offer, name: "Extra fries", venue_id: venue.id)
+      payment = FactoryGirl.create(:payment, user_id: user.id, offer_id: offer.id, charity_id: charity.id)
 
       UserMailer.voucher_expiring_soon(payment).deliver
 

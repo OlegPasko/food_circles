@@ -67,7 +67,7 @@ Rails.application.routes.draw do
   get '/achievements', to: 'achievements#index', as: :achievements
   get '/achievements/best_donors', to: 'achievements#best_donors', as: :achievements_best_donors
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :socialbutterflies
   resources :restaurants
