@@ -38,7 +38,7 @@ RailsAdmin.config do |config|
   config.excluded_models << 'LongTasks'
 
   # Add models here if you want to go 'whitelist mode':
-  # config.included_models = [Charity, Contact, ContactType, Offer, OfferTag, OfferTaggable, OpenTime, Reservation, State, User, Venue]
+  # config.included_models = [Charity,  Offer,  OpenTime, Reservation, State, User, Venue]
 
   # Application wide tried label methods for models' instances
   # config.label_methods << :description # Default is [:name, :title]
@@ -82,7 +82,7 @@ RailsAdmin.config do |config|
   # Your model's configuration, to help you get started:
 
   # All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible. (visible(true))
-
+  #
   # config.model Charity do
   #   # Found associations:
   #   # Found columns:
@@ -104,37 +104,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model Contact do
-  #   # Found associations:
-  #     configure :contact_type, :belongs_to_association   #   # Found columns:
-  #     configure :id, :integer
-  #     configure :content, :string
-  #     configure :contact_type_id, :integer         # Hidden
-  #     configure :contactable_id, :integer
-  #     configure :contactable_type, :string
-  #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
-  # config.model ContactType do
-  #   # Found associations:
-  #     configure :contacts, :has_many_association   #   # Found columns:
-  #     configure :id, :integer
-  #     configure :name, :string
-  #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
+  #
   # config.model Offer do
   #   # Found associations:
   #   # Found columns:
@@ -152,35 +122,7 @@ RailsAdmin.config do |config|
   #   create do; end
   #   update do; end
   # end
-  # config.model OfferTag do
-  #   # Found associations:
-  #   # Found columns:
-  #     configure :id, :integer
-  #     configure :name, :string
-  #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
-  # config.model OfferTaggable do
-  #   # Found associations:
-  #   # Found columns:
-  #     configure :id, :integer
-  #     configure :offer_tag_id, :integer
-  #     configure :offer_id, :integer
-  #     configure :created_at, :datetime
-  #     configure :updated_at, :datetime   #   # Sections:
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  # end
+  #
   # config.model OpenTime do
   #   # Found associations:
   #     configure :openable, :polymorphic_association         # Hidden   #   # Found columns:
