@@ -1,4 +1,4 @@
-class FixTimeZoneForVenues < ActiveRecord::Migration
+class FixTimeZoneForVenues < ActiveRecord::Migration[5.0]
   def up
     remove_column :venues, :timezone_id
     add_column :venues, :time_zone_id, :integer

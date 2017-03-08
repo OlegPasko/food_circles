@@ -1,4 +1,4 @@
-class CreateVenueTags < ActiveRecord::Migration
+class CreateVenueTags < ActiveRecord::Migration[5.0]
   def change
     create_table :venue_tags do |t|
       t.string :name

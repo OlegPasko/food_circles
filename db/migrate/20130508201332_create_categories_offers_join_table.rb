@@ -1,4 +1,4 @@
-class CreateCategoriesOffersJoinTable < ActiveRecord::Migration
+class CreateCategoriesOffersJoinTable < ActiveRecord::Migration[5.0]
   def up
   end
 

@@ -1,4 +1,4 @@
-class CreateStatus < ActiveRecord::Migration
+class CreateStatus < ActiveRecord::Migration[5.0]
   def change
     create_table "status", force: true do |t|
       t.string "status"

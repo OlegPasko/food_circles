@@ -1,4 +1,4 @@
-class EnsureExistingVenuesAndOffersAreAlwaysOpen < ActiveRecord::Migration
+class EnsureExistingVenuesAndOffersAreAlwaysOpen < ActiveRecord::Migration[5.0]
   def up
     [Venue, Offer].each do |openable_klass|
       openable_klass.find_each do |openable|

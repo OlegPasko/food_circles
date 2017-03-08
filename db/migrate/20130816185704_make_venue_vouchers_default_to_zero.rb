@@ -1,4 +1,4 @@
-class MakeVenueVouchersDefaultToZero < ActiveRecord::Migration
+class MakeVenueVouchersDefaultToZero < ActiveRecord::Migration[5.0]
   def up
     change_column :venues, :vouchers_available, :integer, default: 0
     change_column :venues, :vouchers_total, :integer, default: 0

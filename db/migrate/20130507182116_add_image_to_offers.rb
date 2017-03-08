@@ -1,4 +1,4 @@
-class AddImageToOffers < ActiveRecord::Migration
+class AddImageToOffers < ActiveRecord::Migration[5.0]
   def change
   end
 

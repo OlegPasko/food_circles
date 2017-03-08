@@ -1,4 +1,4 @@
-class CreatePaymentNotification < ActiveRecord::Migration
+class CreatePaymentNotification < ActiveRecord::Migration[5.0]
   def change
     create_table :payment_notifications do |t|
       t.string :status

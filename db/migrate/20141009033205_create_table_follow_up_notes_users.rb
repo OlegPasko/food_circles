@@ -1,4 +1,4 @@
-class CreateTableFollowUpNotesUsers < ActiveRecord::Migration
+class CreateTableFollowUpNotesUsers < ActiveRecord::Migration[5.0]
   def up
     create_table :follow_up_notes_users, id: false do |t|
       t.integer :follow_up_note_id

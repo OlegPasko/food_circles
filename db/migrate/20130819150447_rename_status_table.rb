@@ -1,4 +1,4 @@
-class RenameStatusTable < ActiveRecord::Migration
+class RenameStatusTable < ActiveRecord::Migration[5.0]
   def self.up
     rename_table :status, :statuses
   end

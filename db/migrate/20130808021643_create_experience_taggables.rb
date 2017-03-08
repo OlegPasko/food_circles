@@ -1,4 +1,4 @@
-class CreateExperienceTaggables < ActiveRecord::Migration
+class CreateExperienceTaggables < ActiveRecord::Migration[5.0]
   def change
     create_table "experience_taggables", force: true do |t|
       t.integer "experience_tag_id"

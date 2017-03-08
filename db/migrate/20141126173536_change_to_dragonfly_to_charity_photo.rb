@@ -1,4 +1,4 @@
-class ChangeToDragonflyToCharityPhoto < ActiveRecord::Migration
+class ChangeToDragonflyToCharityPhoto < ActiveRecord::Migration[5.0]
   def up
     remove_column :charity_photos, :photo_file_name
     remove_column :charity_photos, :photo_content_type
