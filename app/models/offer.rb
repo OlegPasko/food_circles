@@ -35,7 +35,7 @@ class Offer < ApplicationRecord
     t = ((time - time.beginning_of_week) / 60) + 300
     joins(:open_times)
       .where('? BETWEEN open_times.start AND open_times.end', t)
-      .uniq
+      .distinct
   end
 
   def self.not_available
@@ -43,6 +43,6 @@ class Offer < ApplicationRecord
     day_end = ((Time.now.end_of_day - Time.now.beginning_of_week) / 60) + 300
     joins(:open_times)
       .where('open_times.start BETWEEN :now AND :day_end', now: t, day_end: day_end)
-      .uniq
+      .distinct
   end
 end

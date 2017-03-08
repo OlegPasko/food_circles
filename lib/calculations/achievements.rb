@@ -6,7 +6,7 @@ module Calculations
     end
 
     def best_donors
-      User.joins(payments: :offer).where('payments.amount > offers.price and payments.created_at > ?', dt_min).uniq.all
+      User.joins(payments: :offer).where('payments.amount > offers.price and payments.created_at > ?', dt_min).distinct.all
     end
   end
 end

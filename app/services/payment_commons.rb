@@ -17,13 +17,13 @@ module PaymentCommons
           current_user.friends << u.id unless u == current_user
         end
       end
-      current_user.friends = current_user.friends.uniq
+      current_user.friends = current_user.friends.distinct
       current_user.save
 
       current_user.friends.each do |u|
         @friends_payments << User.find(u).payments
       end
-      @friends_payments.flatten.uniq
+      @friends_payments.flatten.distinct
     rescue Twitter::Error::TooManyRequests => e
       logger.debug 'HIT THE RATE LIMIT'
     rescue Twitter::Error::Forbidden => e
@@ -36,8 +36,7 @@ module PaymentCommons
   end
 
   def load_payments
-    @payments = current_user.payments.order('created_at DESC').joins(:offer).uniq
-  end
+    @payments = current_user.payments.order('created_at DESC').joins(:offer).distinct
 
   def load_weekly_total
     @weekly_total = current_user.payments.where('created_at > ?', Time.now - 1.week).collect(&:amount).sum

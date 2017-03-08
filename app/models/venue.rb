@@ -225,9 +225,9 @@ class Venue < ApplicationRecord
 
   def self.currently_available(time=Time.now)
     t = ((time - time.beginning_of_week) / 60) + 300
-    Venue.joins(offers: :open_times).
-        where("? BETWEEN open_times.start AND open_times.end", t).
-        uniq
+    Venue.joins(offers: :open_times)
+      .where("? BETWEEN open_times.start AND open_times.end", t)
+      .distinct
   end
 
   # def self.currently_available_with_location(lat, lon, time=Time.now)
@@ -244,8 +244,8 @@ class Venue < ApplicationRecord
     t = ((Time.now - Time.now.beginning_of_week) / 60) + 300
     day_end = ((Time.now.end_of_day - Time.now.beginning_of_week) / 60) + 300
     Venue.joins(offers: :open_times).
-        where("open_times.start BETWEEN :now AND :day_end", {now: t, day_end: day_end}).
-        uniq
+        where("open_times.start BETWEEN :now AND :day_end", {now: t, day_end: day_end})
+        .distinct
   end
 
   # def self.not_available_with_location(lat, lon, time=Time.now)
@@ -323,6 +323,6 @@ class Venue < ApplicationRecord
   end
 
   def self.with_display_offers
-    joins(:offers).uniq
+    joins(:offers).distinct
   end
 end
