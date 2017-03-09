@@ -16,7 +16,6 @@ class RestaurantsController < ApplicationController
   end
 
   def signup
-
     UserMailer.restaurant_notify(restorant_params).deliver
     UserMailer.restaurant_signup(restorant_params).deliver
 
@@ -36,5 +35,4 @@ class RestaurantsController < ApplicationController
   def restorant_params
     params.require(:restaurants).require(:name, :email)
   end
-
 end

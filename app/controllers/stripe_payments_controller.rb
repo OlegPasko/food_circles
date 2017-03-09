@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 class StripePaymentsController < ApplicationController
   # Stripe Payments Controller for Test Envi.
-  def new
-  end
+  def new; end
 
   def create
     # Amount in cents

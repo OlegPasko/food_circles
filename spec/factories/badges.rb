@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
   factory :badge do
-    code "MyString"
-    category "MyString"
-    title "MyString"
+    code 'MyString'
+    category 'MyString'
+    title 'MyString'
   end
 end

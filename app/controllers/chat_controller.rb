@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class ChatController < ApplicationController
-  def index
-  end
+  def index; end
 
   def venues
     @venues = Venue.active.currently_available

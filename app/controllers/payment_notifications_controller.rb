@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class PaymentNotificationsController < ApplicationController
-
   def create
     @payment_notification = PaymentNotification.new(params[:payment_notification])
 

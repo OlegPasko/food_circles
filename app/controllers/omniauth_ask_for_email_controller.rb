@@ -2,8 +2,7 @@
 class OmniauthAskForEmailController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-  end
+  def index; end
 
   def submit
     current_user.email = params[:user][:email]

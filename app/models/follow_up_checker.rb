@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class FollowUpChecker
-  def initialize
-  end
+  def initialize; end
 
   def check
     get_payments

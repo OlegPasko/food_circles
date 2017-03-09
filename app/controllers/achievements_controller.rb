@@ -9,8 +9,7 @@ class AchievementsController < ApplicationController
     redirect_to '/' unless warden.user.is_admin?
   end
 
-  def index
-  end
+  def index; end
 
   def best_donors
     calculations = Calculations::Achievements.new

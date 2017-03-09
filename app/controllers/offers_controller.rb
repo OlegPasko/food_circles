@@ -50,6 +50,7 @@ class OffersController < ApplicationController
   end
 
   private
+
   def offer_params
     params.require(:offer).permit(:name, :venue_id, :category_ids, :price,
                                   :original_price, :total, :available, :min_diners, :details)

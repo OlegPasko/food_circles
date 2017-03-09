@@ -24,7 +24,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def update_profile
-    @user = User.find_by_authentication_token(params[:auth_token])
+    @user = User.find_by(authentication_token: params[:auth_token])
     if @user.update_attributes(params[:session])
       render(json: { error: false, description: 'User saved.' }) && return
     else
@@ -57,7 +57,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def password_email_sign_in
-    @user = User.find_by_email(params[:user_email])
+    @user = User.find_by(email: params[:user_email])
     if @user.nil?
       render(json: { error: true, description: 'No params provided' }, status: 401) && return
     end

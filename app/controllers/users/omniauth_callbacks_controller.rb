@@ -2,9 +2,9 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     if current_user.nil?
-      @user = User.find_by_facebook_uid(request.env['omniauth.auth'].uid)
+      @user = User.find_by(facebook_uid: request.env['omniauth.auth'].uid)
       if @user.nil?
-        @user = User.find_by_email(request.env['omniauth.auth'].info.email)
+        @user = User.find_by(email: request.env['omniauth.auth'].info.email)
 
         if @user.nil?
           @user = User.new(name: request.env['omniauth.auth'].info.name,
@@ -48,7 +48,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if current_user.nil?
 
-      @user = User.find_by_twitter_uid(request.env['omniauth.auth'].uid)
+      @user = User.find_by(twitter_uid: request.env['omniauth.auth'].uid)
       if @user.nil?
         redirect_to new_twitter_path
         return
@@ -69,11 +69,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  def new_twitter
-  end
+  def new_twitter; end
 
   def twitter_signup
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by(email: params[:email])
     if @user.nil?
       @user = User.new(name: session[:name],
                        provider: session[:provider],

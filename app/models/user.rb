@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def format
-    phone.gsub!(/[^0-9]/, '') if phone
+    phone&.gsub!(/[^0-9]/, '')
   end
 
   # Setup OmniAuth

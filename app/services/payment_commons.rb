@@ -10,7 +10,7 @@ module PaymentCommons
       user_ids = client.friends.map(&:id)
       logger.debug "UIDS: #{user_ids}"
       user_ids.each do |uid|
-        u = User.find_by_twitter_uid(uid.to_s)
+        u = User.find_by(twitter_uid: uid.to_s)
         logger.debug "User: #{u}"
         next if u.nil?
         unless u.twitter_uid.nil?
@@ -37,6 +37,7 @@ module PaymentCommons
 
   def load_payments
     @payments = current_user.payments.order('created_at DESC').joins(:offer).distinct
+  end
 
   def load_weekly_total
     @weekly_total = current_user.payments.where('created_at > ?', Time.now - 1.week).collect(&:amount).sum

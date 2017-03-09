@@ -27,7 +27,7 @@ class AppController < ApplicationController
   end
 
   def submit
-    user = User.find_by_email(params[:email].downcase)
+    user = User.find_by(email: params[:email].downcase)
     if !user
       render action: 'redirect_new_info'
       return
@@ -53,7 +53,7 @@ class AppController < ApplicationController
   end
 
   def create_voucher
-    user = User.find_by_email(params[:email].downcase)
+    user = User.find_by(email: params[:email].downcase)
     unless user
       user = User.create!(email: params[:email], password: "I don't care.", name: params[:name], phone: params[:phone])
     end

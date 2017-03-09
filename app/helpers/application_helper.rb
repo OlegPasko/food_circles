@@ -94,7 +94,7 @@ module ApplicationHelper
 
   def ListCharities(venue = nil)
     if request.subdomain && !['', 'www', 'staging'].include?(request.subdomain)
-      sub_charity = Charity.active.find_by_subdomain(request.subdomain)
+      sub_charity = Charity.active.find_by(subdomain: request.subdomain)
       [sub_charity]
     else
       charities = venue ? Charity.where(state: venue.state) : Charity.scoped

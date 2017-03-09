@@ -7,7 +7,7 @@ class ReceiveTextController < ApplicationController
     body.gsub!(/[^0-9]/, '')
     number.gsub!(/[^0-9]/, '')
 
-    user = User.find_by_phone(number)
+    user = User.find_by(phone: number)
     return unless user
 
     if (1..20).cover? body
@@ -26,7 +26,7 @@ class ReceiveTextController < ApplicationController
       body.downcase!
 
       if body = 'used'
-        user = User.find_by_phone(from)
+        user = User.find_by(phone: from)
         if !user.blank?
           payment = Payment.where(user_id: user.id).limit(1).order('created_at desc').first
         else
@@ -55,10 +55,10 @@ class ReceiveTextController < ApplicationController
 
     unless body.blank?
       body.upcase!
-      payment = Payment.find_by_code(body)
+      payment = Payment.find_by(code: body)
       if payment.blank?
         body.downcase!
-        payment = Payment.find_by_code(body)
+        payment = Payment.find_by(code: body)
       end
       payment.state = 'Used'
       payment.save

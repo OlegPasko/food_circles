@@ -19,12 +19,12 @@ class InboxController < ApplicationController
     text = mail_text
 
     if subject == 'used'
-      payment = Payment.find_by_code(text)
+      payment = Payment.find_by(code: text)
       payment.state = 'Used'
       payment.save
     else
       # This needs to be updated to lookup payment by from e-mail
-      payment = Payment.find_by_code(text)
+      payment = Payment.find_by(code: text)
       payment.state = 'Used'
       payment.save
     end

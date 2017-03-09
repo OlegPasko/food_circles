@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class ReservationController < ApplicationController
   def active
-    reservation = Reservation.find_by_coupon(params[:coupon])
+    reservation = Reservation.find_by(coupon: params[:coupon])
     reservation.state = 'Active'
     reservation.save
 
@@ -9,7 +9,7 @@ class ReservationController < ApplicationController
   end
 
   def expired
-    reservation = Reservation.find_by_coupon(params[:coupon])
+    reservation = Reservation.find_by(coupon: params[:coupon])
     reservation.state = 'Expired'
     reservation.save
 
@@ -17,7 +17,7 @@ class ReservationController < ApplicationController
   end
 
   def used
-    reservation = Reservation.find_by_coupon(params[:coupon])
+    reservation = Reservation.find_by(coupon: params[:coupon])
     reservation.state = 'Used'
     reservation.save
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class PaymentController < ApplicationController
-  def index
-  end
+  def index; end
 
   def stripe
     @payment = Payment.new
@@ -9,11 +8,11 @@ class PaymentController < ApplicationController
 
   def active
     if params[:coupon].blank?
-      payment = Payment.find_by_code(params[:code])
+      payment = Payment.find_by(code: params[:code])
       payment.state = 'Active'
       payment.save
     else
-      payment = Payment.find_by_coupon(params[:coupon])
+      payment = Payment.find_by(coupon: params[:coupon])
       payment.state = 'Active'
       payment.save
     end
@@ -23,9 +22,9 @@ class PaymentController < ApplicationController
 
   def expired
     payment = if params[:coupon].blank?
-                Payment.find_by_code(params[:code])
+                Payment.find_by(code: params[:code])
               else
-                Payment.find_by_coupon(params[:coupon])
+                Payment.find_by(coupon: params[:coupon])
               end
 
     payment.state = 'Expired' unless payment.used?
@@ -36,11 +35,11 @@ class PaymentController < ApplicationController
 
   def used
     if params[:coupon].blank?
-      payment = Payment.find_by_code(params[:code])
+      payment = Payment.find_by(code: params[:code])
       payment.state = 'Used'
       payment.save
     else
-      payment = Payment.find_by_coupon(params[:coupon])
+      payment = Payment.find_by(coupon: params[:coupon])
       payment.state = 'Used'
       payment.save
     end
@@ -55,7 +54,7 @@ class PaymentController < ApplicationController
   end
 
   def send_text
-    payment = Payment.find_by_code(params[:code])
+    payment = Payment.find_by(code: params[:code])
     if payment
       begin
         SmsVoucherSender.new(params[:phone], payment).send

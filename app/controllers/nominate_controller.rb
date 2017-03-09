@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class NominateController < ApplicationController
-  def index
-  end
+  def index; end
 
   def create
     UserMailer.nomination_notify(params[:email], params[:name], params[:contact], params[:story], params[:feedback]).deliver

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class MobileController < ApplicationController
   def login
-    @user = User.find_by_email(params[:email].downcase)
+    @user = User.find_by(email: params[:email].downcase)
     unless @user
       @user = User.create!(email: params[:email], password: params[:password], name: params[:email])
     end
@@ -23,7 +23,7 @@ class MobileController < ApplicationController
 
   def signup
     o = Offer.find(params[:offer])
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by(email: params[:email])
     if @user
       render json: { success: false, errors: 'Your account already exists. Please sign in instead.', status: 500 }, callback: params[:callback]
       return
@@ -54,7 +54,7 @@ class MobileController < ApplicationController
   end
 
   def callahead
-    @r = Reservation.find_by_coupon(params[:coupon])
+    @r = Reservation.find_by(coupon: params[:coupon])
     @minutes = params[:in_minutes]
     makeCall(@r.venue, @r, @minutes)
     render nothing: true

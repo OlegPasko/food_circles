@@ -2,7 +2,7 @@
 class HomeController < ApplicationController
   def index
     if request.subdomain && !['', 'www', 'staging', 'testing'].include?(request.subdomain)
-      @sub_charity = Charity.active.find_by_subdomain(request.subdomain)
+      @sub_charity = Charity.active.find_by(subdomain: request.subdomain)
       flash.now[:notice] = "100% of your purchase will be directed to #{@sub_charity.name}."
     end
 
@@ -41,11 +41,9 @@ class HomeController < ApplicationController
     app_popup(params[:phone], params[:type]) if params[:phone]
   end
 
-  def cater
-  end
+  def cater; end
 
-  def thanks
-  end
+  def thanks; end
 
   def app_popup(phone, type)
     if type == 'iphone'

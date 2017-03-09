@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module TestHelper
   def build_user_data
     user = FactoryGirl.create(:user)
