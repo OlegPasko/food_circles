@@ -48,12 +48,13 @@
   <%= render 'partials/footer' %>
 </div>
 <script>
-    var modal = document.getElementById('myModal');
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-    btn.onclick = function() {
+    var f = function(){
       modal.style.display = "block";
     }
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementsByClassName("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    for (var i=0, len=btn.length; i < len; i++) btn[i].onclick = f;
     span.onclick = function() {
       modal.style.display = "none";
     }
