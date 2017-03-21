@@ -5,104 +5,104 @@
     %h3.tagline
       Buy One, Feed One.
 
-    .header-utils
-      #social
-        %ul
-          %a{class: "icon-soc-facebook", href: "http://facebook.com/foodcircles"}
-          %a{class: "icon-soc-twitter", href: "https://twitter.com/FoodCircles"}
-          %a{class: "icon-soc-foodcircles", href: "http://blog.foodcircles.net"}
+    - if controller_name != "nonprofit" && action_name != "new"
+      .header-utils
+        #social
+          %ul
+            %a{class: "icon-soc-facebook", href: "http://facebook.com/foodcircles"}
+            %a{class: "icon-soc-twitter", href: "https://twitter.com/FoodCircles"}
+            %a{class: "icon-soc-foodcircles", href: "http://blog.foodcircles.net"}
 
 
-      .welcome-line
-        - if user_signed_in?
+        .welcome-line
+          - if user_signed_in?
 
-          Welcome Back!
-          %a{href: "/timeline"}
-            Your Account
-            %i{class: "arrow-right"}
-        - else
-          Hey! You new here?
-          %button{class:'btn-default submit myBtn'}
-            Sign Up
-        #myModal.modal
-          .modal-content
-            .modal-header
-              %span.close ×
-              %h2 Sign Up
-            .modal-body
-              %a{:href => "/", class: 'btn-default submit'}
-                NPO
-              %a{:href => "/", class: 'btn-default submit'}
-                Restaurant
-            .modal-footer
+            Welcome Back!
+            %a{href: "/timeline"}
+              Your Account
+              %i{class: "arrow-right"}
+          - else
+            Hey! You new here?
+            %button{class:'btn-default submit myBtn'}
+              Sign Up
+          #myModal.modal
+            .modal-content
+              .modal-header
+                %span.close ×
+                %h2 Sign Up
+              .modal-body
+                = link_to 'NPO', new_nonprofit_path, class: 'btn-default submit'
+                %a{:href => "/", class: 'btn-default submit'}
+                  Restaurant
+              .modal-footer
+                %p{class: "form-caption"}
+                  Have an account?
+                  %a{href: "#"} Sign In
+
+          -#= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class:"sign-form", id: "sign-up-form"}) do |f|
+            %i.arrow-up
+              %i.arrow-up
+            .row
+              %a{href: "/users/auth/facebook", class: "btn-facebook"}
+                Sign up
+                %i{class: "icon-btn-facebook"}
+              = f.email_field :email, class: 'field medium', placeholder: "New email", tabindex: '1'
+            .row
+              %a{href: "/users/auth/twitter", class: "btn-twitter"}
+                Sign Up
+                %i{class: "icon-btn-twitter"}
+              = f.password_field :password, class: 'field medium', placeholder: "New password", tabindex: '2'
+            .form-foot
+              %span{class: "btn-small submit"}
+                Sign Up
+                = f.submit 'Sign Up', tabindex: '3'
+
               %p{class: "form-caption"}
                 Have an account?
                 %a{href: "#"} Sign In
-
-        -#= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class:"sign-form", id: "sign-up-form"}) do |f|
-          %i.arrow-up
+                .
+          -# = form_for(resource, as: resource_name, url: user_session_path, html:{class:"sign-form", id: "sign-in-form"}) do |f|
             %i.arrow-up
-          .row
-            %a{href: "/users/auth/facebook", class: "btn-facebook"}
-              Sign up
-              %i{class: "icon-btn-facebook"}
-            = f.email_field :email, class: 'field medium', placeholder: "New email", tabindex: '1'
-          .row
-            %a{href: "/users/auth/twitter", class: "btn-twitter"}
-              Sign Up
-              %i{class: "icon-btn-twitter"}
-            = f.password_field :password, class: 'field medium', placeholder: "New password", tabindex: '2'
-          .form-foot
-            %span{class: "btn-small submit"}
-              Sign Up
-              = f.submit 'Sign Up', tabindex: '3'
+              %i.arrow-up
+            .row
+              %a{href: "/users/auth/facebook", class: "btn-facebook"}
+                Sign In
+                %i{class: "icon-btn-facebook"}
+              = f.email_field :email, class: 'field medium', placeholder: "Your email", tabindex: '1'
+            .row
+              %a{href: "/users/auth/twitter", class: "btn-twitter"}
+                Sign In
+                %i{class: "icon-btn-twitter"}
+              = f.password_field :password, class: 'field medium', placeholder: "Your password", tabindex: '2'
+            .form-foot
+              %span{class: "btn-small submit"}
+                Sign In
+                = f.submit 'Sign In', tabindex: '3'
 
-            %p{class: "form-caption"}
-              Have an account?
-              %a{href: "#"} Sign In
-              .
-        -# = form_for(resource, as: resource_name, url: user_session_path, html:{class:"sign-form", id: "sign-in-form"}) do |f|
-          %i.arrow-up
-            %i.arrow-up
-          .row
-            %a{href: "/users/auth/facebook", class: "btn-facebook"}
-              Sign In
-              %i{class: "icon-btn-facebook"}
-            = f.email_field :email, class: 'field medium', placeholder: "Your email", tabindex: '1'
-          .row
-            %a{href: "/users/auth/twitter", class: "btn-twitter"}
-              Sign In
-              %i{class: "icon-btn-twitter"}
-            = f.password_field :password, class: 'field medium', placeholder: "Your password", tabindex: '2'
-          .form-foot
-            %span{class: "btn-small submit"}
-              Sign In
-              = f.submit 'Sign In', tabindex: '3'
-
-            %p{class: "form-caption"}
-              Need an account?
-              %a{href: "#"} Sign Up
-              .
-    #nav
-      %ul
-        %li{class: current_page?(main_app.root_path) ? "active" : ''}
-          = link_to "Home", main_app.root_path
-        %li{class: params[:id] == 'faq' ? 'active' : ''}
-          = link_to "FAQ", '/faq'
-        %li{class: params[:id] == 'about_we' ? 'active' : ''}
-          = link_to "About We", "/about_we"
-        %li
-          %a{href: "#"}
-            Get Involved ▾
-          %ul
-            %li
-              = link_to "For Restaurants", main_app.restaurants_path
-            %li
-              = link_to "For Nonprofits", main_app.nonprofits_path
-            %li
-              = link_to "For Students", main_app.students_path
-  / %li{class: "#{ 'active' if controller_name == 'home' }"}
-- if controller_name == "home" && action_name = "index"
+              %p{class: "form-caption"}
+                Need an account?
+                %a{href: "#"} Sign Up
+                .
+      #nav
+        %ul
+          %li{class: current_page?(main_app.root_path) ? "active" : ''}
+            = link_to "Home", main_app.root_path
+          %li{class: params[:id] == 'faq' ? 'active' : ''}
+            = link_to "FAQ", '/faq'
+          %li{class: params[:id] == 'about_we' ? 'active' : ''}
+            = link_to "About We", "/about_we"
+          %li
+            %a{href: "#"}
+              Get Involved ▾
+            %ul
+              %li
+                = link_to "For Restaurants", main_app.restaurants_path
+              %li
+                = link_to "For Nonprofits", main_app.nonprofits_path
+              %li
+                = link_to "For Students", main_app.students_path
+      / %li{class: "#{ 'active' if controller_name == 'home' }"}
+- if controller_name == "home" && action_name == "index"
   .mini-header
     .mh-main
       .container

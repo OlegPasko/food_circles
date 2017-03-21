@@ -4,6 +4,11 @@ class NonprofitsController < ApplicationController
     enqueue_mix_panel_event 'Visits Non Profits Get Involved Sub Page'
   end
 
+  # TODO
+  def new
+  # @nonprofit = Nonprofit.new
+  end
+
   def create
     enqueue_mix_panel_event 'Submits Non Profits Get Involved Form'
 
