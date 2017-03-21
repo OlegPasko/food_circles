@@ -464,6 +464,7 @@ DEPENDENCIES
   mail
   mandrill-rails
   meta-tags
+  omniauth
   omniauth-facebook
   omniauth-twitter
   paperclip

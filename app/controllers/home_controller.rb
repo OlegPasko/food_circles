@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   def index
+    @restaraunts = Charity.all.count
     if request.subdomain && !['', 'www', 'staging', 'testing'].include?(request.subdomain)
       @sub_charity = Charity.active.find_by(subdomain: request.subdomain)
       flash.now[:notice] = "100% of your purchase will be directed to #{@sub_charity.name}."
