@@ -67,13 +67,14 @@
 
     </div>
 
-    <div id="nonprofits-form">
+    <div class="nonprofits-form">
 
       <%= form_tag nonprofits_path, id: 'nonprofit-form', method: :post, remote: true, :"data-show-ajax-status-on" => "input[type=submit]" do %>
           <%= text_field_tag :organization, nil, placeholder: "Organization" %><br/>
           <%= text_field_tag :name, nil, placeholder: "Name" %><br/>
           <%= text_field_tag :email, nil, placeholder: "Email" %><br/>
-          <%= text_field_tag :website, nil, placeholder: "We help..." %><br/>
+          <%= text_field_tag :phone, nil, placeholder: "Phone" %><br/>
+          <%= text_field_tag :website, nil, placeholder: "  We help..." %><br/>
           <%= submit_tag 'Request Invite', class: "btn-standart" %>
 
       <% end %>

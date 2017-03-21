@@ -1,17 +1,9 @@
-<%= form_for(@nonprofit) do |f| %>
-     <!--if @nonprofit.errors.any? %>-->
-        <!--<div id="error_explanation">-->
-          <!--<h2><%= pluralize(user.errors.count, 'error') %> prohibited this user from being saved:</h2>-->
-          <!--<ul>-->
-            <!-- @nonprofit.errors.full_messages.each do |message| %>-->
-                <!--<li><%= message %></li>-->
-            <!-- end %>-->
-          <!--</ul>-->
-        <!--</div>-->
-    <!--end %>-->
-    <%= f.text_field :first_name, :placeholder => 'first_name', class:'form-control' %><br>
-    <%= f.text_field :last_name, :placeholder => 'last_name', class:'form-control' %><br>
-    <%= f.email_field :email, :placeholder => 'email', type:'email', class:'form-control' %><br>
-    <%= f.password_field :password, :placeholder => 'password', class:'form-control' %><br>
-    <%= f.submit 'Sign up', type: 'submit', class:'btn btn-warning' %>
+<%= form_tag nonprofits_path, id: 'nonprofit-form' do |f| %>
+    <%= f.text_field :organization, placeholder: "Organization" %><br/>
+    <%= f.text_field :name, nil, placeholder: "Name" %><br/>
+    <%= f.email_field :email, nil, placeholder: "Email" %><br/>
+    <%= f.text_field :phone, nil, placeholder: "Phone" %><br/>
+    <%= f.text_field :username, nil, placeholder: "Username" %><br/>
+    <%= f.password_field :password, nil, placeholder: "Password" %><br/>
+    <%= submit_tag 'Sign Up', class: "btn-standart" %>
 <% end %>

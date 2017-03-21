@@ -6,7 +6,7 @@ class NonprofitsController < ApplicationController
 
   # TODO
   def new
-  # @nonprofit = Nonprofit.new
+    # @nonprofit = Nonprofit.new
   end
 
   def create
