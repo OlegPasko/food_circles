@@ -198,7 +198,7 @@ ul, ol {
   list-style-position: inside;
 }
 
-input[type="text"] {
+input[type="text"], input[type="email"], input[type="password"] {
   background: #fff;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
