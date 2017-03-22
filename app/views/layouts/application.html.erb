@@ -51,16 +51,24 @@
     var f = function(){
       modal.style.display = "block";
     }
-    var modal = document.getElementById('myModal');
+    var log_in = function(){
+      loginModal.style.display = "block";
+    }
+    var modal = document.getElementById("myModal");
+    var loginModal = document.getElementById("myLoginModal");
+    var loginBtn = document.getElementsByClassName("loginBtn");
     var btn = document.getElementsByClassName("myBtn");
     var span = document.getElementsByClassName("close")[0];
     for (var i=0, len=btn.length; i < len; i++) btn[i].onclick = f;
+    for (var i=0, len=loginBtn.length; i < len; i++) loginBtn[i].onclick = log_in;
     span.onclick = function() {
       modal.style.display = "none";
     }
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
+      } else if (event.target == loginModal) {
+        loginModal.style.display = "none";
       }
     }
 </script>
