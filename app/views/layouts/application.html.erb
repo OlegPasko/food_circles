@@ -69,5 +69,14 @@
     $.smartbanner({daysHidden: 0, daysReminder: 0, title: 'FoodCircles'})
   })
 </script>
+<script>
+    $( "#eye" )
+        .mouseout(function() {
+            $("#see-password").attr('type','password');
+        })
+        .mouseover(function() {
+            $("#see-password").attr('type','text');
+        });
+</script>
 </body>
 </html>

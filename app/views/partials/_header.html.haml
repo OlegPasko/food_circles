@@ -32,8 +32,7 @@
                 %h2 Sign Up
               .modal-body
                 = link_to 'NPO', new_nonprofit_path, class: 'btn-default submit'
-                %a{:href => "/", class: 'btn-default submit'}
-                  Restaurant
+                = link_to 'Restaurant', new_restaurant_path, class: 'btn-default submit'
               .modal-footer
                 %p{class: "form-caption"}
                   Have an account?
@@ -101,7 +100,7 @@
                 = link_to "For Nonprofits", main_app.nonprofits_path
               %li
                 = link_to "For Students", main_app.students_path
-      / %li{class: "#{ 'active' if controller_name == 'home' }"}
+    / %li{class: "#{ 'active' if controller_name == 'home' }"}
 - if controller_name == "home" && action_name == "index"
   .mini-header
     .mh-main

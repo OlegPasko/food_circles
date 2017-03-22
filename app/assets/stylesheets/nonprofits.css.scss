@@ -216,6 +216,12 @@ form input {
   color: #423f37;
 }
 
+#see-password {
+  width: 245px;
+  margin-right: 10px;
+
+}
+
 #nonprofits-form-index,  #nonprofits-form-new form input {
   font-family: "Helvetica Neue", Helvetica, Arial, "Dejavu Sans", Verdana, sans-serif;
 }
@@ -316,3 +322,10 @@ form input {
   font-size: 12px;
 }
 
+#eye {
+  color: white;
+  cursor: default;
+  font-size: 25px;
+  position: relative;
+  bottom: -4px;
+}

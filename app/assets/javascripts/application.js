@@ -17,7 +17,7 @@
 //= require gmaps
 //= require iscroll
 //= require moment
-//= require_tree .
+//= require_tree
 
 $(function () {
     // Adjust Alert box size
