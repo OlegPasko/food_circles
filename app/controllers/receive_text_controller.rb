@@ -25,7 +25,7 @@ class ReceiveTextController < ApplicationController
     unless body.blank?
       body.downcase!
 
-      if body = 'used'
+      if body == 'used'
         user = User.find_by(phone: from)
         if !user.blank?
           payment = Payment.where(user_id: user.id).limit(1).order('created_at desc').first

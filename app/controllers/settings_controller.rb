@@ -46,7 +46,7 @@ class SettingsController < ApplicationController
 
   # DELETE /settings/facebook_connection
   def facebook_connection
-    if current_user.update_attributes(facebook_uid: nil, facebook_secret: nil, facebook_secret: nil, has_facebook: false)
+    if current_user.update_attributes(facebook_uid: nil, facebook_secret: nil, has_facebook: false)
       render json: { success: true, description: 'Disconnected from facebook' }
     else
       render json: { error: true, description: 'There was an error', errors: current_user.errors.full_messages.to_sentence }
