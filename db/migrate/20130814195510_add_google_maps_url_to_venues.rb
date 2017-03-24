@@ -1,4 +1,4 @@
-class AddGoogleMapsUrlToVenues < ActiveRecord::Migration[5.0]
+class AddGoogleMapsUrlToVenues < ActiveRecord::Migration
   def change
     add_column :venues, :google_maps_url, :string
   end

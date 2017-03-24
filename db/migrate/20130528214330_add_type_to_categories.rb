@@ -1,4 +1,4 @@
-class AddTypeToCategories < ActiveRecord::Migration[5.0]
+class AddTypeToCategories < ActiveRecord::Migration
   def change
     add_column :categories, :type, :string
   end

@@ -1,4 +1,4 @@
-class AddBillingDataToVenue < ActiveRecord::Migration[5.0]
+class AddBillingDataToVenue < ActiveRecord::Migration
   def change
     add_column :venues, :first_name, :string
     add_column :venues, :last_name, :string

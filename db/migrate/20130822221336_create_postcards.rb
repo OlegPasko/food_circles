@@ -1,4 +1,4 @@
-class CreatePostcards < ActiveRecord::Migration[5.0]
+class CreatePostcards < ActiveRecord::Migration
   def change
     create_table :postcards do |t|
       t.string :city, null: false

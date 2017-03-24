@@ -1,4 +1,4 @@
-class AddCalledToReservation < ActiveRecord::Migration[5.0]
+class AddCalledToReservation < ActiveRecord::Migration
   def change
     add_column :reservations, :called, :boolean, default: false
 

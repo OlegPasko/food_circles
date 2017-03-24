@@ -1,4 +1,4 @@
-class CreateLongTasks < ActiveRecord::Migration[5.0]
+class CreateLongTasks < ActiveRecord::Migration
   def change
     create_table "long_tasks", force: true
   end

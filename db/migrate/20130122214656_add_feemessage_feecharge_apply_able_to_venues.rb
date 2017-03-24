@@ -1,4 +1,4 @@
-class AddFeemessageFeechargeApplyAbleToVenues < ActiveRecord::Migration[5.0]
+class AddFeemessageFeechargeApplyAbleToVenues < ActiveRecord::Migration
   def change
     add_column :venues, :feemessage, :string, default: "Enter fee mesage."
 

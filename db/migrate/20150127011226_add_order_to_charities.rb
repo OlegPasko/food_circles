@@ -1,4 +1,4 @@
-class AddOrderToCharities < ActiveRecord::Migration[5.0]
+class AddOrderToCharities < ActiveRecord::Migration
   def change
     add_column :charities, :order, :integer
   end

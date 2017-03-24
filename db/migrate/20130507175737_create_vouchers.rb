@@ -1,4 +1,4 @@
-class CreateVouchers < ActiveRecord::Migration[5.0]
+class CreateVouchers < ActiveRecord::Migration
   def change
     create_table :vouchers do |t|
       t.date :start

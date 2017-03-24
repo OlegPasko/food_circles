@@ -1,4 +1,4 @@
-class CreateOffers < ActiveRecord::Migration[5.0]
+class CreateOffers < ActiveRecord::Migration
   def change
     create_table :offers do |t|
       t.integer :venue_id

@@ -1,4 +1,4 @@
-class AddStateToPayments < ActiveRecord::Migration[5.0]
+class AddStateToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :state, :string
   end

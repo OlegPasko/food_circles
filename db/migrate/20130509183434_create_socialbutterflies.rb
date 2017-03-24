@@ -1,4 +1,4 @@
-class CreateSocialbutterflies < ActiveRecord::Migration[5.0]
+class CreateSocialbutterflies < ActiveRecord::Migration
   def change
     create_table :socialbutterflies do |t|
       t.string :facebook

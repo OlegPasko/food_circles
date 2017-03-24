@@ -1,4 +1,4 @@
-class AddFriendToPayments < ActiveRecord::Migration[5.0]
+class AddFriendToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :friend, :string
   end

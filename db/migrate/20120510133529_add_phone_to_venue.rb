@@ -1,4 +1,4 @@
-class AddPhoneToVenue < ActiveRecord::Migration[5.0]
+class AddPhoneToVenue < ActiveRecord::Migration
   def change
     add_column :venues, :phone, :string
 

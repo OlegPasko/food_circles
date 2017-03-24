@@ -1,4 +1,4 @@
-class CreateNotificationRequests < ActiveRecord::Migration[5.0]
+class CreateNotificationRequests < ActiveRecord::Migration
   def change
     create_table :notification_requests do |t|
       t.references :user

@@ -1,4 +1,4 @@
-class AddOfferToPayments < ActiveRecord::Migration[5.0]
+class AddOfferToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :offer_id, :integer
 

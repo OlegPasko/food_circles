@@ -1,4 +1,4 @@
-class AddStripeTokenToUser < ActiveRecord::Migration[5.0]
+class AddStripeTokenToUser < ActiveRecord::Migration
   def change
     add_column :users, :stripe_customer_token, :string
   end

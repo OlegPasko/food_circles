@@ -1,4 +1,4 @@
-class RenameCircleImageAndAddOutsideImageToVenue < ActiveRecord::Migration[5.0]
+class RenameCircleImageAndAddOutsideImageToVenue < ActiveRecord::Migration
   def change
     add_column :venues, :timeline_image_uid, :string
 

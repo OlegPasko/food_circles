@@ -1,4 +1,4 @@
-class CreateOpenTimes < ActiveRecord::Migration[5.0]
+class CreateOpenTimes < ActiveRecord::Migration
   def change
     create_table :open_times do |t|
       t.integer :openable_id

@@ -1,4 +1,4 @@
-class AddExtraToCharities < ActiveRecord::Migration[5.0]
+class AddExtraToCharities < ActiveRecord::Migration
   def change
     add_column :charities, :charity_type, :string
     add_column :charities, :subdomain, :string

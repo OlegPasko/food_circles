@@ -1,4 +1,4 @@
-class AddImageToCharity < ActiveRecord::Migration[5.0]
+class AddImageToCharity < ActiveRecord::Migration
   def change
     add_column :charities, :image_uid, :string
   end

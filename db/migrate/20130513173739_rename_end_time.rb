@@ -1,4 +1,4 @@
-class RenameEndTime < ActiveRecord::Migration[5.0]
+class RenameEndTime < ActiveRecord::Migration
   def up
   end
 

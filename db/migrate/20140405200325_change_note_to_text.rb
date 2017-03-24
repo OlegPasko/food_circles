@@ -1,4 +1,4 @@
-class ChangeNoteToText < ActiveRecord::Migration[5.0]
+class ChangeNoteToText < ActiveRecord::Migration
   def up
     change_column :follow_up_notes, :note, :text
   end

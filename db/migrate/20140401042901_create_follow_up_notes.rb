@@ -1,4 +1,4 @@
-class CreateFollowUpNotes < ActiveRecord::Migration[5.0]
+class CreateFollowUpNotes < ActiveRecord::Migration
   def change
     create_table :follow_up_notes do |t|
       t.references :charity

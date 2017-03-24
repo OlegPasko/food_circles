@@ -1,4 +1,4 @@
-class CreateSocialLinks < ActiveRecord::Migration[5.0]
+class CreateSocialLinks < ActiveRecord::Migration
   def change
     create_table :social_links do |t|
       t.references :venue

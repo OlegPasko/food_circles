@@ -1,4 +1,4 @@
-class AddFriendsArrayToUser < ActiveRecord::Migration[5.0]
+class AddFriendsArrayToUser < ActiveRecord::Migration
   def change
     add_column :users, :friends, :text
     rename_column :users, :uid, :twitter_uid

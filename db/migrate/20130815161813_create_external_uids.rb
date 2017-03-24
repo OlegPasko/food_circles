@@ -1,4 +1,4 @@
-class CreateExternalUids < ActiveRecord::Migration[5.0]
+class CreateExternalUids < ActiveRecord::Migration
   def change
     create_table :external_uids do |t|
       t.references :user

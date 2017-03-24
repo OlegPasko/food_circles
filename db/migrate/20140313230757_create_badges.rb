@@ -1,4 +1,4 @@
-class CreateBadges < ActiveRecord::Migration[5.0]
+class CreateBadges < ActiveRecord::Migration
   def change
     create_table :badges do |t|
       t.string :code

@@ -1,4 +1,4 @@
-class AddCodeToPayments < ActiveRecord::Migration[5.0]
+class AddCodeToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :code, :string
   end

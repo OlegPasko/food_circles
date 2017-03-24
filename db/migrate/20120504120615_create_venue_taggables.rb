@@ -1,4 +1,4 @@
-class CreateVenueTaggables < ActiveRecord::Migration[5.0]
+class CreateVenueTaggables < ActiveRecord::Migration
   def change
     create_table :venue_taggables do |t|
       t.integer :venue_tag_id

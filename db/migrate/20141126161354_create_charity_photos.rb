@@ -1,4 +1,4 @@
-class CreateCharityPhotos < ActiveRecord::Migration[5.0]
+class CreateCharityPhotos < ActiveRecord::Migration
   def change
     create_table :charity_photos do |t|
       t.attachment :photo

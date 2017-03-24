@@ -1,4 +1,4 @@
-class ModifyAndAddVenueImages < ActiveRecord::Migration[5.0]
+class ModifyAndAddVenueImages < ActiveRecord::Migration
   def change
     add_column :venues, :thumbnail_image_uid, :string
 

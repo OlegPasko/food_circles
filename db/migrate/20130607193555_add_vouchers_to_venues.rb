@@ -1,4 +1,4 @@
-class AddVouchersToVenues < ActiveRecord::Migration[5.0]
+class AddVouchersToVenues < ActiveRecord::Migration
   def change
     add_column :venues, :vouchers_available, :integer
     add_column :venues, :vouchers_total, :integer

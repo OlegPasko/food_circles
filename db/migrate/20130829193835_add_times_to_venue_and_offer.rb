@@ -1,4 +1,4 @@
-class AddTimesToVenueAndOffer < ActiveRecord::Migration[5.0]
+class AddTimesToVenueAndOffer < ActiveRecord::Migration
   def change
     add_column :venues, :times, :string
     add_column :offers, :times, :string

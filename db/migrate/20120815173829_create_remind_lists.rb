@@ -1,4 +1,4 @@
-class CreateRemindLists < ActiveRecord::Migration[5.0]
+class CreateRemindLists < ActiveRecord::Migration
   def change
     create_table :remind_lists do |t|
       t.string :phone

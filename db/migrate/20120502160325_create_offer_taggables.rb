@@ -1,4 +1,4 @@
-class CreateOfferTaggables < ActiveRecord::Migration[5.0]
+class CreateOfferTaggables < ActiveRecord::Migration
   def change
     create_table :offer_taggables do |t|
       t.integer :offer_tag_id

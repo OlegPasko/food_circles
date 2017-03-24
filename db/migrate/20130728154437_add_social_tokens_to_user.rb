@@ -1,4 +1,4 @@
-class AddSocialTokensToUser < ActiveRecord::Migration[5.0]
+class AddSocialTokensToUser < ActiveRecord::Migration
   def change
     add_column :users, :twitter_secret, :string
     add_column :users, :twitter_token, :string

@@ -1,4 +1,4 @@
-class UpdatePayments < ActiveRecord::Migration[5.0]
+class UpdatePayments < ActiveRecord::Migration
   def up
     rename_column :payments, :charity, :charity_id
   end

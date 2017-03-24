@@ -1,4 +1,4 @@
-class AddRatingToVenue < ActiveRecord::Migration[5.0]
+class AddRatingToVenue < ActiveRecord::Migration
   def change
     add_column :venues, :rating, :float
   end

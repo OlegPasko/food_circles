@@ -1,4 +1,4 @@
-class AddCharityToPayments < ActiveRecord::Migration[5.0]
+class AddCharityToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :charity, :integer
   end

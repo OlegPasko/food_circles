@@ -1,4 +1,4 @@
-class AddActiveToCharities < ActiveRecord::Migration[5.0]
+class AddActiveToCharities < ActiveRecord::Migration
   def change
     add_column :charities, :active, :boolean, default: true
   end

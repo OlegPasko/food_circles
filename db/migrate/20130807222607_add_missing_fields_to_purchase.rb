@@ -1,4 +1,4 @@
-class AddMissingFieldsToPurchase < ActiveRecord::Migration[5.0]
+class AddMissingFieldsToPurchase < ActiveRecord::Migration
   def change
     add_column :payments, :num_diners, :integer
     add_column :payments, :occasion, :string

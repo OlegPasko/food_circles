@@ -1,4 +1,4 @@
-class ChangeNotificationsContentToTextFromString < ActiveRecord::Migration[5.0]
+class ChangeNotificationsContentToTextFromString < ActiveRecord::Migration
   def up
     change_column :notifications, :content, :text
   end

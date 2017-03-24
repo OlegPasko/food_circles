@@ -1,4 +1,4 @@
-class AddTokenToUser < ActiveRecord::Migration[5.0]
+class AddTokenToUser < ActiveRecord::Migration
   def change
     add_column :users, :authentication_token, :string
   end

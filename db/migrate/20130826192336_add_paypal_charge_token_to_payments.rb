@@ -1,4 +1,4 @@
-class AddPaypalChargeTokenToPayments < ActiveRecord::Migration[5.0]
+class AddPaypalChargeTokenToPayments < ActiveRecord::Migration
   def change
     add_column :payments, :paypal_charge_token, :string
   end

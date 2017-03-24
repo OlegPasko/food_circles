@@ -1,4 +1,4 @@
-class DropContactTypes < ActiveRecord::Migration[5.0]
+class DropContactTypes < ActiveRecord::Migration
   def up
     drop_table :contact_types
     drop_table :contacts
