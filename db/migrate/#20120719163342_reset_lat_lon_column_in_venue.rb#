@@ -1,9 +1,0 @@
-class ResetLatLonColumnInVenue < ActiveRecord::Migration[5.0]
-  def up
-    remove_column :venues, :latlon
-    add_column :venues, :latlon, :point, :geographic => true, :srid => 4326
-  end
-
-  def down
-  end
-end
