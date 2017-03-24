@@ -58,7 +58,6 @@ group :development do
   gem 'capistrano-upload-config'
   gem 'capistrano3-puma'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'listen', '~> 3.0.5'
   gem 'sshkit-sudo'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -80,6 +79,7 @@ gem 'figaro'
 gem 'friendly_id'
 gem 'gibbon'
 gem 'haml-rails'
+gem 'listen'
 gem 'mail'
 gem 'mandrill-rails'
 gem 'meta-tags'
