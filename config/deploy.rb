@@ -9,7 +9,7 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :user, 'deployer'
 set :rails_env, 'production'
-server '50.116.57.152', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
+server '45.56.86.96', user: "#{fetch(:user)}", roles: %w{app db web}, primary: true
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :pty, true
 
