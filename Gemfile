@@ -49,6 +49,7 @@ end
 
 group :development do
   gem 'capistrano'
+  gem 'capistrano-bundler'
   gem 'capistrano-nginx'
   gem 'capistrano-rails'
   gem 'capistrano-rails-console'

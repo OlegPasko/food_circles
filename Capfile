@@ -16,10 +16,11 @@ require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
+require 'capistrano/rvm'
+require 'capistrano/bundler'
 require 'capistrano/nginx'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma::Nginx
-require 'capistrano/rvm'
 require 'capistrano/rails'
 require 'capistrano/rails/db'
 require 'capistrano/rails/console'
