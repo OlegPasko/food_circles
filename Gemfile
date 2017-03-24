@@ -48,8 +48,17 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano'
+  gem 'capistrano-nginx'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-rails-db'
+  gem 'capistrano-rvm'
+  gem 'capistrano-upload-config'
+  gem 'capistrano3-puma'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
+  gem 'sshkit-sudo'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -78,6 +87,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'paperclip'
 gem 'pdfkit'
+gem 'rack-cors', require: 'rack/cors'
 gem 'rb-readline'
 gem 'stripe'
 gem 'twitter', '~> 6.1'
