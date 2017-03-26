@@ -52,14 +52,14 @@ class Venue < ApplicationRecord
   rails_admin do
     show do
       include_all_fields
-      field :latitude
-      field :longitude
+      field :lat
+      field :lon
     end
 
     edit do
       include_all_fields
-      field :latitude
-      field :longitude
+      field :lat
+      field :lon
     end
   end
 
@@ -118,8 +118,8 @@ class Venue < ApplicationRecord
       name: name,
       address: address,
       city: city,
-      longitude: longitude,
-      latitude: latitude,
+      # longitude: longitude,
+      # latitude: latitude,
       # lat: self.latlon.y,
       # lon: self.latlon.x,
       description: description,
