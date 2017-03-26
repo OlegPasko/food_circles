@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007055936) do
+ActiveRecord::Schema.define(version: 20170326124412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20151007055936) do
     t.string   "photo_uid"
     t.boolean  "active",       default: true
     t.integer  "order"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lon"
   end
 
   create_table "charity_photos", force: :cascade do |t|
@@ -413,8 +413,6 @@ ActiveRecord::Schema.define(version: 20151007055936) do
     t.string   "neighborhood"
     t.string   "web"
     t.integer  "price"
-    t.float    "longitude"
-    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "main_image_uid"
@@ -450,6 +448,8 @@ ActiveRecord::Schema.define(version: 20151007055936) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "social_media_email"
+    t.float    "lon"
+    t.float    "lat"
     t.index ["slug"], name: "index_venues_on_slug", unique: true, using: :btree
   end
 

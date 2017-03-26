@@ -12,8 +12,7 @@ class CreateVenues < ActiveRecord::Migration
       t.string :web
       t.integer :timezone_id
       t.integer :price
-      t.float :longitude
-      t.float :latitude
+      t.point :latlon, :geographic => true, :srid => 4326
 
       t.timestamps
     end
