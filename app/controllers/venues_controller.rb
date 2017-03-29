@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class VenuesController < ApplicationController
+  before_action :authenticate_user!
   protect_from_forgery except: :subscribe
 
   def index
