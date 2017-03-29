@@ -10,7 +10,7 @@ class Venue < ApplicationRecord
   has_many :offers, dependent: :destroy
 
   # DEPRECATED, SOON TO BE DELETED
-  has_many :open_times, as: :openable, dependent: :destroy
+  # has_many :open_times, as: :openable, dependent: :destroy
 
   has_many :venue_taggables, dependent: :destroy
   has_many :venue_tags, through: :venue_taggables
@@ -22,6 +22,10 @@ class Venue < ApplicationRecord
   has_many :experience_tags, through: :experience_taggables
 
   friendly_id :name, use: :slugged
+
+  geocoded_by :address
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, :reverse_geocode
 
   require 'open-uri'
   require 'json'
@@ -38,8 +42,6 @@ class Venue < ApplicationRecord
   dragonfly_accessor :timeline_image
 
   validates :name, presence: true
-  # validates :email, on: :update, email: true
-  # validates :email, on: :create, allow_nil: true, email: true
   validates :email, on: :update, 'validators/email': true
   validates :email, on: :create, allow_nil: true, 'validators/email': true
 
@@ -47,41 +49,21 @@ class Venue < ApplicationRecord
   after_save :notify_watching_users_about_new_vouchers, if: :has_new_vouchers?
   after_create :ensure_always_open
 
-  # scope :visible, where(visible: true)
+  scope :visible, -> { where(visible: true) }
 
   rails_admin do
     show do
       include_all_fields
-      field :lat
-      field :lon
+      field :latitude
+      field :longitude
     end
 
     edit do
       include_all_fields
-      field :lat
-      field :lon
+      field :latitude
+      field :longitude
     end
   end
-
-  # def lat
-  #  @lat ||= if latlon.present?
-  #    latlon.lat
-  #  end
-  # end
-
-  # def lat=(value)
-  #  @lat = value
-  # end
-
-  # def lon
-  #  @lon ||= if latlon.present?
-  #    latlon.lon
-  #  end
-  # end
-
-  # def lon=(value)
-  #  @lon = value
-  # end
 
   def num_vouchers
     if active
@@ -120,8 +102,6 @@ class Venue < ApplicationRecord
       city: city,
       # longitude: longitude,
       # latitude: latitude,
-      # lat: self.latlon.y,
-      # lon: self.latlon.x,
       description: description,
       neighborhood: neighborhood,
       phone: phone,
@@ -136,8 +116,8 @@ class Venue < ApplicationRecord
       timeline_image: (timeline_image ? timeline_image.url : ''),
       outside_image: (outside_image ? outside_image.url : ''),
       restaurant_tile_image: (restaurant_tile_image ? restaurant_tile_image.url : ''),
-      start: (available? ? 'Later Tonight' : open_at),
-      end: close_at,
+      # start: (available? ? 'Later Tonight' : open_at),
+      # end: close_at,
       vouchers_available: num_vouchers,
       # distance: (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
       social_links: social_links,
@@ -159,16 +139,16 @@ class Venue < ApplicationRecord
     where(active: true)
   end
 
-  def open_at(t = Time.now)
-    st = ((t.beginning_of_day - t.beginning_of_week) / 60) + 300
-    et = ((t.end_of_day - t.beginning_of_week) / 60) + 300
+  # def open_at(t = Time.now)
+  #   st = ((t.beginning_of_day - t.beginning_of_week) / 60) + 300
+  #   et = ((t.end_of_day - t.beginning_of_week) / 60) + 300
 
-    o = offers.first.open_times.where('open_times.start BETWEEN :st AND :et', st: st, et: et, id: id)
-    o = o[0] if o[0]
+  #   o = offers.first.open_times.where('open_times.start BETWEEN :st AND :et', st: st, et: et, id: id)
+  #   o = o[0] if o[0]
 
-    return 'Later Tonight' if o.class.name != 'OpenTime'
-    "#{to_read(o.start)} - #{to_read(o.end)}"
-  end
+  #   return 'Later Tonight' if o.class.name != 'OpenTime'
+  #   "#{to_read(o.start)} - #{to_read(o.end)}"
+  # end
 
   def open_at2(t = Time.now)
     st = ((t.beginning_of_day - t.beginning_of_week) / 60) + 300
@@ -253,15 +233,12 @@ class Venue < ApplicationRecord
   # end
 
   # Returns all venues within the specified radius. Note radius is in meters
-  # def self.within_radius_of_location(latitude, longitude, radius = 80467.2)
-  #  return Venue.scoped unless latitude.present? && longitude.present?
-  #  Venue.where(
-  #    "ST_Distance(venues.latlon, 'POINT(? ?)') <= ?",
-  #    longitude.to_f,
-  #    latitude.to_f,
-  #    radius
-  #  )
-  # end
+  def self.within_radius_of_location(latitude, longitude, radius = 80467.2)
+    return Venue.scoped unless latitude.present? && longitude.present?
+    Venue.near([latitude, longitude], radius)
+  end
+
+
 
   def getReviews
     return unless reference
