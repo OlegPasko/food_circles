@@ -10,7 +10,7 @@ class Venue < ApplicationRecord
   has_many :offers, dependent: :destroy
 
   # DEPRECATED, SOON TO BE DELETED
-  # has_many :open_times, as: :openable, dependent: :destroy
+  has_many :open_times, as: :openable, dependent: :destroy
 
   has_many :venue_taggables, dependent: :destroy
   has_many :venue_tags, through: :venue_taggables
@@ -100,8 +100,8 @@ class Venue < ApplicationRecord
       name: name,
       address: address,
       city: city,
-      # longitude: longitude,
-      # latitude: latitude,
+      longitude: longitude,
+      latitude: latitude,
       description: description,
       neighborhood: neighborhood,
       phone: phone,
