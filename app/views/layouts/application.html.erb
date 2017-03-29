@@ -59,10 +59,24 @@
     var loginBtn = document.getElementsByClassName("loginBtn");
     var btn = document.getElementsByClassName("myBtn");
     var span = document.getElementsByClassName("close")[0];
+    var spanSecond = document.getElementsByClassName("close")[1];
+    var signup = document.getElementById("signupForm");
+    var signin = document.getElementById("signinForm");
     for (var i=0, len=btn.length; i < len; i++) btn[i].onclick = f;
     for (var i=0, len=loginBtn.length; i < len; i++) loginBtn[i].onclick = log_in;
+    signup.onclick = function () {
+      loginModal.style.display = "none";
+      modal.style.display = "block";
+    }
+    signin.onclick = function () {
+      modal.style.display = "none";
+      loginModal.style.display = "block";
+    }
     span.onclick = function() {
       modal.style.display = "none";
+    }
+    spanSecond.onclick = function() {
+      loginModal.style.display = "none";
     }
     window.onclick = function(event) {
       if (event.target == modal) {

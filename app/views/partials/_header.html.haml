@@ -39,10 +39,12 @@
             .modal-footer
               %p{class: "form-caption"}
                 Have an account?
-                %a{href: "#"} Sign In
+                %a{id: "signinForm"}
+                  Sign In
         #myLoginModal.modal
           .modal-content
             .modal-header
+              %span.close ×
               %h2 Sign In
             .modal-body
               = form_for(resource, as: resource_name, url: user_session_path, html:{id: "sign-in-form"}) do |f|
@@ -60,7 +62,8 @@
             .modal-footer
               %p{class: "form-caption"}
                 Hey! You new here?
-                %a{href: "#"} Sign Up
+                %a{id: "signupForm"}
+                  Sign Up
         -#= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class:"sign-form", id: "sign-up-form"}) do |f|
           %i.arrow-up
             %i.arrow-up
