@@ -14,7 +14,7 @@ class Venue < ApplicationRecord
   has_many :offers, dependent: :destroy
 
   # DEPRECATED, SOON TO BE DELETED
-  # has_many :open_times, as: :openable, dependent: :destroy
+  has_many :open_times, as: :openable, dependent: :destroy
 
   has_many :venue_taggables, dependent: :destroy
   has_many :venue_tags, through: :venue_taggables
@@ -104,8 +104,8 @@ class Venue < ApplicationRecord
       name: name,
       address: address,
       city: city,
-      # longitude: longitude,
-      # latitude: latitude,
+      longitude: longitude,
+      latitude: latitude,
       description: description,
       neighborhood: neighborhood,
       phone: phone,
@@ -120,8 +120,8 @@ class Venue < ApplicationRecord
       timeline_image: (timeline_image ? timeline_image.url : ''),
       outside_image: (outside_image ? outside_image.url : ''),
       restaurant_tile_image: (restaurant_tile_image ? restaurant_tile_image.url : ''),
-      # start: (available? ? 'Later Tonight' : open_at),
-      # end: close_at,
+      start: (available? ? 'Later Tonight' : open_at),
+      end: close_at,
       vouchers_available: num_vouchers,
       # distance: (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
       social_links: social_links,
@@ -238,7 +238,7 @@ class Venue < ApplicationRecord
 
   # Returns all venues within the specified radius. Note radius is in meters
   def self.within_radius_of_location(latitude, longitude, radius = 80467.2)
-    return Venue.scoped unless latitude.present? && longitude.present?
+    return Venue.all unless latitude.present? && longitude.present?
     Venue.near([latitude, longitude], radius)
   end
 
