@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
   require 'calculations/achievements'
   require 'calculations/all'
   require 'calculations/weekly'
@@ -127,6 +128,26 @@ class ApplicationController < ActionController::Base
   def queued_mixpanel_events
     # Uses a session so it persists between redirects
     session[:queued_mixpanel_events] ||= []
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |params|
+      params.permit({ roles: [] }, :name, :email, :password)
+    end
+    devise_parameter_sanitizer.permit(:account_update) do |params|
+      params.permit({ roles: [] }, :name, :web, :address, :description,
+                                        :city, :state_id, :zip, :active, :email,
+                                        :password, :current_password, :image_uid,
+                                        :charity_type, :subdomain, :use_funds,
+                                        :logo_uid, :photo_uid, :order, :phone,
+                                        :longitude, :latitude)
+    end
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    root_path(current_user)
   end
 
   private
