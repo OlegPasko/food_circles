@@ -23,8 +23,8 @@
   </div>
 
   <div class="form-field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%# f.label :password_confirmation %><br />
+    <%# f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="form-field">
@@ -38,7 +38,7 @@
     </div>
     <div class="form-field">
       <%= f.label :description %><br />
-      <%= f.text_field :description %>
+      <%= f.text_area :description , size: '44x15'%>
     </div>
     <div class="form-field">
       <%= f.label :web %> <br />
