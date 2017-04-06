@@ -234,6 +234,9 @@ input[type="text"], input[type="email"], input[type="password"], input[type="tel
   color: #423f37;
   vertical-align: middle;
 }
+input[type="checkbox"] {
+  width: 20px;
+}
 
 form .row {
   *zoom: 1;
