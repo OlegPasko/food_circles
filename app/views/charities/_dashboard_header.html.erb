@@ -2,11 +2,9 @@
   <h1>NPO NAME</h1>
   <div id="navnpo">
     <ul>
-      <li class="active"><a href="#">Activity</a></li>
-      <li><a href="#">Restaurants</a></li>
-      <li><a href="#">Bank</a></li>
+      <li class="<%= 'active' if current_page?(charity_path) %>"><%= link_to 'Activity', charity_path %></li>
+      <li class="<%= 'active' if current_page?(restaurants_charity_path) %>"><%= link_to 'Restaurants', restaurants_charity_path %></li>
+      <li class="<%= 'active' if current_page?(bank_charity_path) %>"><%= link_to 'Bank', bank_charity_path %></li>
     </ul>
   </div>
-</div>
-<div class= "bookmarks">
 </div>

@@ -301,6 +301,7 @@ form input {
 .quicklinks {
   float: left;
   width: 300px;
+  width: 300px;
   padding: 0 10px;
 }
 
@@ -320,12 +321,4 @@ form input {
 
 #quicklinks-links a {
   font-size: 12px;
-}
-
-#eye {
-  color: white;
-  cursor: default;
-  font-size: 25px;
-  position: relative;
-  bottom: -4px;
 }

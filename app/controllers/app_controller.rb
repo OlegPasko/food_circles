@@ -21,7 +21,7 @@ class AppController < ApplicationController
   end
 
   def confirm
-    @c = Charity.find(params[:charity])
+    @c = Charity.find(params[:charities])
     @o = Offer.find(params[:offer])
     @v = @o.venue
   end
@@ -35,7 +35,7 @@ class AppController < ApplicationController
       o = Offer.find params[:offer]
       @r = user.reservations.create(occasion: params[:occasion],
                                     offer_id: params[:offer],
-                                    charity_id: params[:charity],
+                                    charity_id: params[:charities],
                                     name: user.name + ' reservation',
                                     venue_id: o.venue.id,
                                     num_diners: o.min_diners,
@@ -47,7 +47,7 @@ class AppController < ApplicationController
 
   def newinfo
     @o = Offer.find params[:offer]
-    @c = Charity.find params[:charity]
+    @c = Charity.find params[:charities]
     @v = @o.venue
     @email = params[:email]
   end
@@ -60,7 +60,7 @@ class AppController < ApplicationController
     o = Offer.find params[:offer]
     @r = user.reservations.create(occasion: params[:occasion],
                                   offer_id: params[:offer],
-                                  charity_id: params[:charity],
+                                  charity_id: params[:charities],
                                   name: user.name + "'s reservation",
                                   venue_id: o.venue.id,
                                   num_diners: o.min_diners,

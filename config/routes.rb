@@ -78,6 +78,13 @@ Rails.application.routes.draw do
   resources :students
   resources :organizers
   resources :nominate
+  resources :charities do
+    member do
+      get 'activity'
+      get 'restaurants'
+      get 'bank'
+    end
+  end
 
   scope 'mobi' do
     resources :payments

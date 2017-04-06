@@ -40,4 +40,8 @@ class NonprofitsController < ApplicationController
     valid = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     email.present? && (email =~ valid)
   end
+
+  def show
+
+  end
 end

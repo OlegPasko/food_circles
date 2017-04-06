@@ -46,3 +46,4 @@ Food Circles.esproj
 
 /config/database.production.yml
 /config/secrets.production.yml
+/config/initializers/postgresql_database_tasks.rb

@@ -46,11 +46,11 @@ class Api::TimelineController < ApplicationController
         },
         reservations: @reservations.map{ |r|
           data = {
-            id: r.id,
-            state: r.state,
-            user: r.user.name,
-            charity: r.charity.as_json.slice(:id, :name, :description),
-            date_purchased: r.created_at
+              id: r.id,
+              state: r.state,
+              user: r.user.name,
+              charities: r.charity.as_json.slice(:id, :name, :description),
+              date_purchased: r.created_at
           }
           data[:offer] = if r.offer.present?
             r.offer.as_json.slice(:id, :title, :details, :minimum_diners).merge({

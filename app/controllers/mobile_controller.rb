@@ -10,7 +10,7 @@ class MobileController < ApplicationController
     @r = @user.reservations.create
     @r.offer_id = params[:offer]
     @r.venue_id = o.venue.id
-    @r.charity_id = params[:charity]
+    @r.charity_id = params[:charities]
     @r.name = @user.name
     @r.num_diners = o.min_diners
     @r.coupon = genCoupon
@@ -37,7 +37,7 @@ class MobileController < ApplicationController
     @r = @user.reservations.create
     @r.offer_id = params[:offer]
     @r.venue_id = o.venue.id
-    @r.charity_id = params[:charity]
+    @r.charity_id = params[:charities]
     @r.name = @user.name
     @r.num_diners = o.min_diners
     @r.coupon = genCoupon

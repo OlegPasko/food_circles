@@ -25,11 +25,11 @@ class AchievementsController < ApplicationController
         reg[:our_price] = pay.offer.price.to_i
         reg[:amount_paid] = pay.amount.to_i
         reg[:date] = pay.created_at
-        reg[:charity] = if pay.charity_id.nil?
+        reg[:charities] = if pay.charity_id.nil?
                           'Null'
-                        else
+                          else
                           pay.charity.name
-                        end
+                          end
         reg[:code] = pay.code
         reg[:state] = pay.state
 
