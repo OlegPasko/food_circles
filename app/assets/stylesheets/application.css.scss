@@ -161,6 +161,23 @@ input, textarea, select {
 
 textarea {
   overflow: auto;
+  background: #fff;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    height: 200px;
+    line-height: 40px;
+    -webkit-box-shadow: inset 0px 2px 2px 0px #d8cfc1;
+    -moz-box-shadow: inset 0px 2px 2px 0px #d8cfc1;
+    box-shadow: inset 0px 2px 2px 0px #d8cfc1;
+    padding: 0 10px;
+    font-family: "NeutrafaceSlab", "Neutraface Slab", serif;
+    color: #423f37;
+    vertical-align: middle;
 }
 
 h2, h3, h6 {
@@ -217,6 +234,9 @@ input[type="text"], input[type="email"], input[type="password"], input[type="tel
   font-family: "NeutrafaceSlab", "Neutraface Slab", serif;
   color: #423f37;
   vertical-align: middle;
+}
+input[type="checkbox"] {
+  width: 20px;
 }
 
 form .row {
