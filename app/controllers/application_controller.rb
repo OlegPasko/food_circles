@@ -147,7 +147,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    root_path(current_user)
+    if request.referer == new_user_session_url
+      edit_user_registration_path(current_user)
+    elsif request.referer == new_venue_session_url
+      edit_venue_registration_path(current_user)
+    elsif request.referer == new_charity_session_url
+      edit_charity_registration_path(current_user)
+    end
   end
 
   private
