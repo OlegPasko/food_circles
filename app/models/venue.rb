@@ -120,8 +120,8 @@ class Venue < ApplicationRecord
       timeline_image: (timeline_image ? timeline_image.url : ''),
       outside_image: (outside_image ? outside_image.url : ''),
       restaurant_tile_image: (restaurant_tile_image ? restaurant_tile_image.url : ''),
-      start: (available? ? 'Later Tonight' : open_at),
-      end: close_at,
+      # start: (available? ? 'Later Tonight' : open_at),
+      # end: close_at,
       vouchers_available: num_vouchers,
       # distance: (options[:lat] ? distance(options[:lat], options[:lon]) : ''),
       social_links: social_links,
@@ -154,14 +154,14 @@ class Venue < ApplicationRecord
   #   "#{to_read(o.start)} - #{to_read(o.end)}"
   # end
 
-  def open_at2(t = Time.now)
-    st = ((t.beginning_of_day - t.beginning_of_week) / 60) + 300
-    et = ((t.end_of_day - t.beginning_of_week) / 60) + 300
+  # def open_at2(t = Time.now)
+  #   st = ((t.beginning_of_day - t.beginning_of_week) / 60) + 300
+  #   et = ((t.end_of_day - t.beginning_of_week) / 60) + 300
 
-    o = offers.first.open_times.where('open_times.start BETWEEN :st AND :et', st: st, et: et, id: id)
+  #   o = offers.first.open_times.where('open_times.start BETWEEN :st AND :et', st: st, et: et, id: id)
 
-    o
-  end
+  #   o
+  # end
 
   def close_at(t = Time.now)
     t = ((t - t.beginning_of_week) / 60) + 300
