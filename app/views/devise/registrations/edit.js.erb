@@ -29,3 +29,19 @@ $("#charity-bank-link").click(function(e) {
     $('.charity-dashboard').hide();
     $('#charity-bank').show();
 });
+
+$("#charity-search-link").click(function(e) {
+    e.preventDefault();
+    $(this).parents("ul").find("li").removeClass('active');
+    $(this).addClass('active');
+    $('.charity-restaurants').hide();
+    $('#charity-restaurants-search').show();
+});
+
+$("#charity-manage-link").click(function(e) {
+    e.preventDefault();
+    $(this).parents("ul").find("li").removeClass('active');
+    $(this).addClass('active');
+    $('.charity-restaurants').hide();
+    $('#charity-restaurants-manage').show();
+});
