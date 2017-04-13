@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20170329201540) do
     t.string   "photo_uid"
     t.boolean  "active",                 default: true
     t.integer  "order"
-    t.float    "lat"
-    t.float    "lon"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
@@ -425,6 +425,8 @@ ActiveRecord::Schema.define(version: 20170329201540) do
     t.string   "neighborhood"
     t.string   "web"
     t.integer  "price"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "main_image_uid"
@@ -460,8 +462,8 @@ ActiveRecord::Schema.define(version: 20170329201540) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "social_media_email"
-    t.float    "longitude"
-    t.float    "latitude"
+    t.float    "lon"
+    t.float    "lat"
     t.string   "encrypted_password",        default: "",                  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

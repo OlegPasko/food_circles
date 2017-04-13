@@ -31,6 +31,8 @@ config/database.yml
 
 
 .zeus.sock
+.ruby-gemset
+.ruby-version
 
 private_docs/
 
