@@ -49,8 +49,9 @@ class Charity < ApplicationRecord
       address: address,
       city: city,
       description: description,
-      state: state.name,
-      image: image.present? ? image.url : '' }
+      # state: state.name,
+      # image: image.present? ? image.url : ''
+    }
   end
 
   def full_address
