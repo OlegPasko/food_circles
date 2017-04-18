@@ -5,5 +5,7 @@ class CharitiesController < ApplicationController
     if %w(json jsonp).include?(params[:format])
       render json: @charity, callback: params[:callback]
     end
+    redirect_to edit_charity_registration_path(current_user)
   end
+
 end
