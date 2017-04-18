@@ -79,12 +79,12 @@
   z-index: -1;
 }
 
-#charity-restaurants, #charity-bank, #charity-settings {
+#charity-restaurants, #charity-bank, #charity-settings, #charity-restaurants-manage {
   display: none;
 }
 
 /*=== Charity Restaurants tab===*/
-#nav-charity-restaurants {  display:flex; justify-content:center; padding-top: 50px;}
+#nav-charity-restaurants {  display:flex; justify-content:center; padding-top: 50px; padding-bottom: 50px;}
 .lt-ie8 #nav-charity-restaurants { float:none; clear:both; position:relative; margin-top:-72px; padding-bottom:30px; }
 #nav-charity-restaurants > ul { list-style:none outside none; float:right; padding:0; border-radius:5px 5px 5px 5px;
   background-color:#b56e6f;
@@ -146,7 +146,41 @@
   transform:translateY(0);
 }
 
-#charity-restaurants-manage {
-  display: none;
+/*=== Charity-restaurants-manage tab===*/
+.charity-restaurants-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
 }
 
+.charity-restaurants-table td {
+  text-align: left;
+  padding: 12px;
+  width: 25%;
+}
+
+.charity-restaurants-table th {
+  text-align: left;
+  padding: 6px 35px 6px 12px;
+  width: 25%;
+}
+
+.charity-restaurants-table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.charity-restaurants-table tr.table-header, .charity-restaurants-table tr:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.2);
+}
+
+.charity-restaurants-table tr td:last-child, .charity-restaurants-table tr th:last-child {
+  text-align:center;
+}
+
+.scroll-table {
+  overflow:scroll;
+  overflow-x: hidden;
+  height:300px;
+}
